@@ -1,5 +1,6 @@
 import defaultClasses.Coordinates;
 import defaultClasses.Person;
+import yamlsTools.YamlWriter;
 
 
 import java.io.IOException;
@@ -14,5 +15,7 @@ public class Main {
         String path = System.getenv("Lab5");
         System.out.println(path);
         System.out.println(person.toString());
+        YamlWriter yamlWriter = new YamlWriter();
+        yamlWriter.writeYaml(person, "src/main/resources/Person.yaml");
     }
 }
