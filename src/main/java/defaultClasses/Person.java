@@ -95,4 +95,18 @@ public class Person {
         return creationDate;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", height=" + height +
+                ", birthday=" + birthday +
+                ", passportID='" + passportID + '\'' +
+                ", hairColor=" + hairColor +
+                ", location=" + location +
+                '}';
+    }
 }
