@@ -1,0 +1,22 @@
+---
+- id: 1
+  name: "John"
+  coordinates:
+    x: 1
+    "y": 2.0
+  creationDate:
+  - 2023
+  - 2
+  - 13
+  height: 3
+  birthday:
+  - 2023
+  - 2
+  - 13
+  - 20
+  - 52
+  - 1
+  - 10244600
+  passportID: "123456"
+  hairColor: null
+  location: null
