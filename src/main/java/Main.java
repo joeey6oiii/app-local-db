@@ -1,14 +1,18 @@
+import defaultClasses.Coordinates;
 import defaultClasses.Person;
 
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+
 public class Main {
-    public static void main(String[] args) {
-        Person person = new Person("Alexey", new defaultClasses.Coordinates(1, 2.0F),
-                3L, java.time.LocalDateTime.now(), "12356", defaultClasses.Color.BROWN,
-                new defaultClasses.Location(1, 2.0, 3, "Earth"));
-        Person person2 = new Person("Dmitry", new defaultClasses.Coordinates(1, 2.0F),
-                3L, java.time.LocalDateTime.now(), "123", defaultClasses.Color.BROWN,
-                new defaultClasses.Location(1, 2.0, 3, "Moon"));
+    public static void main(String[] args) throws IOException {
+        Person person = new Person("John", new Coordinates(1, 2.0f), 3L, LocalDateTime.now(), "123456", null, null);
+        Person person2 = new Person("John", new Coordinates(1, 2.0f), 3L, LocalDateTime.now(), "123456", null, null);
         System.out.println(person.getId());
-        System.out.println(person2.getId());
+        String path = System.getenv("Lab5");
+        System.out.println(path);
+        System.out.println(person.toString());
     }
 }
