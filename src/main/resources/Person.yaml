@@ -1,12 +1,20 @@
 ---
-id: 1
-name: "John"
+name: "Dmitry"
 coordinates:
-  x: 1
+  x: 2
   "y": 2.0
-creationDate: "2023-02-13"
 height: 3
-birthday: "2023-02-13T21:43:34.0244787"
+birthday: "2023-02-14T18:54:51.9408113"
 passportID: "123456"
-hairColor: null
+hairColor: "BROWN"
+location: null
+---
+name: "Alexey"
+coordinates:
+  x: 5
+  "y": 7.0
+height: 2
+birthday: "2023-02-14T18:54:51.9999999"
+passportID: "909262"
+hairColor: "RED"
 location: null
