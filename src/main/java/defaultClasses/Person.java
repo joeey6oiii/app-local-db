@@ -1,5 +1,7 @@
 package defaultClasses;
 
+import java.util.Objects;
+
 public class Person {
     private static Long identifier = 0L;
     private final Long id;
@@ -108,5 +110,26 @@ public class Person {
                 ", hairColor=" + hairColor +
                 ", location=" + location +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id)
+                && Objects.equals(name, person.name)
+                && Objects.equals(coordinates, person.coordinates)
+                && Objects.equals(creationDate, person.creationDate)
+                && Objects.equals(height, person.height)
+                && Objects.equals(birthday, person.birthday)
+                && Objects.equals(passportID, person.passportID)
+                && hairColor == person.hairColor
+                && Objects.equals(location, person.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, coordinates, creationDate, height, birthday, passportID, hairColor, location);
     }
 }
