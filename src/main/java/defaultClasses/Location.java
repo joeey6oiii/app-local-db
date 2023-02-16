@@ -1,10 +1,11 @@
 package defaultClasses;
 
 import java.util.Objects;
+import java.util.Scanner;
 
-public class Location {
+public class Location implements Creatable{
     private int x;
-    private Double y;
+    private double y;
     private int z;
     private String name;
 
@@ -15,6 +16,22 @@ public class Location {
         this.y = y;
         this.z = z;
         this.name = name;
+    }
+
+    public Location create(){
+        Scanner scanner = new Scanner(System.in);
+        Location location = new Location();
+        System.out.print("Enter x (int): ");
+        int x = scanner.nextInt();
+        location.setX(x);
+        System.out.print("Enter y (double): ");
+        double y = scanner.nextDouble();
+        location.setY(y);
+        System.out.print("Enter z (int): ");
+        int z = scanner.nextInt();
+        location.setZ(z);
+        String name = null;
+        return location;
     }
 
     public int getX() {
