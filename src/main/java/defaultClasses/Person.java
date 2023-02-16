@@ -1,12 +1,13 @@
 package defaultClasses;
 
+import generators.Generate;
 import helpFun.StringToLocalDatetimeParser;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Person implements Creatable{
+public class Person implements Generated{
     private static Long identifier = 0L;
     private final Long id;
     private String name;
@@ -36,46 +37,6 @@ public class Person implements Creatable{
         this.hairColor = hairColor;
         this.location = location;
     }
-    //в create будем лепить валидаторы
-    public Person create (){
-        Scanner scanner = new Scanner(System.in);
-        Person person = new Person();
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        person.setName(name);
-        System.out.println("Creating coordinates:");
-        Coordinates coordinates = new Coordinates();
-        person.setCoordinates(coordinates.create());
-        System.out.print("Enter height (int): ");
-        Long height = scanner.nextLong();
-        person.setHeight(height);
-        System.out.print("Enter birthday in format yyyy-MM-dd HH:mm : ");
-        String test = scanner.nextLine(); // он кушает /n в буфере
-        test = scanner.nextLine();
-        LocalDateTime date = StringToLocalDatetimeParser.stringToLocalDateTime(test);
-        person.setBirthday(date);
-        System.out.print("Enter passportID: ");
-        String passportId = scanner.next();
-        person.setPassportID(passportId);
-        System.out.println("Choose one of the hair colors");
-        Color.showColor();
-        System.out.println("If you don't want to chose hair color press s");
-        String str = scanner.next();//Сюда налепить валидатор
-        Color cl;
-        if (str == "s"){
-            cl = null;
-        }
-        else {
-            cl = Color.getColorByName(str.toLowerCase());
-        }
-        person.setHairColor(cl);
-        System.out.println("Creating Location:");
-        Location location1 = new Location();
-        person.setLocation(location1.create());
-
-        return person;
-    }
-
     public Long getId() {
         return id;
     }
