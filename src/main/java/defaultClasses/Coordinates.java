@@ -16,8 +16,6 @@ public class Coordinates implements Generated{
         this.y = y;
     }
 
-
-
     public Integer getX() {
         return x;
     }
