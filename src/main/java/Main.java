@@ -1,4 +1,6 @@
 import defaultClasses.*;
+import generators.Generate;
+import generators.PersonGenerator;
 import yamlsTools.*;
 
 
@@ -17,5 +19,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        PersonGenerator personGenerator = new PersonGenerator();
+        personGenerator.generate();
     }
 }

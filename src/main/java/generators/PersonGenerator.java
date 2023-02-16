@@ -21,20 +21,26 @@ public class PersonGenerator implements Generate {
         System.out.print("Enter height (int): ");
         Long height = scanner.nextLong();
         person.setHeight(height);
-        System.out.print("Enter birthday in format yyyy-MM-dd HH:mm : ");
+        System.out.print("Enter birthday in format yyyy-MM-dd HH:mm:ss : ");
+        System.out.println("If you don't want to chose birthday press ENTER");
         String test = scanner.nextLine(); // он кушает /n в буфере
         test = scanner.nextLine();
-        LocalDateTime date = StringToLocalDatetimeParser.stringToLocalDateTime(test);
-        person.setBirthday(date);
+        if (test == "")
+            person.setBirthday(null);
+        else {
+            LocalDateTime date = StringToLocalDatetimeParser.stringToLocalDateTime(test);
+            person.setBirthday(date);
+        }
         System.out.print("Enter passportID: ");
         String passportId = scanner.next();
         person.setPassportID(passportId);
         System.out.println("Choose one of the hair colors");
         Color.showColor();
-        System.out.println("If you don't want to chose hair color press s");
-        String str = scanner.next();//Сюда налепить валидатор
+        System.out.println("If you don't want to chose hair color press ENTER");
+        String str = scanner.nextLine();//Сюда налепить валидатор
+        str = scanner.nextLine();
         Color cl;
-        if (str == "s"){
+        if (str == ""){
             cl = null;
         }
         else {
