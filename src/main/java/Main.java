@@ -1,5 +1,8 @@
+import commands.CommandManager;
+import dataBase.DataBase;
+import dataBase.GlobalObj;
+import dataBase.Loader;
 import defaultClasses.*;
-import generators.Generate;
 import generators.PersonGenerator;
 import yamlsTools.*;
 
@@ -19,12 +22,13 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        DataBase<Person> dataBase = new DataBase<>();
         Loader loader = new Loader();
         assert arr != null;
-        loader.load(dataBase, arr);
-        System.out.println(Arrays.toString(dataBase.getCollection().toArray()));
+        loader.load(GlobalObj.dataBase, arr);
+        System.out.println(Arrays.toString(GlobalObj.dataBase.getCollection().toArray()));
         PersonGenerator personGenerator = new PersonGenerator();
         personGenerator.generate();
+        CommandManager commandManager = new CommandManager();
+        commandManager.startWorking();
     }
 }
