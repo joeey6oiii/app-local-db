@@ -24,5 +24,8 @@ public class Main {
 //        yamlWriter.writeYaml(person2, "src/main/resources/Person.yaml");
         YamlReader yamlReader = new YamlReader();
         System.out.println(yamlReader.readYaml("Person.yaml", Person.class));
+        Person person3 = new Person();
+        person3 = person2.create();
+        System.out.println(person3.toString());
     }
 }
