@@ -1,9 +1,11 @@
 package defaultClasses;
 
+import generators.Generate;
+
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Location implements Creatable{
+public class Location implements Generated{
     private int x;
     private double y;
     private int z;
@@ -18,21 +20,6 @@ public class Location implements Creatable{
         this.name = name;
     }
 
-    public Location create(){
-        Scanner scanner = new Scanner(System.in);
-        Location location = new Location();
-        System.out.print("Enter x (int): ");
-        int x = scanner.nextInt();
-        location.setX(x);
-        System.out.print("Enter y (double): ");
-        double y = scanner.nextDouble();
-        location.setY(y);
-        System.out.print("Enter z (int): ");
-        int z = scanner.nextInt();
-        location.setZ(z);
-        String name = null;
-        return location;
-    }
 
     public int getX() {
         return x;
