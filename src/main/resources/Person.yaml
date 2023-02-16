@@ -12,7 +12,7 @@
   coordinates:
     x: 2
     "y": 2.0
-  height: 3
+  height: null
   birthday: "2023-02-14T20:01:58.2680781"
   passportID: "123456"
   hairColor: "BROWN"
@@ -23,6 +23,6 @@
     "y": 90.0
   height: 4
   birthday: "2023-02-14T20:01:58.8293456"
-  passportID: "15959150"
+  passportID: null
   hairColor: "RED"
   location: null
