@@ -1,20 +1,28 @@
 ---
-name: "Dmitry"
-coordinates:
-  x: 2
-  "y": 2.0
-height: 3
-birthday: "2023-02-14T18:54:51.9408113"
-passportID: "123456"
-hairColor: "BROWN"
-location: null
----
-name: "Alexey"
-coordinates:
-  x: 5
-  "y": 7.0
-height: 2
-birthday: "2023-02-14T18:54:51.9999999"
-passportID: "909262"
-hairColor: "RED"
-location: null
+- name: "Alexey"
+  coordinates:
+    x: 1
+    "y": 3.0
+  height: 2
+  birthday: "2023-02-14T20:01:58.2680781"
+  passportID: "78910"
+  hairColor: null
+  location: null
+- name: "Dmitry"
+  coordinates:
+    x: 2
+    "y": 2.0
+  height: 3
+  birthday: "2023-02-14T20:01:58.2680781"
+  passportID: "123456"
+  hairColor: "BROWN"
+  location: null
+- name: "Pavel"
+  coordinates:
+    x: 100
+    "y": 90.0
+  height: 4
+  birthday: "2023-02-14T20:01:58.8293456"
+  passportID: "15959150"
+  hairColor: "RED"
+  location: null
