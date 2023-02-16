@@ -13,12 +13,17 @@ public class Main {
         Class<Person[]> type = Person[].class;
         String path = "Person.yaml";
         YamlReader yamlReader = new YamlReader();
+        Person[] arr = null;
         try {
-            System.out.println(Arrays.toString(yamlReader.
-                    readYaml(path, type)));
+            arr = yamlReader.readYaml(path, type);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        DataBase<Person> dataBase = new DataBase<>();
+        Loader loader = new Loader();
+        assert arr != null;
+        loader.load(dataBase, arr);
+        System.out.println(Arrays.toString(dataBase.getCollection().toArray()));
         PersonGenerator personGenerator = new PersonGenerator();
         personGenerator.generate();
     }
