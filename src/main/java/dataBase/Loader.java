@@ -1,8 +1,9 @@
+package dataBase;
+
+import dataBase.DataBase;
 import defaultClasses.Person;
 import validators.PersonValidator;
 import validators.ValidateAble;
-
-import java.lang.reflect.Type;
 
 public class Loader {
     public Loader(){}
