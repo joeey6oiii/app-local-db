@@ -9,12 +9,12 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.datatype.jsr310.*;
 
 public class YamlWriter {
+    ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
     public void writeYaml(Object object, String path) throws IOException {
         File file = new File(path);
         file.createNewFile();
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        mapper.registerModule(new JavaTimeModule());
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.writeValue(file, object);
+        this.mapper.registerModule(new JavaTimeModule());
+        this.mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        this.mapper.writeValue(file, object);
     }
 }
