@@ -9,6 +9,6 @@ public class Info extends BaseCommand{
         System.out.println("Initialization Time: " + obj.getInitializationTime());
     }
     public void describe(){
-        System.out.println("print information about the collection to the standard output stream (type, initialization date, number of elements, etc.)");
+        System.out.println("Print information about the collection to the standard output stream (type, initialization date, number of elements, etc.)");
     }
 }

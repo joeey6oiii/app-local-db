@@ -2,7 +2,7 @@ package validators;
 
 import defaultClasses.Person;
 
-public class PersonValidator implements ValidateAble<Person>{
+public class PersonValidator implements ValidateAble<Person> {
 
     @Override
     public boolean validate(Person obj) {

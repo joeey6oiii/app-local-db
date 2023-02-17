@@ -5,15 +5,16 @@ import generators.Generate;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Location implements Generated{
+public class Location implements Generated {
     private int x;
     private double y;
     private int z;
     private String name;
 
-    public Location(){}
+    public Location() {
+    }
 
-    public Location(int x, Double y, int z, String name){
+    public Location(int x, Double y, int z, String name) {
         this.x = x;
         this.y = y;
         this.z = z;

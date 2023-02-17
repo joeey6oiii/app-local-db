@@ -4,7 +4,7 @@ import defaultClasses.Location;
 
 import java.util.Scanner;
 
-public class LocationValidator implements ValidateAble<Location>{
+public class LocationValidator implements ValidateAble<Location> {
     Scanner scanner = new Scanner(System.in);
 
     @Override
