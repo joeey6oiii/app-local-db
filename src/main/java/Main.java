@@ -14,6 +14,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        Loader loader = new Loader();
+        loader.assertToken();
         Class<Person[]> type = Person[].class;
         String path = "Person.yaml";
         YamlReader yamlReader = new YamlReader();
@@ -23,7 +25,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Loader loader = new Loader();
         assert arr != null;
         loader.load(GlobalObj.dataBase, arr);
         System.out.println(Arrays.toString(GlobalObj.dataBase.getCollection().toArray()));

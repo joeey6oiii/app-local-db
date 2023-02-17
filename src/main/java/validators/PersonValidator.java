@@ -3,19 +3,36 @@ package validators;
 import defaultClasses.Person;
 
 public class PersonValidator implements ValidateAble<Person> {
+    private final NameValidator nameValidator = new NameValidator();
+    private final CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
+    private final HeightValidator heightValidator = new HeightValidator();
+    private final PassportIDValidator passportIDValidator = new PassportIDValidator();
+    private final LocationValidator locationValidator = new LocationValidator();
+
+    public NameValidator getNameValidator(){
+        return nameValidator;
+    }
+
+    public CoordinatesValidator getCoordinatesValidator(){
+        return coordinatesValidator;
+    }
+
+    public HeightValidator getHeightValidator() {
+        return heightValidator;
+    }
+
+    public PassportIDValidator getPassportIDValidator() {
+        return passportIDValidator;
+    }
+
+    public LocationValidator getLocationValidator() {
+        return locationValidator;
+    }
 
     @Override
     public boolean validate(Person obj) {
-        NameValidator nameValidator = new NameValidator();
-        CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
-        HeightValidator heightValidator = new HeightValidator();
-        BirthdayValidator birthdayValidator = new BirthdayValidator();
-        PassportIDValidator passportIDValidator = new PassportIDValidator();
-        HairColorValidator hairColorValidator = new HairColorValidator();
-        LocationValidator locationValidator = new LocationValidator();
         return nameValidator.validate(obj.getName()) && coordinatesValidator.validate(obj.getCoordinates())
-                && heightValidator.validate(obj.getHeight()) && birthdayValidator.validate(obj.getBirthday())
-                && passportIDValidator.validate(obj.getPassportID()) && hairColorValidator.validate(obj.getHairColor())
+                && heightValidator.validate(obj.getHeight()) && passportIDValidator.validate(obj.getPassportID())
                 && locationValidator.validate(obj.getLocation());
     }
 }
