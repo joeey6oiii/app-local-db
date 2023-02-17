@@ -1,5 +1,7 @@
 package dataBase;
 
+import defaultClasses.Person;
+
 import java.lang.reflect.Constructor;
 import java.sql.SQLOutput;
 import java.time.LocalDateTime;
@@ -8,16 +10,15 @@ import java.util.LinkedHashSet;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
-public class DataBase <T>{
-    private LinkedHashSet <T> dataBase = new LinkedHashSet<>();
+public class DataBase {
+    private LinkedHashSet <Person> dataBase = new LinkedHashSet<>();
     private LocalDateTime initializationTime;
-    private Class<T> t;
 
     public DataBase(){
         initializationTime = LocalDateTime.now();
     }
 
-    public LinkedHashSet<T> getCollection() {
+    public LinkedHashSet<Person> getCollection() {
         return dataBase;
     }
 
