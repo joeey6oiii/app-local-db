@@ -21,6 +21,7 @@ public class CommandManager {
         map.put("clear", new Clear());
         map.put("save", new Save());
         map.put("exit", new Exit());
+        map.put("remove_by_id", new Remove_by_id());
     }
 
     public void startWorking() {
@@ -31,6 +32,7 @@ public class CommandManager {
         while (true) {
             var a = str.split(" ");
             try {
+                map.get(a[0]).setParameter(a[1]);
                 map.get(a[0]).execute(GlobalObj.dataBase);
             } catch (Exception e) {
                 System.out.println("you entered an invalid command, type help to see a list of available commands and their description");
