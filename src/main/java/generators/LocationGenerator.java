@@ -4,8 +4,8 @@ import defaultClasses.Location;
 
 import java.util.Scanner;
 
-public class LocationGenerator implements Generate{
-    public Location generate(){
+public class LocationGenerator implements Generate {
+    public Location generate() {
         Scanner scanner = new Scanner(System.in);
         Location location = new Location();
         System.out.print("Enter x (int): ");

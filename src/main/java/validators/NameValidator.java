@@ -1,6 +1,6 @@
 package validators;
 
-public class NameValidator implements ValidateAble<String>{
+public class NameValidator implements ValidateAble<String> {
 
     @Override
     public boolean validate(String name) {

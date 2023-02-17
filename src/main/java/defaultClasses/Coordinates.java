@@ -5,13 +5,14 @@ import generators.Generate;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Coordinates implements Generated{
+public class Coordinates implements Generated {
     private int x;
     private float y;
 
-    public Coordinates(){}
+    public Coordinates() {
+    }
 
-    public Coordinates(Integer x, Float y){
+    public Coordinates(Integer x, Float y) {
         this.x = x;
         this.y = y;
     }

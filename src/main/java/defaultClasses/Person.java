@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Person implements Generated{
+public class Person implements Generated {
     private static Long identifier = 0L;
     private final Long id;
     private String name;
@@ -19,14 +19,14 @@ public class Person implements Generated{
     private Color hairColor;
     private Location location;
 
-    public Person(){
+    public Person() {
         this.id = ++identifier;
         this.creationDate = java.time.LocalDate.now();
     }
 
     public Person(String name, Coordinates coordinates, Long height,
                   java.time.LocalDateTime birthday, String passportID,
-                  Color hairColor, Location location){
+                  Color hairColor, Location location) {
         this.id = ++identifier;
         this.name = name;
         this.coordinates = coordinates;
@@ -37,6 +37,7 @@ public class Person implements Generated{
         this.hairColor = hairColor;
         this.location = location;
     }
+
     public Long getId() {
         return id;
     }

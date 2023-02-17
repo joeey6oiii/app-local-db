@@ -8,12 +8,12 @@ import java.util.LinkedHashSet;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
-public class DataBase <T>{
-    private LinkedHashSet <T> dataBase = new LinkedHashSet<>();
+public class DataBase<T> {
+    private LinkedHashSet<T> dataBase = new LinkedHashSet<>();
     private LocalDateTime initializationTime;
     private Class<T> t;
 
-    public DataBase(){
+    public DataBase() {
         initializationTime = LocalDateTime.now();
     }
 
@@ -21,10 +21,11 @@ public class DataBase <T>{
         return dataBase;
     }
 
-    public long getSizeOfTheCollection(){
+    public long getSizeOfTheCollection() {
         return dataBase.size();
     }
-    public LocalDateTime getInitializationTime (){
+
+    public LocalDateTime getInitializationTime() {
         return initializationTime;
     }
 

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class PersonGenerator implements Generate {
-    public Person generate (){
+    public Person generate() {
         Scanner scanner = new Scanner(System.in);
         Person person = new Person();
         System.out.print("Enter name: ");
@@ -40,10 +40,9 @@ public class PersonGenerator implements Generate {
         String str = scanner.nextLine();//Сюда налепить валидатор
         str = scanner.nextLine();
         Color cl;
-        if (str == ""){
+        if (str == "") {
             cl = null;
-        }
-        else {
+        } else {
             cl = Color.getColorByName(str.toLowerCase());
         }
         person.setHairColor(cl);
