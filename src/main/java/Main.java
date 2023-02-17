@@ -27,9 +27,6 @@ public class Main {
         }
         assert arr != null;
         loader.load(GlobalObj.dataBase, arr);
-        System.out.println(Arrays.toString(GlobalObj.dataBase.getCollection().toArray()));
-        PersonGenerator personGenerator = new PersonGenerator();
-        personGenerator.generate();
         CommandManager commandManager = new CommandManager();
         commandManager.startWorking();
 
