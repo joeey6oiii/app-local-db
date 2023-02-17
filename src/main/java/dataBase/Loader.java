@@ -21,7 +21,7 @@ public class Loader {
     }
 
     public void assertToken() {
-        System.out.println("Would you like to delete all objects with invalid parameters? Type Y/N");
+        System.out.println("Would you like to delete all objects with invalid parameters? Type [Y/N]");
         System.out.print("$ ");
         String decision = scanner.nextLine();
         while (!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
@@ -84,6 +84,10 @@ public class Loader {
                                 " all following objects with invalid parameters will be deleted");
                     } else {
                         System.out.println("Creating new Coordinates...");
+                        if (person.getCoordinates() != null) {
+                            System.out.println("The previous coordinates data was: x=" + person.getCoordinates().getX()
+                                    + ", y=" + person.getCoordinates().getY());
+                        }
                         Coordinates coordinates = new Coordinates();
                         boolean checkedX = false; boolean checkedY = false;
                         System.out.println("Input x: Integer (not null)"); System.out.print("$ ");
@@ -211,6 +215,25 @@ public class Loader {
                     else {
                         boolean checkedX = false; boolean checkedY = false; boolean checkedZ = false;
                         System.out.println("Creating new Location...");
+                        System.out.println("The previous location data was: name=" + person.getLocation().getName()
+                                + ", x=" + person.getLocation().getX() + ", y=" + person.getLocation().getY()
+                                + " and z=" + person.getLocation().getZ());
+                        System.out.println("Would you like to create null location or continue creating" +
+                                " new location? Type [Y/N]"); System.out.print("$ ");
+                        decision = scanner.nextLine();
+                        while (!decision.equalsIgnoreCase("Y")
+                                && !decision.equalsIgnoreCase("N")) {
+                            decision = scanner.nextLine();
+                        }
+                        if (decision.equalsIgnoreCase("Y")) {
+                            person.setLocation(null);
+                            System.out.println("The new location=" + person.getLocation() + " for Person{id="
+                                    + person.getId() + "} has been successfully set!");
+                            break;
+                        }
+                        else {
+                            System.out.println("Continue creating new location...");
+                        }
                         Location location = new Location();
                         System.out.println("Input x: int"); System.out.print("$ ");
                         do {
@@ -253,13 +276,20 @@ public class Loader {
                         person.setLocation(location);
                     }
                     if (!delete && !token) {
-                        System.out.println("The new location=" + person.getLocation()
-                                + " for Person{id=" + person.getId() + "} has been successfully set!" +
-                                " If the validation failed, please, try again");
+                        System.out.println("The new location: name=" + person.getLocation().getName()
+                                + ", x=" + person.getLocation().getX() + ", y=" + person.getLocation().getY()
+                                + " and z=" + person.getLocation().getZ() + " for Person{id="
+                                + person.getId() + "} has been successfully set!"
+                                + " If the validation failed, please, try again");
                     }
                     else {
                         System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
                     }
+                }
+                if (!delete && !token) {
+                    dataBase.getCollection().add(person);
+                    System.out.println("The Person{id=" + person.getId() + "}" +
+                            " has been successfully added to the database!");
                 }
             }
             else {
