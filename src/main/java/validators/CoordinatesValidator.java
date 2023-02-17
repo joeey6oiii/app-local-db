@@ -4,7 +4,7 @@ import defaultClasses.Coordinates;
 
 import java.util.Scanner;
 
-public class CoordinatesValidator implements ValidateAble<Coordinates>{
+public class CoordinatesValidator implements ValidateAble<Coordinates> {
     Scanner scanner = new Scanner(System.in);
 
     @Override
