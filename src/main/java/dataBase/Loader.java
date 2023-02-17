@@ -9,7 +9,7 @@ public class Loader {
     public Loader() {
     }
 
-    public void load(DataBase<Person> dataBase, Person... people) {
+    public void load(DataBase dataBase, Person... people) {
         ValidateAble<Person> personValidator = new PersonValidator();
         for (Person person : people) {
             personValidator.validate(person);

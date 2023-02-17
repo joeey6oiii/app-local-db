@@ -1,4 +1,5 @@
 import commands.CommandManager;
+import commands.Remove_by_id;
 import dataBase.DataBase;
 import dataBase.GlobalObj;
 import dataBase.Loader;
@@ -30,5 +31,6 @@ public class Main {
         personGenerator.generate();
         CommandManager commandManager = new CommandManager();
         commandManager.startWorking();
+
     }
 }
