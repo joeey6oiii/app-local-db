@@ -16,7 +16,7 @@ public class Exit extends BaseCommand {
             try {
                 System.out.print("$ ");
                 str = scanner.next();
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Enter [y/n]");
             }
             if (str.equalsIgnoreCase("Y"))
