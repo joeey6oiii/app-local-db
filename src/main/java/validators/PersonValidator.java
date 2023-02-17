@@ -2,7 +2,7 @@ package validators;
 
 import defaultClasses.Person;
 
-public class PersonValidator implements ValidateAble<Person>{
+public class PersonValidator implements ValidateAble<Person> {
     private final NameValidator nameValidator = new NameValidator();
     private final CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
     private final HeightValidator heightValidator = new HeightValidator();

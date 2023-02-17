@@ -2,7 +2,7 @@ package validators;
 
 import defaultClasses.Location;
 
-public class LocationValidator implements ValidateAble<Location>{
+public class LocationValidator implements ValidateAble<Location> {
 
     @Override
     public boolean validate(Location location) {
