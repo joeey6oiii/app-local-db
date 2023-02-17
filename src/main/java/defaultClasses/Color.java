@@ -1,6 +1,7 @@
 package defaultClasses;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ public enum Color {
     BLACK("black");
 
     private final String colorName;
+
     private final static Map<String, Color> colors = Arrays.stream(Color.values()).collect(Collectors.toMap(k->k.colorName, v->v));
 
     Color(String colorName){
