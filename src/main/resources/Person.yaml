@@ -16,7 +16,11 @@
   birthday: ""
   passportID: "123456"
   hairColor: "BROWN"
-  location: null
+  location:
+    x: 6
+    "y": 3.0
+    z: 9
+    name: null
 - name: "Pavel"
   coordinates:
     x: 100

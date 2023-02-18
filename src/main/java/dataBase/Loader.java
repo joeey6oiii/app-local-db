@@ -2,8 +2,10 @@ package dataBase;
 
 import defaultClasses.*;
 import helpFun.StringToLocalDatetimeParser;
+import helpFun.SystemNotification;
 import validators.PersonValidator;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -23,8 +25,7 @@ public class Loader {
     }
 
     public void assertToken() {
-        System.out.println("Would you like to delete all objects with invalid parameters? Type [Y/N]");
-        System.out.print("$ ");
+        System.out.print("Would you like to delete all objects with invalid parameters? Type [Y/N] \n$ ");
         String decision = scanner.nextLine();
         while (!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
             System.out.print("$ ");
@@ -45,9 +46,9 @@ public class Loader {
                 boolean delete = false;
                 while (!personValidator.getNameValidator().validate(person.getName()) && !delete && !token) {
                     System.out.println("Invalid name for Person{id=" + person.getId() + "}");
-                    System.out.println("Would you like to set a new name for Person{id="
+                    System.out.print("Would you like to set a new name for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
-                            " D deletes this and all following objects with invalid parameters)");
+                            " D deletes this and all following objects with invalid parameters) \n$ ");
                     String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
@@ -59,22 +60,22 @@ public class Loader {
                                 " all following objects with invalid parameters will be deleted");
                     }
                     else {
-                        System.out.println("Input name: String (not null)"); System.out.print("$ ");
+                        System.out.print("Input name: String (not null) \n$ ");
                         person.setName(scanner.nextLine());
                     }
                     if (!delete && !token) {
-                        System.out.println("The new name={" + person.getName() + "} for Person{id=" + person.getId()
+                        System.out.println("New name={" + person.getName() + "} for Person{id=" + person.getId()
                                 + "} has been successfully set! If the validation failed, please, try again");
                     }
                     else {
-                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                        SystemNotification.notification("DELETED: " + person);
                     }
                 }
                 while (!personValidator.getCoordinatesValidator().validate(person.getCoordinates()) && !delete && !token) {
                     System.out.println("Invalid coordinates for Person{id=" + person.getId() + "}");
-                    System.out.println("Would you like to create new coordinates for Person{id="
+                    System.out.print("Would you like to create new coordinates for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
-                            " D deletes this and all following objects with invalid parameters)");
+                            " D deletes this and all following objects with invalid parameters) \n$ ");
                     String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
@@ -87,47 +88,47 @@ public class Loader {
                     } else {
                         System.out.println("Creating new Coordinates...");
                         if (person.getCoordinates() != null) {
-                            System.out.println("The previous coordinates data was: x=" + person.getCoordinates().getX()
+                            System.out.println("Previous coordinates data was: x=" + person.getCoordinates().getX()
                                     + ", y=" + person.getCoordinates().getY());
                         }
                         Coordinates coordinates = new Coordinates();
                         boolean checkedX = false; boolean checkedY = false;
-                        System.out.println("Input x: Integer (not null)"); System.out.print("$ ");
+                        System.out.print("Input x: Integer (not null) \n$ ");
                         do {
                             try {
                                 coordinates.setX(scanner.nextInt());
                                 checkedX = true;
                             } catch (Exception e) {
-                                System.out.println("Input x: Integer (not null)"); System.out.print("$ ");
+                                System.out.print("Input x: Integer (not null) \n$ ");
                                 scanner.next();
                             }
                         } while (!checkedX);
-                        System.out.println("Input y: Float (not null)"); System.out.print("$ ");
+                        System.out.print("Input y: Float (not null) \n$ ");
                         do {
                             try {
                                 coordinates.setY(scanner.nextFloat());
                                 checkedY = true;
                             } catch (Exception e) {
-                                System.out.println("Input y: Float (not null)"); System.out.print("$ ");
+                                System.out.print("Input y: Float (not null) \n$ ");
                             }
                         } while (!checkedY);
                         person.setCoordinates(coordinates);
                     }
                     if (!delete && !token) {
-                        System.out.println("The new coordinates: x=" + person.getCoordinates().getX()
+                        System.out.println("New coordinates: x=" + person.getCoordinates().getX()
                                 + " and y=" + person.getCoordinates().getY() + " for Person{id="
                                 + person.getId() + "} has been successfully set!" +
                                 " If the validation failed, please, try again");
                     }
                     else {
-                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                        SystemNotification.notification("DELETED: " + person);
                     }
                 }
                 while (!personValidator.getHeightValidator().validate(person.getHeight()) && !delete && !token) {
                     System.out.println("Invalid height for Person{id=" + person.getId() + "}");
-                    System.out.println("Would you like to set a new height for Person{id="
+                    System.out.print("Would you like to set a new height for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
-                            " D deletes this and all following objects with invalid parameters)");
+                            " D deletes this and all following objects with invalid parameters) \n$ ");
                     String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
@@ -140,30 +141,30 @@ public class Loader {
                     }
                     else {
                         boolean checked = false;
-                        System.out.println("Input height: Long (not null)"); System.out.print("$ ");
+                        System.out.print("Input height: Long (not null) \n$ ");
                         do {
                             try {
                                 person.setHeight(scanner.nextLong());
                                 checked = true;
                             } catch (Exception e) {
-                                System.out.println("Input height: Long (not null)"); System.out.print("$ ");
+                                System.out.print("Input height: Long (not null) \n$ ");
                                 scanner.next();
                             }
                         } while (!checked);
                     }
                     if (!delete && !token) {
-                        System.out.println("The new height=" + person.getHeight() + " for Person{id=" + person.getId()
+                        System.out.println("New height=" + person.getHeight() + " for Person{id=" + person.getId()
                                 + "} has been successfully set! If the validation failed, please, try again");
                     }
                     else {
-                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                        SystemNotification.notification("DELETED: " + person);
                     }
                 }
                 while (!personValidator.getBirthdayValidator().validate(person.getBirthday()) && !delete && !token) {
                     System.out.println("Invalid birthday for Person{id=" + person.getId() + "}");
-                    System.out.println("Would you like to set a new birthday for Person{id="
+                    System.out.print("Would you like to set a new birthday for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
-                            " D deletes this and all following objects with invalid parameters)");
+                            " D deletes this and all following objects with invalid parameters) \n$ ");
                     String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
@@ -176,34 +177,35 @@ public class Loader {
                     }
                     else {
                         boolean checked = false;
-                        System.out.println("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss");
-                        System.out.print("$ ");
+                        String strBirthday;
+                        LocalDateTime localDateTimeBirthday = null;
+                        System.out.print("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
                         do {
                             try {
-                                person.setBirthday(StringToLocalDatetimeParser
-                                        .stringToLocalDateTime(scanner.nextLine()));
+                                strBirthday = scanner.nextLine();
+                                localDateTimeBirthday = StringToLocalDatetimeParser.stringToLocalDateTime(strBirthday);
                                 checked = true;
                             } catch (Exception e) {
-                                System.out.println("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss");
-                                System.out.print("$ ");
-                                scanner.next();
+                                System.out.print("Input birthday: LocalDateTime (not null)." +
+                                        " Format: yyyy-MM-dd HH:mm:ss \n$ ");
                             }
                         } while (!checked);
+                        person.setBirthday(localDateTimeBirthday);
                     }
                     if (!delete && !token) {
-                        System.out.println("The new birthday=" + person.getBirthday() + " for Person{id="
+                        System.out.println("New birthday=" + person.getBirthday() + " for Person{id="
                                 + person.getId() + "} has been successfully set!" +
                                 " If the validation failed, please, try again");
                     }
                     else {
-                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                        SystemNotification.notification("DELETED: " + person);
                     }
                 }
                 while (!personValidator.getPassportIDValidator().validate(person.getPassportID()) && !delete && !token) {
                     System.out.println("Invalid passportID for Person{id=" + person.getId() + "}");
-                    System.out.println("Would you like to set a new passportID for Person{id="
+                    System.out.print("Would you like to set a new passportID for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
-                            " D deletes this and all following objects with invalid parameters)");
+                            " D deletes this and all following objects with invalid parameters) \n$ ");
                     String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
@@ -215,29 +217,28 @@ public class Loader {
                                 " all following objects with invalid parameters will be deleted");
                     }
                     else {
-                        System.out.println("Input passportID: String (nullable;" +
-                                " range: 4 <= Input <= 32)"); System.out.print("$ ");
+                        System.out.print("Input passportID: String (nullable;" +
+                                " range: 4 <= Input <= 32) \n$ ");
                         String passportID = scanner.nextLine();
-                        if (Objects.equals(passportID, "")) {
-                            person.setPassportID(null);
-                            break;
+                        if (Objects.equals(passportID, "") || Objects.equals(passportID, "null")) {
+                            passportID = null;
                         }
                         person.setPassportID(passportID);
                     }
                     if (!delete && !token) {
-                        System.out.println("The new passportID={" + person.getPassportID()
+                        System.out.println("New passportID={" + person.getPassportID()
                                 + "} for Person{id=" + person.getId() + "} has been successfully set!" +
                                 " If the validation failed, please, try again");
                     }
                     else {
-                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                        SystemNotification.notification("DELETED: " + person);
                     }
                 }
                 while (!personValidator.getLocationValidator().validate(person.getLocation()) && !delete && !token) {
                     System.out.println("Invalid location for Person{id=" + person.getId() + "}");
-                    System.out.println("Would you like to create a new location for Person{id="
+                    System.out.print("Would you like to create a new location for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
-                            " D deletes this and all following objects with invalid parameters)");
+                            " D deletes this and all following objects with invalid parameters) \n$ ");
                     String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
@@ -251,11 +252,11 @@ public class Loader {
                     else {
                         boolean checkedX = false; boolean checkedY = false; boolean checkedZ = false;
                         System.out.println("Creating new Location...");
-                        System.out.println("The previous location data was: name=" + person.getLocation().getName()
+                        System.out.println("Previous location data was: name=" + person.getLocation().getName()
                                 + ", x=" + person.getLocation().getX() + ", y=" + person.getLocation().getY()
                                 + " and z=" + person.getLocation().getZ());
-                        System.out.println("Would you like to create null location or continue creating" +
-                                " new location? Type [Y/N]"); System.out.print("$ ");
+                        System.out.print("Would you like to create null location or continue creating" +
+                                " new location? Type [Y/N] \n$ ");
                         decision = scanner.nextLine();
                         while (!decision.equalsIgnoreCase("Y")
                                 && !decision.equalsIgnoreCase("N")) {
@@ -263,7 +264,7 @@ public class Loader {
                         }
                         if (decision.equalsIgnoreCase("Y")) {
                             person.setLocation(null);
-                            System.out.println("The new location=" + person.getLocation() + " for Person{id="
+                            System.out.println("New location=" + person.getLocation() + " for Person{id="
                                     + person.getId() + "} has been successfully set!");
                             break;
                         }
@@ -271,39 +272,39 @@ public class Loader {
                             System.out.println("Continue creating new location...");
                         }
                         Location location = new Location();
-                        System.out.println("Input x: int"); System.out.print("$ ");
+                        System.out.print("Input x: int \n$ ");
                         do {
                             try {
                                 location.setX(scanner.nextInt());
                                 checkedX = true;
                             } catch (Exception e) {
-                                System.out.println("Input x: int"); System.out.print("$ ");
+                                System.out.print("Input x: int \n$ ");
                                 scanner.next();
                             }
                         } while (!checkedX);
-                        System.out.println("Input y: Double (not null)"); System.out.print("$ ");
+                        System.out.print("Input y: Double (not null) \n$ ");
                         do {
                             try {
                                 location.setY(scanner.nextDouble());
                                 checkedY = true;
                             } catch (Exception e) {
-                                System.out.println("Input y: Double (not null)"); System.out.print("$ ");
+                                System.out.print("Input y: Double (not null) \n$ ");
                                 scanner.next();
                             }
                         } while (!checkedY);
-                        System.out.println("Input z: int"); System.out.print("$ ");
+                        System.out.print("Input z: int \n$ ");
                         do {
                             try {
                                 location.setZ(scanner.nextInt());
                                 checkedZ = true;
                             } catch (Exception e) {
-                                System.out.println("Input z: int"); System.out.print("$ ");
+                                System.out.print("Input z: int \n$ ");
                                 scanner.next();
                             }
                         } while (!checkedZ);
-                        System.out.println("Input name: String (nullable)"); System.out.print("$ ");
+                        System.out.print("Input name: String (nullable) \n$ ");
                         String name = scanner.nextLine();
-                        if (Objects.equals(name, "")) {
+                        if (Objects.equals(name, "") || Objects.equals(name, "null")) {
                             location.setName(null);
                         }
                         else {
@@ -312,24 +313,24 @@ public class Loader {
                         person.setLocation(location);
                     }
                     if (!delete && !token) {
-                        System.out.println("The new location: name=" + person.getLocation().getName()
+                        System.out.println("New location: name=" + person.getLocation().getName()
                                 + ", x=" + person.getLocation().getX() + ", y=" + person.getLocation().getY()
                                 + " and z=" + person.getLocation().getZ() + " for Person{id="
                                 + person.getId() + "} has been successfully set!"
                                 + " If the validation failed, please, try again");
                     }
                     else {
-                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                        SystemNotification.notification("DELETED: " + person);
                     }
                 }
                 if (!delete && !token) {
                     dataBase.getCollection().add(person);
-                    System.out.println("The Person{id=" + person.getId() + "}" +
+                    System.out.println("Person{id=" + person.getId() + "}" +
                             " has been successfully added to the database!");
                 }
             }
             else {
-                System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                SystemNotification.notification("DELETED: " + person);
             }
         }
         System.out.println("---Validation completed successfully!---");
@@ -337,7 +338,6 @@ public class Loader {
     }
 
     private static String decision(){
-        System.out.print("$ ");
         String decision = scanner.nextLine();
         while (!decision.equalsIgnoreCase("Y")
                 && !decision.equalsIgnoreCase("N")
