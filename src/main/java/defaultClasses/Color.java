@@ -1,11 +1,16 @@
 package defaultClasses;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Color {
     GREEN("green"),
     RED("red"),
@@ -28,5 +33,13 @@ public enum Color {
 
     public static Color getColorByName (String colorName){
         return colors.get(colorName);
+    }
+
+    @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
+    static Color findValue(@JsonProperty("colorName") String colorName) {
+        if (Arrays.stream(Color.values()).anyMatch(pt -> pt.colorName.equals(colorName))) {
+            return Arrays.stream(Color.values()).filter(pt -> pt.colorName.equals(colorName)).findFirst().get();
+        }
+        return null;
     }
 }
