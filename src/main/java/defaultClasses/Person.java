@@ -1,11 +1,6 @@
 package defaultClasses;
 
-import generators.Generate;
-import helpFun.StringToLocalDatetimeParser;
-
-import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Person implements Generated {
     private static Long identifier = 0L;
@@ -36,6 +31,10 @@ public class Person implements Generated {
         this.passportID = passportID;
         this.hairColor = hairColor;
         this.location = location;
+    }
+
+    public static Long getIdentificator() {
+        return identifier;
     }
 
     public Long getId() {
