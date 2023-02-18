@@ -3,6 +3,7 @@ package defaultClasses;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import helpFun.SystemNotification;
 
 import java.util.ArrayList;
 
@@ -37,8 +38,14 @@ public enum Color {
 
     @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
     static Color findValue(@JsonProperty("colorName") String colorName) {
-        if (Arrays.stream(Color.values()).anyMatch(pt -> pt.colorName.equals(colorName))) {
-            return Arrays.stream(Color.values()).filter(pt -> pt.colorName.equals(colorName)).findFirst().get();
+        if (Arrays.stream(Color.values()).anyMatch(e -> e.name().equalsIgnoreCase(colorName))) {
+            return Arrays.stream(Color.values()).filter(e -> e.name().equalsIgnoreCase(colorName)).findAny().get();
+        }
+        else {
+            SystemNotification.notification("REASSIGNED VALUE: \"hairColor=" + colorName
+                    + "\" -> \"hairColor=null\" FOR Person{id=" + Person.getIdentificator()
+                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentificator() + " hairColor\"" +
+                    " AFTER DATA UPLOADING FINISHES");
         }
         return null;
     }
