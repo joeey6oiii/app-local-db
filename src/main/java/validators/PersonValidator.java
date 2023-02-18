@@ -6,8 +6,13 @@ public class PersonValidator implements ValidateAble<Person> {
     private final NameValidator nameValidator = new NameValidator();
     private final CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
     private final HeightValidator heightValidator = new HeightValidator();
+    private final BirthdayValidator birthdayValidator = new BirthdayValidator();
     private final PassportIDValidator passportIDValidator = new PassportIDValidator();
     private final LocationValidator locationValidator = new LocationValidator();
+
+    public BirthdayValidator getBirthdayValidator(){
+        return birthdayValidator;
+    }
 
     public NameValidator getNameValidator(){
         return nameValidator;
@@ -30,9 +35,9 @@ public class PersonValidator implements ValidateAble<Person> {
     }
 
     @Override
-    public boolean validate(Person obj) {
-        return nameValidator.validate(obj.getName()) && coordinatesValidator.validate(obj.getCoordinates())
-                && heightValidator.validate(obj.getHeight()) && passportIDValidator.validate(obj.getPassportID())
-                && locationValidator.validate(obj.getLocation());
+    public boolean validate(Person person) {
+        return  nameValidator.validate(person.getName()) && coordinatesValidator.validate(person.getCoordinates())
+                && heightValidator.validate(person.getHeight()) && birthdayValidator.validate(person.getBirthday())
+                && passportIDValidator.validate(person.getPassportID()) && locationValidator.validate(person.getLocation());
     }
 }

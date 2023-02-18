@@ -16,17 +16,19 @@ public class Main {
     public static void main(String[] args) {
         Loader loader = new Loader();
         loader.assertToken();
-        Class<Person[]> type = Person[].class;
+        Class<Person> type = Person.class;
         String path = "Person.yaml";
         YamlReader yamlReader = new YamlReader();
-        Person[] arr = null;
+        List<Person> list = null;
         try {
-            arr = yamlReader.readYaml(path, type);
-        } catch (IOException e) {
+            list = yamlReader.readYaml(path, type);
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        assert arr != null;
-        loader.load(GlobalObj.dataBase, arr);
+        assert list != null;
+        DataBase dataBase = new DataBase();
+        loader.load(dataBase, list);
+        System.out.println(dataBase.getCollection());
         CommandManager commandManager = new CommandManager();
         commandManager.startWorking();
 

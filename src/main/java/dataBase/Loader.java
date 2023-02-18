@@ -1,8 +1,10 @@
 package dataBase;
 
 import defaultClasses.*;
+import helpFun.StringToLocalDatetimeParser;
 import validators.PersonValidator;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -33,7 +35,7 @@ public class Loader {
         }
     }
 
-    public void load(DataBase dataBase, Person ... people){
+    public void load(DataBase dataBase, List<Person> people){
         PersonValidator personValidator = new PersonValidator();
         for (Person person : people) {
             if(personValidator.validate(person)) {
@@ -157,18 +159,52 @@ public class Loader {
                         System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
                     }
                 }
+                while (!personValidator.getBirthdayValidator().validate(person.getBirthday()) && !delete && !token) {
+                    System.out.println("Invalid birthday for Person{id=" + person.getId() + "}");
+                    System.out.println("Would you like to set a new birthday for Person{id="
+                            + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
+                            " D deletes this and all following objects with invalid parameters)");
+                    String decision = decision();
+                    if (decision.equalsIgnoreCase("N")) {
+                        delete = true;
+                        System.out.println("Person{id=" + person.getId() + "} successfully deleted");
+                    }
+                    else if (decision.equalsIgnoreCase("D")) {
+                        token = true;
+                        System.out.println("Person{id=" + person.getId() + "} and" +
+                                " all following objects with invalid parameters will be deleted");
+                    }
+                    else {
+                        boolean checked = false;
+                        System.out.println("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss");
+                        System.out.print("$ ");
+                        do {
+                            try {
+                                person.setBirthday(StringToLocalDatetimeParser
+                                        .stringToLocalDateTime(scanner.nextLine()));
+                                checked = true;
+                            } catch (Exception e) {
+                                System.out.println("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss");
+                                System.out.print("$ ");
+                                scanner.next();
+                            }
+                        } while (!checked);
+                    }
+                    if (!delete && !token) {
+                        System.out.println("The new birthday=" + person.getBirthday() + " for Person{id="
+                                + person.getId() + "} has been successfully set!" +
+                                " If the validation failed, please, try again");
+                    }
+                    else {
+                        System.out.println("SYSTEM NOTIFICATION: DELETED=" + person);
+                    }
+                }
                 while (!personValidator.getPassportIDValidator().validate(person.getPassportID()) && !delete && !token) {
                     System.out.println("Invalid passportID for Person{id=" + person.getId() + "}");
                     System.out.println("Would you like to set a new passportID for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
                             " D deletes this and all following objects with invalid parameters)");
-                    String decision = scanner.nextLine();
-                    while (!decision.equalsIgnoreCase("Y")
-                            && !decision.equalsIgnoreCase("N")
-                            && !decision.equalsIgnoreCase("D")) {
-                        System.out.print("$ ");
-                        decision = scanner.nextLine();
-                    }
+                    String decision = decision();
                     if (decision.equalsIgnoreCase("N")) {
                         delete = true;
                         System.out.println("Person{id=" + person.getId() + "} successfully deleted");
