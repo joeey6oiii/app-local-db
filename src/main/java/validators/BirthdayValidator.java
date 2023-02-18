@@ -1,11 +1,16 @@
 package validators;
 
-import java.time.LocalDateTime;
+import helpFun.StringToLocalDatetimeParser;
 
-public class BirthdayValidator implements ValidateAble<LocalDateTime> {
+public class BirthdayValidator implements ValidateAble<String> {
+
     @Override
-    public boolean validate(LocalDateTime birthday) {
-        // TODO
-        return true;
+    public boolean validate(String birthday) {
+        try {
+            StringToLocalDatetimeParser.stringToLocalDateTime(birthday);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
