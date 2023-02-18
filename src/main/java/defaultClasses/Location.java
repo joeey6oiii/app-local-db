@@ -1,9 +1,6 @@
 package defaultClasses;
 
-import generators.Generate;
-
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Location implements Generated {
     private int x;
