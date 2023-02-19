@@ -19,6 +19,7 @@ public class CommandHandler {
         map.put("save", new Save());
         map.put("exit", new Exit());
         map.put("remove_by_id", new Remove_by_id());
+        map.put("help", new Help());
     }
 
     public static void handleCommand(String str) {

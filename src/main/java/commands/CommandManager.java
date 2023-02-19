@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CommandManager {
     public void startWorking() {
-        System.out.println("CommandManager stated");
+        System.out.println("CommandManager started");
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("$ ");
