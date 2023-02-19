@@ -12,6 +12,6 @@ public class Show extends BaseCommand {
     }
 
     public void describe() {
-        System.out.println("Print to standard output all elements of the collection in string representation");
+        System.out.println("Prints to standard output all elements of the collection in string representation");
     }
 }

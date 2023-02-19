@@ -37,4 +37,18 @@ public class CommandHandler {
             System.out.println("you entered an invalid command, type help to see a list of available commands and their description");
         }
     }
+
+    public static Map<String, BaseCommand> getMap(){
+        return map;
+    }
+
+    public static Integer getLongestCommand() {
+        int length = 4;
+        for (Map.Entry<String, BaseCommand> entry : map.entrySet()) {
+            if (entry.getKey().length() > length) {
+                length = entry.getKey().length() + 4;
+            }
+        }
+        return length;
+    }
 }

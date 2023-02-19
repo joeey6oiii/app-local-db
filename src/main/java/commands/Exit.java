@@ -29,6 +29,6 @@ public class Exit extends BaseCommand {
 
 
     public void describe() {
-        System.out.println("Close the program without saving");
+        System.out.println("Closes the program without saving");
     }
 }

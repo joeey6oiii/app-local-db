@@ -10,6 +10,7 @@ public class Info extends BaseCommand {
     }
 
     public void describe() {
-        System.out.println("Print information about the collection to the standard output stream (type, initialization date, number of elements, etc.)");
+        System.out.println("Prints information about the collection to the standard" +
+                " output stream (type, initialization date, number of elements, etc.)");
     }
 }
