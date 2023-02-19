@@ -15,6 +15,6 @@ public class Clear extends BaseCommand {
     }
 
     public void describe() {
-        System.out.println("This command clear the collection");
+        System.out.println("This command clears the collection");
     }
 }
