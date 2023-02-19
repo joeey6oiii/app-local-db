@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class YamlReader {
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner scanner = new Scanner(System.in);
     private final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory())
             .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
@@ -33,8 +35,9 @@ public class YamlReader {
         try {
             objects = objectMapper.readValue(inputStream, arrayClass);   
         } catch (Exception e) {
-            System.out.print("Invalid path. Would you like to change the path? Type [Y/N]" +
-                    " (N automatically terminates the program) \n$ ");
+            System.out.println("Invalid path or the file is damaged: " + ANSI_RED + e.getMessage() + ANSI_RESET);
+            System.out.print("Would you like to change the path?" +
+                    " Type [Y/N] (N automatically terminates the program) \n$ ");
             String decision = scanner.nextLine();
             while(!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
                 decision = scanner.nextLine();
@@ -57,8 +60,8 @@ public class YamlReader {
                         objects = objectMapper.readValue(inputStream, arrayClass);
                         isPath = true;
                     } catch (Exception exception) {
-                        System.out.print("Enter path to continue program execution" +
-                                " or [N] to terminate the program \n$ ");
+                        System.out.println("Invalid value: " + ANSI_RED + exception.getMessage() + ANSI_RESET);
+                        System.out.print("Enter path to continue program execution or [N] to terminate the program \n$ ");
                     }
                 } while (!isPath);
             }
