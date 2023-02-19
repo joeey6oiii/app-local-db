@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 public class Remove_by_id extends BaseCommand {
 
+    @Override
     public void execute(DataBase obj) throws IOException {
         try{
             Long a = Long.parseLong(super.getParameter());
@@ -21,15 +22,15 @@ public class Remove_by_id extends BaseCommand {
                     break;
                 }
             }
-            System.out.println("Element with id " + a + " removed");
-        }catch (Exception e){
+            System.out.println("Element with id " + a + " has been successfully removed");
+        } catch (Exception e) {
             System.out.println("Incorrect argument, command cannot be executed");
         }
 
     }
 
-
+    @Override
     public void describe() {
-
+        System.out.println("Removes an element from the database by id");
     }
 }

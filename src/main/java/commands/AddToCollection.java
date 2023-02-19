@@ -17,6 +17,6 @@ public class AddToCollection extends BaseCommand{
         loader.load(GlobalObj.dataBase, list);
     }
     public void describe(){
-        System.out.println("creates and adds an element to the collection");
+        System.out.println("Creates and adds an element to the collection");
     }
 }

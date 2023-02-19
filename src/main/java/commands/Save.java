@@ -11,12 +11,12 @@ public class Save extends BaseCommand {
         try {
             yamlWriter.writeYaml(obj.getCollection());
         } catch (IOException e) {
-            System.out.println("Something went wrong, the file was not created");
+            System.out.println("Something went wrong, the file was not created, please, try again");
         }
-        System.out.println("Your collection has been saved. Your file is on the path \"src/main/resources/orderOutput.yaml\"");
+        System.out.println("The collection has been saved. The path to the file is: \"src/main/resources/orderOutput.yaml\"");
     }
 
     public void describe() {
-        System.out.println("This command save collection to file");
+        System.out.println("Saves the collection to a file");
     }
 }
