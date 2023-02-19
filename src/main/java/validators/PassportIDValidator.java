@@ -9,6 +9,6 @@ public class PassportIDValidator implements ValidateAble<String> {
         if (passportID == null){
             return true;
         }
-        return !Objects.equals(passportID, "") || !(passportID.length() < 4 || passportID.length() > 32);
+        return !Objects.equals(passportID, "") && !(passportID.length() < 4 || passportID.length() > 32);
     }
 }
