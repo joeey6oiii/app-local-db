@@ -70,3 +70,38 @@
     z: 12
     name: "Mars"
   status: "dead"
+- name: "Sigma male"
+  coordinates:
+    x: 69
+    "y": 69
+  height: 69
+  birthday: "1969-07-15T20:06:15.8293456"
+  passportID: "00000000"
+  hairColor: "sigma"
+  location:
+    x: 69420
+    "y": 69420
+    z: 69420
+    name: "Heaven"
+- name: "Deadushka"
+  coordinates:
+    x: 99
+    "y": -99
+  height: 3
+  birthday: "2001-08-15T20:08:17.8293456"
+  passportID: "dripset"
+  hairColor: "Brown"
+  location:
+    "y": 200
+    z: -1000
+    name: ""
+- name: "Svintsoff"
+  coordinates:
+  height: 1
+  birthday: "1999-05-15T20:06:13.8293456"
+  passportID: "linearDrippppp"
+  hairColor: "Brown"
+  location:
+    "y": 135716576916
+    z: -92749871
+    name: "1405"

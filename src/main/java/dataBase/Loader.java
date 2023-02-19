@@ -1,8 +1,7 @@
 package dataBase;
 
 import defaultClasses.*;
-import helpFun.StringToLocalDatetimeParser;
-import helpFun.SystemNotification;
+import helpFun.*;
 import validators.PersonValidator;
 
 import java.time.LocalDateTime;
@@ -90,7 +89,8 @@ public class Loader {
                     } else {
                         System.out.println("Creating new Coordinates...");
                         if (person.getCoordinates() != null) {
-                            System.out.println("Previous coordinates data was: x=" + person.getCoordinates().getX()
+                            System.out.println(ANSI_YELLOW + "Previous coordinates data was:"
+                                    + ANSI_RESET + " x=" + person.getCoordinates().getX()
                                     + ", y=" + person.getCoordinates().getY());
                         }
                         Coordinates coordinates = new Coordinates();
@@ -98,17 +98,16 @@ public class Loader {
                         System.out.print("Input x: Integer (not null) \n$ ");
                         do {
                             try {
-                                coordinates.setX(scanner.nextInt());
+                                coordinates.setX(Integer.valueOf(scanner.nextLine()));
                                 checkedX = true;
                             } catch (Exception e) {
                                 System.out.print("Input x: Integer (not null) \n$ ");
-                                scanner.next();
                             }
                         } while (!checkedX);
                         System.out.print("Input y: Float (not null) \n$ ");
                         do {
                             try {
-                                coordinates.setY(scanner.nextFloat());
+                                coordinates.setY(Float.valueOf(scanner.nextLine()));
                                 checkedY = true;
                             } catch (Exception e) {
                                 System.out.print("Input y: Float (not null) \n$ ");
@@ -146,11 +145,10 @@ public class Loader {
                         System.out.print("Input height: Long (not null) \n$ ");
                         do {
                             try {
-                                person.setHeight(scanner.nextLong());
+                                person.setHeight(Long.valueOf(scanner.nextLine()));
                                 checked = true;
                             } catch (Exception e) {
                                 System.out.print("Input height: Long (not null) \n$ ");
-                                scanner.next();
                             }
                         } while (!checked);
                     }
@@ -254,11 +252,12 @@ public class Loader {
                     else {
                         boolean checkedX = false; boolean checkedY = false; boolean checkedZ = false;
                         System.out.println("Creating new Location...");
-                        System.out.println("Previous location data was: name=" + person.getLocation().getName()
-                                + ", x=" + person.getLocation().getX() + ", y=" + person.getLocation().getY()
-                                + " and z=" + person.getLocation().getZ());
-                        System.out.print("Would you like to create null location or continue creating" +
-                                " new location? Type [Y/N] \n$ ");
+                        System.out.println(ANSI_YELLOW + "Previous location data was:"
+                                + ANSI_RESET + " name=" + person.getLocation().getName()
+                                + ", x=" + person.getLocation().getX() + ", y=" + person.
+                                getLocation().getY() + " and z=" + person.getLocation().getZ());
+                        System.out.print("Would you like to create null location or continue creating new location?" +
+                                " Type [Y/N] (Y will assign null location for Person{id=" + person.getId() + "}) \n$ ");
                         decision = scanner.nextLine();
                         while (!decision.equalsIgnoreCase("Y")
                                 && !decision.equalsIgnoreCase("N")) {
@@ -277,31 +276,28 @@ public class Loader {
                         System.out.print("Input x: int \n$ ");
                         do {
                             try {
-                                location.setX(scanner.nextInt());
+                                location.setX(Integer.parseInt(scanner.nextLine()));
                                 checkedX = true;
                             } catch (Exception e) {
                                 System.out.print("Input x: int \n$ ");
-                                scanner.next();
                             }
                         } while (!checkedX);
                         System.out.print("Input y: Double (not null) \n$ ");
                         do {
                             try {
-                                location.setY(scanner.nextDouble());
+                                location.setY(Double.valueOf(scanner.nextLine()));
                                 checkedY = true;
                             } catch (Exception e) {
                                 System.out.print("Input y: Double (not null) \n$ ");
-                                scanner.next();
                             }
                         } while (!checkedY);
                         System.out.print("Input z: int \n$ ");
                         do {
                             try {
-                                location.setZ(scanner.nextInt());
+                                location.setZ(Integer.parseInt(scanner.nextLine()));
                                 checkedZ = true;
                             } catch (Exception e) {
                                 System.out.print("Input z: int \n$ ");
-                                scanner.next();
                             }
                         } while (!checkedZ);
                         System.out.print("Input name: String (nullable) \n$ ");

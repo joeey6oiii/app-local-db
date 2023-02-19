@@ -33,7 +33,7 @@ public class Person implements Generated {
         this.location = location;
     }
 
-    public static Long getIdentificator() {
+    public static Long getIdentifier() {
         return identifier;
     }
 

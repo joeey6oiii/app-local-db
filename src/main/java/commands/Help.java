@@ -13,6 +13,6 @@ public class Help extends BaseCommand {
 
     @Override
     public void describe() {
-        System.out.println("Displays help information about console application commands");
+        System.out.println("Displays information about console application commands");
     }
 }
