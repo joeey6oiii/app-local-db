@@ -6,11 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class YamlReader {
+    private static final Scanner scanner = new Scanner(System.in);
     private final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory())
             .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
             .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
@@ -24,10 +25,44 @@ public class YamlReader {
             .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false)
             .findAndRegisterModules();
 
-    public <T> List<T> readYaml(String yaml, Class<T> type) throws IOException, ClassNotFoundException {
+    public <T> List<T> readYaml(String yaml, Class<T> type) throws ClassNotFoundException {
+        // TODO(!): path to file.yaml will soon be replaced with an environment variable
         BufferedInputStream inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
         Class<T[]> arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
-        T[] objects = objectMapper.readValue(inputStream, arrayClass);
+        T[] objects = null;
+        try {
+            objects = objectMapper.readValue(inputStream, arrayClass);   
+        } catch (Exception e) {
+            System.out.print("Invalid path. Would you like to change the path? Type [Y/N]" +
+                    " (N automatically terminates the program) \n$ ");
+            String decision = scanner.nextLine();
+            while(!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
+                decision = scanner.nextLine();
+            }
+            if (decision.equalsIgnoreCase("N")) {
+                System.out.println("Program has been successfully terminated");
+                System.exit(0);
+            }
+            else {
+                boolean isPath = false;
+                System.out.print("Enter path to continue program execution or [N] to terminate the program \n$ ");
+                do {
+                    try {
+                        yaml = scanner.nextLine();
+                        if (yaml.equalsIgnoreCase("N")) {
+                            System.out.println("Program has been successfully terminated");
+                            System.exit(0);
+                        }
+                        inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
+                        objects = objectMapper.readValue(inputStream, arrayClass);
+                        isPath = true;
+                    } catch (Exception exception) {
+                        System.out.print("Enter path to continue program execution" +
+                                " or [N] to terminate the program \n$ ");
+                    }
+                } while (!isPath);
+            }
+        }
         return Arrays.asList(objects);
     }
 }

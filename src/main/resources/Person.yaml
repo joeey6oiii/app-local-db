@@ -30,3 +30,16 @@
   passportID: null
   hairColor: "RED"
   location: null
+- name: "Simon"
+  coordinates:
+    x: 100
+    "y": 90.0
+  height: 2
+  birthday: "2000-04-15T20:04:23.8293456"
+  passportID: "si88200123"
+  hairColor: "BLACK"
+  location:
+    x: 59
+    "y": 12
+    z: 567
+    name: "ITMO"

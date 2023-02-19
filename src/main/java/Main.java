@@ -20,7 +20,7 @@ public class Main {
         List<Person> list = null;
         try {
             list = yamlReader.readYaml(path, type);
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         assert list != null;
