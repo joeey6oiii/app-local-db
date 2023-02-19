@@ -1,17 +1,15 @@
-import commands.CommandManager;
-import dataBase.DataBase;
-import dataBase.GlobalObj;
-import dataBase.Loader;
+import commands.*;
+import dataBase.*;
 import defaultClasses.*;
 import yamlsTools.*;
 
-
-import java.io.*;
 import java.util.*;
 
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("\u001B[33m" + "---Welcome to the Person" +
+                " database console application!---" + "\u001B[0m");
         Loader loader = new Loader();
         loader.assertToken();
         Class<Person> type = Person.class;
@@ -24,9 +22,7 @@ public class Main {
             e.printStackTrace();
         }
         assert list != null;
-        DataBase dataBase = new DataBase();
-        loader.load(dataBase, list);
-        System.out.println(dataBase.getCollection());
+        loader.load(GlobalObj.dataBase, list);
         CommandManager commandManager = new CommandManager();
         commandManager.startWorking();
 

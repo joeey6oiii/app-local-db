@@ -20,6 +20,10 @@ public class CommandHandler {
         map.put("exit", new Exit());
         map.put("remove_by_id", new Remove_by_id());
         map.put("help", new Help());
+        map.put("update", new UpdateById());
+        map.put("sum_of_height", new SumOfHeight());
+        map.put("average_of_height", new AverageOfHeight());
+        map.put("print_field_descending_birthday", new PrintFieldDescendingBirthday());
     }
 
     public static void handleCommand(String str) {

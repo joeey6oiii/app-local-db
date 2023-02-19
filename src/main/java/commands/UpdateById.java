@@ -4,7 +4,7 @@ import dataBase.DataBase;
 
 import java.io.IOException;
 
-public class Help extends BaseCommand {
+public class UpdateById extends BaseCommand {
 
     @Override
     public void execute(DataBase obj) throws IOException {
@@ -13,6 +13,6 @@ public class Help extends BaseCommand {
 
     @Override
     public void describe() {
-        System.out.println("Displays help information about console application commands");
+        System.out.println("Allows to reassign values to objects in the database");
     }
 }

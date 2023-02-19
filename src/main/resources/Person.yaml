@@ -4,7 +4,7 @@
     x: 1
     "y": 3.0
   height: 2
-  birthday: "2023-02-14T20:01:58.2680781"
+  birthday: "2018-02-14T20:01:58.2680781"
   passportID: "78910"
   hairColor: null
   location: null
@@ -28,7 +28,7 @@
   height: 4
   birthday: "2023-02-14T20:01:58.8293456"
   passportID: null
-  hairColor: "RED"
+  hairColor: true
   location: null
 - name: "Simon"
   coordinates:
@@ -43,3 +43,30 @@
     "y": 12
     z: 567
     name: "ITMO"
+- name: "Kaneki Ken"
+  coordinates:
+    x: 1
+    "y": 2.3
+  height: 4
+  birthday: "2007-12-15T20:04:23.8293456"
+  passportID: "imghoul"
+  hairColor: "WHITE"
+  location:
+    x: 234
+    "y": 599
+    z: 100
+    name: "politech"
+- name: "Spike Spiegel"
+  coordinates:
+    x: 34
+    "y": 100
+  height: 6
+  birthday: "1968-06-15T20:12:17.8293456"
+  passportID: "2044"
+  hairColor: "gReEn"
+  location:
+    x: 999
+    "y": 666
+    z: 12
+    name: "Mars"
+  status: "dead"

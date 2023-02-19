@@ -11,11 +11,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class YamlReader {
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner scanner = new Scanner(System.in);
     private final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory())
-            .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
             .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
+            .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
             .configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true)
+            .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true)
             .configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
@@ -31,10 +34,11 @@ public class YamlReader {
         Class<T[]> arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
         T[] objects = null;
         try {
-            objects = objectMapper.readValue(inputStream, arrayClass);   
+            objects = objectMapper.readValue(inputStream, arrayClass);
         } catch (Exception e) {
-            System.out.print("Invalid path. Would you like to change the path? Type [Y/N]" +
-                    " (N automatically terminates the program) \n$ ");
+            System.out.println("Invalid path or the file is damaged: " + ANSI_RED + e.getMessage() + ANSI_RESET);
+            System.out.print("Would you like to change the path?" +
+                    " Type [Y/N] (N automatically terminates the program) \n$ ");
             String decision = scanner.nextLine();
             while(!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
                 decision = scanner.nextLine();
@@ -57,8 +61,8 @@ public class YamlReader {
                         objects = objectMapper.readValue(inputStream, arrayClass);
                         isPath = true;
                     } catch (Exception exception) {
-                        System.out.print("Enter path to continue program execution" +
-                                " or [N] to terminate the program \n$ ");
+                        System.out.println("Invalid value: " + ANSI_RED + exception.getMessage() + ANSI_RESET);
+                        System.out.print("Enter path to continue program execution or [N] to terminate the program \n$ ");
                     }
                 } while (!isPath);
             }

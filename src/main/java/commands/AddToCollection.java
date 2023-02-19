@@ -1,17 +1,20 @@
 package commands;
 
-import dataBase.DataBase;
-import dataBase.GlobalObj;
-import dataBase.Loader;
+import dataBase.*;
 import defaultClasses.Person;
 import generators.PersonGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddToCollection extends BaseCommand{
     public void execute(DataBase obj){
         PersonGenerator personGenerator = new PersonGenerator();
         Person person = personGenerator.generate();
+        List<Person> list = new ArrayList<>();
+        list.add(person);
         Loader loader = new Loader();
-//        loader.load(GlobalObj.dataBase);
+        loader.load(GlobalObj.dataBase, list);
     }
     public void describe(){
         System.out.println("creates and adds an element to the collection");

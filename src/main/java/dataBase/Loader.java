@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class Loader {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String ANSI_YELLOW = "\u001B[33m";
+    private static final String ANSI_RESET = "\u001B[0m";
     private boolean token = false;
 
     public Loader(){}
@@ -333,8 +335,8 @@ public class Loader {
                 SystemNotification.notification("DELETED: " + person);
             }
         }
-        System.out.println("---Validation completed successfully!---");
-        System.out.println("---Data upload completed successfully!---");
+        System.out.println(ANSI_YELLOW + "---Validation completed successfully!---" + ANSI_RESET);
+        System.out.println(ANSI_YELLOW + "---Data upload completed successfully!---" + ANSI_RESET);
     }
 
     private static String decision(){
