@@ -15,9 +15,10 @@ public class YamlReader {
     private static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner scanner = new Scanner(System.in);
     private final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory())
-            .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
             .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
+            .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
             .configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true)
+            .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true)
             .configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
@@ -33,7 +34,7 @@ public class YamlReader {
         Class<T[]> arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
         T[] objects = null;
         try {
-            objects = objectMapper.readValue(inputStream, arrayClass);   
+            objects = objectMapper.readValue(inputStream, arrayClass);
         } catch (Exception e) {
             System.out.println("Invalid path or the file is damaged: " + ANSI_RED + e.getMessage() + ANSI_RESET);
             System.out.print("Would you like to change the path?" +
