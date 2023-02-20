@@ -46,6 +46,7 @@ public class Loader {
             else if (!token){
                 boolean delete = false;
                 while (!personValidator.getNameValidator().validate(person.getName()) && !delete && !token) {
+                    System.out.println();
                     System.out.println("Invalid name for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new name for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
@@ -73,6 +74,7 @@ public class Loader {
                     }
                 }
                 while (!personValidator.getCoordinatesValidator().validate(person.getCoordinates()) && !delete && !token) {
+                    System.out.println();
                     System.out.println("Invalid coordinates for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to create new coordinates for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
@@ -126,6 +128,7 @@ public class Loader {
                     }
                 }
                 while (!personValidator.getHeightValidator().validate(person.getHeight()) && !delete && !token) {
+                    System.out.println();
                     System.out.println("Invalid height for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new height for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
@@ -161,6 +164,7 @@ public class Loader {
                     }
                 }
                 while (!personValidator.getBirthdayValidator().validate(person.getBirthday()) && !delete && !token) {
+                    System.out.println();
                     System.out.println("Invalid birthday for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new birthday for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
@@ -202,6 +206,7 @@ public class Loader {
                     }
                 }
                 while (!personValidator.getPassportIDValidator().validate(person.getPassportID()) && !delete && !token) {
+                    System.out.println();
                     System.out.println("Invalid passportID for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new passportID for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
@@ -235,6 +240,7 @@ public class Loader {
                     }
                 }
                 while (!personValidator.getLocationValidator().validate(person.getLocation()) && !delete && !token) {
+                    System.out.println();
                     System.out.println("Invalid location for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to create a new location for Person{id="
                             + person.getId() + "}? Type [Y/N/D] (N automatically deletes object," +
@@ -331,8 +337,10 @@ public class Loader {
                 SystemNotification.notification("DELETED: " + person);
             }
         }
+        System.out.println();
         System.out.println(ANSI_YELLOW + "---Validation completed successfully!---" + ANSI_RESET);
         System.out.println(ANSI_YELLOW + "---Data upload completed successfully!---" + ANSI_RESET);
+        System.out.println();
     }
 
     private static String decision(){

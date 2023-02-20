@@ -4,11 +4,10 @@ import dataBase.DataBase;
 import defaultClasses.Person;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.Iterator;
 
 
-public class Remove_by_id extends BaseCommand {
+public class RemoveById extends BaseCommand {
 
     @Override
     public void execute(DataBase obj) throws IOException {

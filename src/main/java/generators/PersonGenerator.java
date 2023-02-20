@@ -74,7 +74,7 @@ public class PersonGenerator implements Generate {
         }
         person.setPassportID(passportId);
         System.out.println("Choose one of the hair colors");
-        Color.listValues();
+        System.out.println(Color.listValues());
         System.out.println("If you don't want to chose hair color press ENTER");
         //TODO налепить валидатор
         String str;
