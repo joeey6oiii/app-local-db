@@ -1,9 +1,6 @@
 package defaultClasses;
 
-import generators.Generate;
-
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Coordinates implements Generated {
     private int x;

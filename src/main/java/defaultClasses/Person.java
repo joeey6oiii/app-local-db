@@ -2,7 +2,7 @@ package defaultClasses;
 
 import java.util.Objects;
 
-public class Person implements Generated {
+public class Person implements Generated, IsUpdateable {
     private static Long identifier = 0L;
     private final Long id;
     private String name;

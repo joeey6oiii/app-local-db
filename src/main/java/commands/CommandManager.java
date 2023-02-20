@@ -1,11 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
-import dataBase.GlobalObj;
-
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class CommandManager {

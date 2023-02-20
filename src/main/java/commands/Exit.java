@@ -2,7 +2,6 @@ package commands;
 
 import dataBase.DataBase;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Exit extends BaseCommand {

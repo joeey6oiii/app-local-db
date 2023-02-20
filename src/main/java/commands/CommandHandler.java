@@ -9,10 +9,11 @@ import java.util.Map;
 public class CommandHandler {
 
     private static Map<String, BaseCommand> map;
-    private static ArrayList<String> history = new ArrayList<>();
+    private static ArrayList<String> history;
 
     static {
         map = new LinkedHashMap<>();
+        history = new ArrayList<>();
 
         map.put("add", new AddToCollection());
         map.put("info", new Info());
@@ -59,13 +60,13 @@ public class CommandHandler {
         return null;
     }
 
-    public static Integer getLongestCommand() {
-        int length = 4;
+    public static String getLongestCommandName() {
+        String command = "";
         for (Map.Entry<String, BaseCommand> entry : map.entrySet()) {
-            if (entry.getKey().length() > length) {
-                length = entry.getKey().length() + 4;
+            if (entry.getKey().length() > command.length()) {
+                command = entry.getKey();
             }
         }
-        return length;
+        return command;
     }
 }
