@@ -184,17 +184,17 @@ public class Loader {
                         String strBirthday;
                         LocalDateTime localDateTimeBirthday = null;
                         System.out.print("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
-                        do {
-                            try {
-                                strBirthday = scanner.nextLine();
-                                localDateTimeBirthday = StringToLocalDatetimeParser.stringToLocalDateTime(strBirthday);
-                                checked = true;
-                            } catch (Exception e) {
-                                System.out.print("Input birthday: LocalDateTime (not null)." +
-                                        " Format: yyyy-MM-dd HH:mm:ss \n$ ");
-                            }
-                        } while (!checked);
-                        person.setBirthday(localDateTimeBirthday);
+                            do {
+                                try {
+                                    strBirthday = scanner.nextLine();
+                                    localDateTimeBirthday = StringToLocalDatetimeParser.stringToLocalDateTime(strBirthday);
+                                    checked = true;
+                                } catch (Exception e) {
+                                    System.out.print("Input birthday: LocalDateTime (not null)." +
+                                            " Format: yyyy-MM-dd HH:mm:ss \n$ ");
+                                }
+                            } while (!checked);
+                            person.setBirthday(localDateTimeBirthday);
                     }
                     if (!delete && !token) {
                         System.out.println("New birthday=" + person.getBirthday() + " for Person{id="
