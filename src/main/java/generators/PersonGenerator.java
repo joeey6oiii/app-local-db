@@ -7,7 +7,6 @@ import defaultClasses.Person;
 import helpFun.StringToLocalDatetimeParser;
 import validators.*;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 

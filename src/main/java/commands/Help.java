@@ -12,7 +12,7 @@ public class Help extends BaseCommand {
         int l;
         for (Map.Entry<String, BaseCommand> entry : CommandHandler.getMap().entrySet()) {
             StringBuilder stringBuilder = new StringBuilder();
-            l = CommandHandler.getLongestCommand() - entry.getKey().length();
+            l = CommandHandler.getLongestCommandName().length() + 4 - entry.getKey().length();
             while (l != 0) {
                 stringBuilder.append(" ");
                 l -= 1;

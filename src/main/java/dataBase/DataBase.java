@@ -2,13 +2,8 @@ package dataBase;
 
 import defaultClasses.Person;
 
-import java.lang.reflect.Constructor;
-import java.sql.SQLOutput;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.lang.reflect.Field;
-import java.util.Objects;
 
 public class DataBase {
     private LinkedHashSet <Person> dataBase = new LinkedHashSet<>();
