@@ -23,8 +23,8 @@
     name: null
 - name: "Pavel"
   coordinates:
-    x: 100
-    "y": 90.0
+    x: 23
+    "y": 74.3
   height: 4
   birthday: "2023-02-14T20:01:58.8293456"
   passportID: null
