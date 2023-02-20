@@ -44,7 +44,7 @@ public enum Color {
         else {
             SystemNotification.notification("REASSIGNED VALUE: \"hairColor=" + colorName
                     + "\" -> \"hairColor=null\" FOR Person{id=" + Person.getIdentifier()
-                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentifier() + " hairColor\"" +
+                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentifier() + " {hairColor}\"" +
                     " AFTER DATA UPLOADING FINISHES");
         }
         return null;
