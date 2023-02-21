@@ -29,11 +29,10 @@ public class YamlReader {
             .findAndRegisterModules();
 
     public <T> List<T> readYaml(String yaml, Class<T> type) throws ClassNotFoundException {
-        // TODO(!): path to file.yaml will soon be replaced with an environment variable
-        BufferedInputStream inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
         Class<T[]> arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
         T[] objects = null;
         try {
+            BufferedInputStream inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
             objects = objectMapper.readValue(inputStream, arrayClass);
         } catch (Exception e) {
             System.out.println("Invalid path or the file is damaged: " + ANSI_RED + e.getMessage() + ANSI_RESET);
@@ -57,7 +56,7 @@ public class YamlReader {
                             System.out.println("Program has been successfully terminated");
                             System.exit(0);
                         }
-                        inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
+                        BufferedInputStream inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
                         objects = objectMapper.readValue(inputStream, arrayClass);
                         isPath = true;
                     } catch (Exception exception) {

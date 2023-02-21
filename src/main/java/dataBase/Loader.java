@@ -4,7 +4,7 @@ import defaultClasses.*;
 import helpFun.*;
 import validators.PersonValidator;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -97,22 +97,22 @@ public class Loader {
                         }
                         Coordinates coordinates = new Coordinates();
                         boolean checkedX = false; boolean checkedY = false;
-                        System.out.print("Input x: Integer (not null) \n$ ");
+                        System.out.print("Input x: long \n$ ");
                         do {
                             try {
-                                coordinates.setX(Integer.valueOf(scanner.nextLine()));
+                                coordinates.setX(Long.parseLong(scanner.nextLine()));
                                 checkedX = true;
                             } catch (Exception e) {
-                                System.out.print("Input x: Integer (not null) \n$ ");
+                                System.out.print("Input x: long \n$ ");
                             }
                         } while (!checkedX);
-                        System.out.print("Input y: Float (not null) \n$ ");
+                        System.out.print("Input y: int \n$ ");
                         do {
                             try {
-                                coordinates.setY(Float.valueOf(scanner.nextLine()));
+                                coordinates.setY(Integer.parseInt(scanner.nextLine()));
                                 checkedY = true;
                             } catch (Exception e) {
-                                System.out.print("Input y: Float (not null) \n$ ");
+                                System.out.print("Input y: int \n$ ");
                             }
                         } while (!checkedY);
                         person.setCoordinates(coordinates);
@@ -145,13 +145,13 @@ public class Loader {
                     }
                     else {
                         boolean checked = false;
-                        System.out.print("Input height: Long (not null) \n$ ");
+                        System.out.print("Input height: int \n$ ");
                         do {
                             try {
-                                person.setHeight(Long.valueOf(scanner.nextLine()));
+                                person.setHeight(Integer.parseInt(scanner.nextLine()));
                                 checked = true;
                             } catch (Exception e) {
-                                System.out.print("Input height: Long (not null) \n$ ");
+                                System.out.print("Input height: int \n$ ");
                             }
                         } while (!checked);
                     }
@@ -182,19 +182,19 @@ public class Loader {
                     else {
                         boolean checked = false;
                         String strBirthday;
-                        LocalDateTime localDateTimeBirthday = null;
+                        Date dateBirthday = null;
                         System.out.print("Input birthday: LocalDateTime (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
                             do {
                                 try {
                                     strBirthday = scanner.nextLine();
-                                    localDateTimeBirthday = StringToLocalDatetimeParser.stringToLocalDateTime(strBirthday);
+                                    dateBirthday = StringToDateParser.stringToDate(strBirthday);
                                     checked = true;
                                 } catch (Exception e) {
                                     System.out.print("Input birthday: LocalDateTime (not null)." +
                                             " Format: yyyy-MM-dd HH:mm:ss \n$ ");
                                 }
                             } while (!checked);
-                            person.setBirthday(localDateTimeBirthday);
+                            person.setBirthday(dateBirthday);
                     }
                     if (!delete && !token) {
                         System.out.println("New birthday=" + person.getBirthday() + " for Person{id="
@@ -260,8 +260,7 @@ public class Loader {
                         System.out.println("Creating new Location...");
                         System.out.println(ANSI_YELLOW + "Previous location data was:"
                                 + ANSI_RESET + " name=" + person.getLocation().getName()
-                                + ", x=" + person.getLocation().getX() + ", y=" + person.
-                                getLocation().getY() + " and z=" + person.getLocation().getZ());
+                                + ", x=" + person.getLocation().getX() + " and y=" + person.getLocation().getY());
                         System.out.print("Would you like to create null location or continue creating new location?" +
                                 " Type [Y/N] (Y will assign null location for Person{id=" + person.getId() + "}) \n$ ");
                         decision = scanner.nextLine();
@@ -279,33 +278,24 @@ public class Loader {
                             System.out.println("Continue creating new location...");
                         }
                         Location location = new Location();
-                        System.out.print("Input x: int \n$ ");
+                        System.out.print("Input x: Float \n$ ");
                         do {
                             try {
-                                location.setX(Integer.parseInt(scanner.nextLine()));
+                                location.setX(Float.parseFloat(scanner.nextLine()));
                                 checkedX = true;
                             } catch (Exception e) {
-                                System.out.print("Input x: int \n$ ");
+                                System.out.print("Input x: Float \n$ ");
                             }
                         } while (!checkedX);
-                        System.out.print("Input y: Double (not null) \n$ ");
+                        System.out.print("Input y: Integer (not null) \n$ ");
                         do {
                             try {
-                                location.setY(Double.valueOf(scanner.nextLine()));
+                                location.setY(Integer.parseInt(scanner.nextLine()));
                                 checkedY = true;
                             } catch (Exception e) {
-                                System.out.print("Input y: Double (not null) \n$ ");
+                                System.out.print("Input y: Integer (not null) \n$ ");
                             }
                         } while (!checkedY);
-                        System.out.print("Input z: int \n$ ");
-                        do {
-                            try {
-                                location.setZ(Integer.parseInt(scanner.nextLine()));
-                                checkedZ = true;
-                            } catch (Exception e) {
-                                System.out.print("Input z: int \n$ ");
-                            }
-                        } while (!checkedZ);
                         System.out.print("Input name: String (nullable) \n$ ");
                         String name = scanner.nextLine();
                         if (Objects.equals(name, "") || Objects.equals(name, "null")) {
@@ -319,8 +309,7 @@ public class Loader {
                     if (!delete && !token) {
                         System.out.println("New location: name=" + person.getLocation().getName()
                                 + ", x=" + person.getLocation().getX() + ", y=" + person.getLocation().getY()
-                                + " and z=" + person.getLocation().getZ() + " for Person{id="
-                                + person.getId() + "} has been successfully set!"
+                                + " for Person{id=" + person.getId() + "} has been successfully set!"
                                 + " If the validation failed, please, try again");
                     }
                     else {

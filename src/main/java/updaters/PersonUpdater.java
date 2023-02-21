@@ -3,10 +3,9 @@ package updaters;
 import defaultClasses.*;
 import generators.*;
 import helpFun.Reflection;
-import helpFun.StringToLocalDatetimeParser;
+import helpFun.StringToDateParser;
 import validators.PersonValidator;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class PersonUpdater implements UpdateAble<Person> {
@@ -75,30 +74,30 @@ public class PersonUpdater implements UpdateAble<Person> {
                 if (boolBirthday) {
                     System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
                     boolean checked = false;
-                    String strBirthday; LocalDateTime birthday = null;
+                    String strBirthday; Date birthday = null;
                     do {
                         try {
                             strBirthday = scanner.nextLine();
-                            birthday = StringToLocalDatetimeParser.stringToLocalDateTime(strBirthday);
+                            birthday = StringToDateParser.stringToDate(strBirthday);
                             checked = true;
                         } catch (Exception e) {
                             System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
                         }
                     } while (!checked);
-                    Reflection.setValue(person, field, LocalDateTime.class, birthday);
+                    Reflection.setValue(person, field, Date.class, birthday);
                 } else if (boolHeight){
-                    System.out.print("Input " + field + " (not null) \n$ ");
+                    System.out.print("Input " + field + " \n$ ");
                     boolean checked = false;
-                    Long height = null;
+                    int height = 0;
                     do {
                         try {
-                            height = Long.valueOf(scanner.nextLine());
+                            height = Integer.parseInt(scanner.nextLine());
                             checked = true;
                         } catch (Exception e) {
-                            System.out.print("Input " + field + " (not null) \n$ ");
+                            System.out.print("Input " + field + " \n$ ");
                         }
                     } while (!checked);
-                    Reflection.setValue(person, field, Long.class, height);
+                    Reflection.setValue(person, field, int.class, height);
                 } else {
                     System.out.print("Input " + field + " (not null) \n$ ");
                     Reflection.setValue(person, field, String.class, scanner.nextLine());
@@ -108,9 +107,9 @@ public class PersonUpdater implements UpdateAble<Person> {
                     type();
                 } else {
                     if (boolBirthday) {
-                        Reflection.setValue(person, field, LocalDateTime.class, previous_value);
+                        Reflection.setValue(person, field, Date.class, previous_value);
                     } else if (boolHeight) {
-                        Reflection.setValue(person, field, Long.class, previous_value);
+                        Reflection.setValue(person, field, int.class, previous_value);
                     } else {
                         Reflection.setValue(person, field, String.class, previous_value);
                     }
