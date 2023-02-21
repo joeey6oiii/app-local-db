@@ -3,7 +3,6 @@ package defaultClasses;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import helpFun.SystemNotification;
 
 import java.util.ArrayList;
 
@@ -39,10 +38,10 @@ public enum Color implements Generated {
             return Arrays.stream(Color.values()).filter(e -> e.name().equalsIgnoreCase(colorName)).findAny().get();
         }
         else {
-            SystemNotification.notification("REASSIGNED VALUE: \"hairColor=" + colorName
-                    + "\" -> \"hairColor=null\" FOR Person{id=" + Person.getIdentifier()
-                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentifier() + " {hairColor}\"" +
-                    " AFTER DATA UPLOADING FINISHES");
+            System.out.println("\u001B[31m" + "REASSIGNED VALUE: " + "\u001B[0m" + "\"hairColor="
+                    + colorName + "\" -> \"hairColor=null\" FOR Person{id=" + Person.getIdentifier()
+                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentifier() +
+                    " {hairColor}\" AFTER DATA UPLOADING FINISHES");
         }
         return null;
     }

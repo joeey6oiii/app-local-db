@@ -7,9 +7,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("\u001B[33m" + "---Welcome to the Person" +
-                " database console application!---" + "\u001B[0m");
-        System.out.print("Input path to the file\n$ ");
+        System.out.println("\u001B[33m---Welcome to the Person" +
+                " database console application!---\u001B[0m");
+        System.out.print("\nInput path to the file\n$ ");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
         Loader loader = new Loader();

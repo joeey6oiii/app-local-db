@@ -1,18 +1,17 @@
 ---
-- name: "Alexey"
+- name: ""
   coordinates:
-    x: 1
-    "y": 3.0
-  height: 2
-  birthday: "2018-02-14T20:01:58.2680781"
-  passportID: "78910"
+  height: 0
+  birthday: ""
+  passportID: "00"
   hairColor: null
-  location: null
+  location:
+    x: null
 - name: "Dmitry"
   coordinates:
     x: 2
     "y": 2.0
-  height: null
+  height: 1
   birthday: "2020-03-14T20:01:58.2680781"
   passportID: "123456"
   hairColor: "red"
@@ -27,7 +26,7 @@
     "y": 74.3
   height: 4
   birthday: "2023-02-14T20:01:58.8293456"
-  passportID: null
+  passportID: "098765"
   hairColor: true
   location: null
 - name: "Simon"
@@ -62,8 +61,8 @@
     "y": 100
   height: 6
   birthday: "1968-06-15T20:12:17.8293456"
-  passportID: "2044"
-  hairColor: "wHiTe"
+  passportID: "2044_d"
+  hairColor: "reD"
   location:
     x: 999
     "y": 666
@@ -100,8 +99,8 @@
   height: 1
   birthday: "1999-05-15T20:06:13.8293456"
   passportID: "linearDrippppp"
-  hairColor: "Brown"
+  hairColor: "orangE"
   location:
     "y": 6916
     z: -871
-    name: "1405"
+    name: "audi1405"

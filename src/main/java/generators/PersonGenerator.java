@@ -93,7 +93,7 @@ public class PersonGenerator implements Generate {
             System.out.println("Incorrect location");
             location = locationGenerator.generate();
         }
-        person.setLocation(locationGenerator.generate());
+        person.setLocation(location);
 
         return person;
     }
