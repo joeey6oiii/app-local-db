@@ -1,31 +1,32 @@
 package defaultClasses;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Person implements Generated, IsUpdateable {
-    private static Long identifier = 0L;
-    private final Long id;
+    private static Integer identifier = 0;
+    private final Integer id;
     private String name;
     private Coordinates coordinates;
-    private final java.time.LocalDate creationDate;
-    private Long height;
-    private java.time.LocalDateTime birthday;
+    private final java.util.Date creationDate;
+    private int height;
+    private java.util.Date birthday;
     private String passportID;
     private Color hairColor;
     private Location location;
 
     public Person() {
         this.id = ++identifier;
-        this.creationDate = java.time.LocalDate.now();
+        this.creationDate = new Date();
     }
 
-    public Person(String name, Coordinates coordinates, Long height,
-                  java.time.LocalDateTime birthday, String passportID,
+    public Person(String name, Coordinates coordinates, int height,
+                  java.util.Date birthday, String passportID,
                   Color hairColor, Location location) {
         this.id = ++identifier;
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = java.time.LocalDate.now();
+        this.creationDate = new Date();
         this.height = height;
         this.birthday = birthday;
         this.passportID = passportID;
@@ -33,11 +34,11 @@ public class Person implements Generated, IsUpdateable {
         this.location = location;
     }
 
-    public static Long getIdentifier() {
+    public static Integer getIdentifier() {
         return identifier;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -57,19 +58,19 @@ public class Person implements Generated, IsUpdateable {
         this.coordinates = coordinates;
     }
 
-    public Long getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(Long height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public java.time.LocalDateTime getBirthday() {
+    public java.util.Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(java.time.LocalDateTime birthday) {
+    public void setBirthday(java.util.Date birthday) {
         this.birthday = birthday;
     }
 
@@ -97,7 +98,7 @@ public class Person implements Generated, IsUpdateable {
         this.location = location;
     }
 
-    public java.time.LocalDate getCreationDate() {
+    public java.util.Date getCreationDate() {
         return creationDate;
     }
 

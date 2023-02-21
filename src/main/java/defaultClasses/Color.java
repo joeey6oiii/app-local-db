@@ -3,7 +3,6 @@ package defaultClasses;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import generators.Generate;
 import helpFun.SystemNotification;
 
 import java.util.ArrayList;
@@ -14,12 +13,9 @@ import java.util.stream.Collectors;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Color implements Generated {
-    GREEN("green"),
     RED("red"),
     ORANGE("orange"),
-    WHITE("white"),
-    BROWN("brown"),
-    BLACK("black");
+    WHITE("white");
 
     private final String colorName;
 

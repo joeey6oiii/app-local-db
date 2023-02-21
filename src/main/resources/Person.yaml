@@ -15,7 +15,7 @@
   height: null
   birthday: "2020-03-14T20:01:58.2680781"
   passportID: "123456"
-  hairColor: "BROWN"
+  hairColor: "red"
   location:
     x: 6
     "y": 3.0
@@ -37,7 +37,7 @@
   height: 2
   birthday: "2000-04-15T20:04:23.8293456"
   passportID: "si88200123"
-  hairColor: "BLACK"
+  hairColor: "orange"
   location:
     x: 59
     "y": 12
@@ -63,7 +63,7 @@
   height: 6
   birthday: "1968-06-15T20:12:17.8293456"
   passportID: "2044"
-  hairColor: "gReEn"
+  hairColor: "wHiTe"
   location:
     x: 999
     "y": 666
@@ -90,7 +90,7 @@
   height: 3
   birthday: "2001-08-15T20:08:17.8293456"
   passportID: "dripset"
-  hairColor: "Brown"
+  hairColor: "REd"
   location:
     "y": 200
     z: -1000
@@ -102,6 +102,6 @@
   passportID: "linearDrippppp"
   hairColor: "Brown"
   location:
-    "y": 135716576916
-    z: -92749871
+    "y": 6916
+    z: -871
     name: "1405"
