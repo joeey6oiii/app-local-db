@@ -2,7 +2,7 @@ package dataBase;
 
 import defaultClasses.*;
 import helpFun.*;
-import validators.PersonValidator;
+import validators.*;
 
 import java.util.Date;
 import java.util.List;
@@ -39,13 +39,19 @@ public class Loader {
 
     public void load(DataBase dataBase, List<Person> people){
         PersonValidator personValidator = new PersonValidator();
+        NameValidator nameValidator = new NameValidator();
+        CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
+        HeightValidator heightValidator = new HeightValidator();
+        BirthdayValidator birthdayValidator = new BirthdayValidator();
+        PassportIDValidator passportIDValidator = new PassportIDValidator();
+        LocationValidator locationValidator = new LocationValidator();
         for (Person person : people) {
             if(personValidator.validate(person)) {
                 dataBase.getCollection().add(person);
             }
             else if (!token){
                 boolean delete = false;
-                while (!personValidator.getNameValidator().validate(person.getName()) && !delete && !token) {
+                while (!nameValidator.validate(person.getName()) && !delete && !token) {
                     System.out.println();
                     System.out.println("Invalid name for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new name for Person{id="
@@ -73,7 +79,7 @@ public class Loader {
                         SystemNotification.notification("DELETED: " + person);
                     }
                 }
-                while (!personValidator.getCoordinatesValidator().validate(person.getCoordinates()) && !delete && !token) {
+                while (!coordinatesValidator.validate(person.getCoordinates()) && !delete && !token) {
                     System.out.println();
                     System.out.println("Invalid coordinates for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to create new coordinates for Person{id="
@@ -127,7 +133,7 @@ public class Loader {
                         SystemNotification.notification("DELETED: " + person);
                     }
                 }
-                while (!personValidator.getHeightValidator().validate(person.getHeight()) && !delete && !token) {
+                while (!heightValidator.validate(person.getHeight()) && !delete && !token) {
                     System.out.println();
                     System.out.println("Invalid height for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new height for Person{id="
@@ -163,7 +169,7 @@ public class Loader {
                         SystemNotification.notification("DELETED: " + person);
                     }
                 }
-                while (!personValidator.getBirthdayValidator().validate(person.getBirthday()) && !delete && !token) {
+                while (!birthdayValidator.validate(person.getBirthday()) && !delete && !token) {
                     System.out.println();
                     System.out.println("Invalid birthday for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new birthday for Person{id="
@@ -205,7 +211,7 @@ public class Loader {
                         SystemNotification.notification("DELETED: " + person);
                     }
                 }
-                while (!personValidator.getPassportIDValidator().validate(person.getPassportID()) && !delete && !token) {
+                while (!passportIDValidator.validate(person.getPassportID()) && !delete && !token) {
                     System.out.println();
                     System.out.println("Invalid passportID for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to set a new passportID for Person{id="
@@ -222,12 +228,8 @@ public class Loader {
                                 " all following objects with invalid parameters will be deleted");
                     }
                     else {
-                        System.out.print("Input passportID: String (nullable;" +
-                                " range: 4 <= Input <= 32) \n$ ");
+                        System.out.print("Input passportID: String (not null; range [5, +inf)) \n$ ");
                         String passportID = scanner.nextLine();
-                        if (Objects.equals(passportID, "") || Objects.equals(passportID, "null")) {
-                            passportID = null;
-                        }
                         person.setPassportID(passportID);
                     }
                     if (!delete && !token) {
@@ -239,7 +241,7 @@ public class Loader {
                         SystemNotification.notification("DELETED: " + person);
                     }
                 }
-                while (!personValidator.getLocationValidator().validate(person.getLocation()) && !delete && !token) {
+                while (!locationValidator.validate(person.getLocation()) && !delete && !token) {
                     System.out.println();
                     System.out.println("Invalid location for Person{id=" + person.getId() + "}");
                     System.out.print("Would you like to create a new location for Person{id="
@@ -256,7 +258,7 @@ public class Loader {
                                 " all following objects with invalid parameters will be deleted");
                     }
                     else {
-                        boolean checkedX = false; boolean checkedY = false; boolean checkedZ = false;
+                        boolean checkedX = false; boolean checkedY = false;
                         System.out.println("Creating new Location...");
                         System.out.println(ANSI_YELLOW + "Previous location data was:"
                                 + ANSI_RESET + " name=" + person.getLocation().getName()
