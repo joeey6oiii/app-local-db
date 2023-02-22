@@ -7,11 +7,6 @@ import updaters.PersonUpdater;
 import java.io.IOException;
 
 public class UpdateById extends BaseCommand {
-    private static final PersonUpdater personUpdater;
-
-    static {
-        personUpdater = new PersonUpdater();
-    }
 
     @Override
     public void execute(DataBase obj) throws IOException {
@@ -19,7 +14,7 @@ public class UpdateById extends BaseCommand {
         for (Person person : obj.getCollection()) {
             if (person.getId() == Long.parseLong(super.getParameter())) {
                 found = true;
-                personUpdater.update(person);
+                new PersonUpdater().update(person);
             }
         }
         if (!found) {

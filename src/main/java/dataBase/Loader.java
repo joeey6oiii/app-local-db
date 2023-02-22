@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Loader {
-    private static final Scanner scanner = new Scanner(System.in);
     private boolean token = false;
 
     public Loader(){}
@@ -38,6 +37,7 @@ public class Loader {
                 dataBase.getCollection().add(person);
             } else if (!token){
                 boolean delete = false;
+                Scanner scanner = new Scanner(System.in);
                 NameValidator nameValidator = new NameValidator();
                 CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
                 HeightValidator heightValidator = new HeightValidator();
