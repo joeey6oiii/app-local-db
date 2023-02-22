@@ -99,8 +99,7 @@ public class PersonUpdater implements UpdateAble<Person> {
                     }
                     System.out.print("\u001B[31mValidation failed\u001B[0m, please, try again\n$ ");
                 }
-            }
-            else {
+            } else {
                 System.out.print("No such field or field is unavailable to update\n$ ");
             }
         }

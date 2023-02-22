@@ -1,12 +1,17 @@
 ---
-- name: ""
+- name: "Alexey"
   coordinates:
-  height: 0
-  birthday: ""
-  passportID: "00"
+    x: 1
+    "y": 99
+  height: 4
+  birthday: "2004-03-14T20:01:58.2680781"
+  passportID: "dsmflfmdlFM"
   hairColor: null
   location:
-    x: null
+    x: 5
+    "y": 9
+    z: 111
+    name: "src/main/java"
 - name: "Dmitry"
   coordinates:
     x: 2
