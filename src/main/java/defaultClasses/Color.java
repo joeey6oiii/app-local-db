@@ -38,10 +38,10 @@ public enum Color implements Generated {
             return Arrays.stream(Color.values()).filter(e -> e.name().equalsIgnoreCase(colorName)).findAny().get();
         }
         else {
-            System.out.println("\u001B[31m" + "REASSIGNED VALUE: " + "\u001B[0m" + "\"hairColor="
-                    + colorName + "\" -> \"hairColor=null\" FOR Person{id=" + Person.getIdentifier()
-                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentifier() +
-                    " {hairColor}\" AFTER DATA UPLOADING FINISHES");
+            System.out.println("\u001B[31m" + "Reassigned value:\u001B[0m \"hairColor="
+                    + colorName + "\" -> \"hairColor=null\" for Person{id=" + Person.getIdentifier()
+                    + "}. To change the value, please, type \"update " + Person.getIdentifier() +
+                    " {hairColor}\" after the data is loaded");
         }
         return null;
     }

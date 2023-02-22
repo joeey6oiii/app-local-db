@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import helpFun.Decision;
 
 import java.io.BufferedInputStream;
 import java.util.Arrays;
@@ -11,8 +12,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class YamlReader {
-    private static final String ANSI_RED = "\u001B[31m";
-    private static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner scanner = new Scanner(System.in);
     private final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory())
             .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
@@ -29,39 +28,31 @@ public class YamlReader {
             .findAndRegisterModules();
 
     public <T> List<T> readYaml(String yaml, Class<T> type) throws ClassNotFoundException {
-        Class<T[]> arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
-        T[] objects = null;
+        Class<T[]> arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";"); T[] objects = null;
         try {
             BufferedInputStream inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
             objects = objectMapper.readValue(inputStream, arrayClass);
         } catch (Exception e) {
-            System.out.println("Invalid path or the file is damaged: " + ANSI_RED + e.getMessage() + ANSI_RESET);
-            System.out.print("Would you like to change the path?" +
-                    " Type [Y/N] (N automatically terminates the program) \n$ ");
-            String decision = scanner.nextLine();
-            while(!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
-                decision = scanner.nextLine();
-            }
+            System.out.println("Invalid path or the file is damaged: \u001B[31m" + e.getMessage() + "\u001B[0m\n" +
+                    "Would you like to change the path? Type [Y/N] (N automatically terminates the program)");
+            String decision = Decision.decision("Y", "N");
             if (decision.equalsIgnoreCase("N")) {
-                System.out.println("Program has been successfully terminated");
-                System.exit(0);
+                System.out.println("Terminating process..."); System.exit(0);
             }
             else {
                 boolean isPath = false;
-                System.out.print("Enter path to continue program execution or [N] to terminate the program \n$ ");
+                System.out.print("Enter path to continue program execution or [N] to terminate the program\n$ ");
                 do {
                     try {
                         yaml = scanner.nextLine();
                         if (yaml.equalsIgnoreCase("N")) {
-                            System.out.println("Program has been successfully terminated");
-                            System.exit(0);
+                            System.out.println("Terminating process..."); System.exit(0);
                         }
                         BufferedInputStream inputStream = (BufferedInputStream) type.getClassLoader().getResourceAsStream(yaml);
-                        objects = objectMapper.readValue(inputStream, arrayClass);
-                        isPath = true;
+                        objects = objectMapper.readValue(inputStream, arrayClass); isPath = true;
                     } catch (Exception exception) {
-                        System.out.println("Invalid value: " + ANSI_RED + exception.getMessage() + ANSI_RESET);
-                        System.out.print("Enter path to continue program execution or [N] to terminate the program \n$ ");
+                        System.out.println("Invalid value: \u001B[31m" + exception.getMessage() + "\u001B[0m\n" +
+                                "Enter path to continue program execution or [N] to terminate the program\n$ ");
                     }
                 } while (!isPath);
             }
