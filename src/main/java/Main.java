@@ -11,7 +11,7 @@ public class Main {
                 " database console application---\u001B[0m");
         System.out.print("\nInput path to the file\n$ ");
         Scanner scanner = new Scanner(System.in);
-        String path = scanner.nextLine();
+        String path = scanner.nextLine(); // src/main/resources/Person.yaml
         Loader loader = new Loader();
         loader.assertToken();
         Class<Person> type = Person.class;
