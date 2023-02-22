@@ -2,29 +2,22 @@ package updaters;
 
 import defaultClasses.*;
 import generators.*;
-import helpFun.Reflection;
-import helpFun.StringToDateParser;
-import validators.PersonValidator;
+import helpFun.*;
+import validators.*;
 
 import java.util.*;
 
 public class PersonUpdater implements UpdateAble<Person> {
-    private static final Scanner scanner;
-    private static final PersonValidator personValidator;
     private static final Map<String, Generate> map;
     private static final List<String> list;
 
     static {
-        scanner = new Scanner(System.in);
-
-        personValidator = new PersonValidator();
-
         map = new LinkedHashMap<>(3);
         map.put("hairColor", new ColorGenerator());
         map.put("location", new LocationGenerator());
         map.put("coordinates", new CoordinatesGenerator());
 
-        list = new ArrayList<>(3);
+        list = new ArrayList<>(4);
         list.add("name");
         list.add("passportID");
         list.add("birthday");
@@ -36,7 +29,7 @@ public class PersonUpdater implements UpdateAble<Person> {
         System.out.println("\u001B[33mWelcome to the Person Updater\u001B[0m");
         System.out.print("What would you like to update for " + person + "? \nType [Field name]" +
                 " or \"exit\" to leave the Person Updater. \u001B[33mNota bene:\u001B[0m field name" +
-                " is case sensitive\n$ "); String field = "";
+                " is case sensitive\n$ "); String field = ""; Scanner scanner = new Scanner(System.in);
         while (!field.equalsIgnoreCase("EXIT")) {
             field = scanner.nextLine();
             if (field.equalsIgnoreCase("EXIT")) {
@@ -50,7 +43,7 @@ public class PersonUpdater implements UpdateAble<Person> {
                     System.out.println("\u001B[31m" + e.getMessage() + "\n" + e.getCause() + "\u001B[0m"); System.exit(0);
                 }
                 var previous_value = Reflection.getValue(person, field); Reflection.setValue(person, field, fieldClass, parameter);
-                if (personValidator.validate(person)) {
+                if (new PersonValidator().validate(person)) {
                     System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}"); type();
                 } else {
                     Reflection.setValue(person, field, fieldClass, previous_value);
@@ -86,7 +79,7 @@ public class PersonUpdater implements UpdateAble<Person> {
                     System.out.print("Input " + field + " (not null)\n$ ");
                     Reflection.setValue(person, field, String.class, scanner.nextLine());
                 }
-                if (personValidator.validate(person)) {
+                if (new PersonValidator().validate(person)) {
                     System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}");
                     type();
                 } else {
@@ -108,6 +101,6 @@ public class PersonUpdater implements UpdateAble<Person> {
 
     private static void type() {
         System.out.print("Type [Field name] to update anything else or" +
-                " \"exit\" to exit the Person Updater. \u001B[33mNota bene:\u001B[0m" + " field name is case sensitive\n$ ");
+                " \"exit\" to exit the Person Updater. \u001B[33mNota bene:\u001B[0m field name is case sensitive\n$ ");
     }
 }
