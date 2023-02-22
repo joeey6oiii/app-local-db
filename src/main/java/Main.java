@@ -8,7 +8,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         System.out.println("\u001B[33m---Welcome to the Person" +
-                " database console application!---\u001B[0m");
+                " database console application---\u001B[0m");
         System.out.print("\nInput path to the file\n$ ");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();

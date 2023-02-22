@@ -9,19 +9,12 @@ import validators.PersonValidator;
 import java.util.*;
 
 public class PersonUpdater implements UpdateAble<Person> {
-    private static final String ANSI_YELLOW;
-    private static final String ANSI_RED;
-    private static final String ANSI_RESET;
     private static final Scanner scanner;
     private static final PersonValidator personValidator;
     private static final Map<String, Generate> map;
     private static final List<String> list;
 
     static {
-        ANSI_YELLOW = "\u001B[33m";
-        ANSI_RED = "\u001B[31m";
-        ANSI_RESET = "\u001B[0m";
-
         scanner = new Scanner(System.in);
 
         personValidator = new PersonValidator();
@@ -40,11 +33,10 @@ public class PersonUpdater implements UpdateAble<Person> {
 
     @Override
     public void update(Person person) {
-        System.out.println(ANSI_YELLOW + "Welcome to the Person Updater!" + ANSI_RESET);
+        System.out.println("\u001B[33mWelcome to the Person Updater\u001B[0m");
         System.out.print("What would you like to update for " + person + "? \nType [Field name]" +
-                " or \"exit\" to leave the Person Updater (" + ANSI_YELLOW + "Nota bene:" + ANSI_RESET
-                + " field name is case sensitive) \n$ ");
-        String field = "";
+                " or \"exit\" to leave the Person Updater. \u001B[33mNota bene:\u001B[0m field name" +
+                " is case sensitive\n$ "); String field = "";
         while (!field.equalsIgnoreCase("EXIT")) {
             field = scanner.nextLine();
             if (field.equalsIgnoreCase("EXIT")) {
@@ -55,55 +47,47 @@ public class PersonUpdater implements UpdateAble<Person> {
                 try {
                     fieldClass = person.getClass().getDeclaredField(field).getType();
                 } catch (NoSuchFieldException e) {
-                    System.out.println(ANSI_RED + e.getMessage() + "\n"
-                            + e.getCause() + ANSI_RESET); System.exit(0);
+                    System.out.println("\u001B[31m" + e.getMessage() + "\n" + e.getCause() + "\u001B[0m"); System.exit(0);
                 }
-                var previous_value = Reflection.getValue(person, field);
-                Reflection.setValue(person, field, fieldClass, parameter);
+                var previous_value = Reflection.getValue(person, field); Reflection.setValue(person, field, fieldClass, parameter);
                 if (personValidator.validate(person)) {
-                    System.out.println(field + " has been successfully updated for Person{id=" + person.getId() + "}!");
-                    type();
+                    System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}"); type();
                 } else {
                     Reflection.setValue(person, field, fieldClass, previous_value);
-                    System.out.print(ANSI_RED + "Validation failed" + ANSI_RESET + ", please, try again \n$ ");
+                    System.out.print("\u001B[31mValidation failed\u001B[0m" + ", please, try again\n$ ");
                 }
             } else if (list.contains(field)) {
                 var previous_value = Reflection.getValue(person, field);
                 boolean boolBirthday = field.equalsIgnoreCase("BIRTHDAY");
                 boolean boolHeight = field.equalsIgnoreCase("HEIGHT");
                 if (boolBirthday) {
-                    System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
-                    boolean checked = false;
-                    String strBirthday; Date birthday = null;
+                    System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss\n$ ");
+                    boolean checked = false; String strBirthday; Date birthday = null;
                     do {
                         try {
                             strBirthday = scanner.nextLine();
-                            birthday = StringToDateParser.stringToDate(strBirthday);
-                            checked = true;
+                            birthday = StringToDateParser.stringToDate(strBirthday); checked = true;
                         } catch (Exception e) {
-                            System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss \n$ ");
+                            System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss\n$ ");
                         }
                     } while (!checked);
                     Reflection.setValue(person, field, Date.class, birthday);
                 } else if (boolHeight){
-                    System.out.print("Input " + field + " \n$ ");
-                    boolean checked = false;
-                    int height = 0;
+                    System.out.print("Input " + field + "\n$ "); boolean checked = false; int height = 0;
                     do {
                         try {
-                            height = Integer.parseInt(scanner.nextLine());
-                            checked = true;
+                            height = Integer.parseInt(scanner.nextLine()); checked = true;
                         } catch (Exception e) {
-                            System.out.print("Input " + field + " \n$ ");
+                            System.out.print("Input " + field + "\n$ ");
                         }
                     } while (!checked);
                     Reflection.setValue(person, field, int.class, height);
                 } else {
-                    System.out.print("Input " + field + " (not null) \n$ ");
+                    System.out.print("Input " + field + " (not null)\n$ ");
                     Reflection.setValue(person, field, String.class, scanner.nextLine());
                 }
                 if (personValidator.validate(person)) {
-                    System.out.println(field + " has been successfully updated for Person{id=" + person.getId() + "}!");
+                    System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}");
                     type();
                 } else {
                     if (boolBirthday) {
@@ -113,20 +97,18 @@ public class PersonUpdater implements UpdateAble<Person> {
                     } else {
                         Reflection.setValue(person, field, String.class, previous_value);
                     }
-                    System.out.print(ANSI_RED + "Validation failed" +
-                            ANSI_RESET + ", please, try again \n$ ");
+                    System.out.print("\u001B[31mValidation failed\u001B[0m, please, try again\n$ ");
                 }
             }
             else {
-                System.out.print("No such field or field is unavailable to update \n$ ");
+                System.out.print("No such field or field is unavailable to update\n$ ");
             }
         }
-        System.out.println(ANSI_YELLOW + "Exit Person Updater" + ANSI_RESET);
+        System.out.println("\u001B[33mExit Person Updater\u001B[0m");
     }
 
     private static void type() {
         System.out.print("Type [Field name] to update anything else or" +
-                " \"exit\" to exit the Person Updater (" + ANSI_YELLOW + "Nota bene:"
-                + ANSI_RESET + " field name is case sensitive) \n$ ");
+                " \"exit\" to exit the Person Updater. \u001B[33mNota bene:\u001B[0m" + " field name is case sensitive\n$ ");
     }
 }
