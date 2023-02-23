@@ -3,7 +3,7 @@ package defaultClasses;
 import java.util.Date;
 import java.util.Objects;
 
-public class Person implements Generated, IsUpdateable {
+public class Person implements Generated, IsUpdateable, Comparable<Person> {
     private static Integer identifier = 0;
     private final Integer id;
     private String name;
@@ -136,5 +136,9 @@ public class Person implements Generated, IsUpdateable {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, coordinates, creationDate, height, birthday, passportID, hairColor, location);
+    }
+
+    public int compareTo (Person anotherPerson){
+        return this.id-anotherPerson.id;
     }
 }

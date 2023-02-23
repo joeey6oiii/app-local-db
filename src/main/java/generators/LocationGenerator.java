@@ -18,7 +18,7 @@ public class LocationGenerator implements Generate {
             location.setY(y);
             System.out.print("Enter name \n$ ");
             String name = scanner.nextLine();
-            if (Objects.equals(name, "")) {
+            if (name.equals("")) {
                 location.setName(null);
             } else {
                 location.setName(name);

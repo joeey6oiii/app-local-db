@@ -8,7 +8,7 @@ public class Exit extends BaseCommand {
 
     public void execute(DataBase obj) {
         System.out.println("Are you sure you want to end the program?");
-        System.out.println("Enter [y/n]");
+        System.out.println("Enter [Y/N]");
         Scanner scanner = new Scanner(System.in);
         String str = "";
         while (true) {

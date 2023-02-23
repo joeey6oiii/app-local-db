@@ -31,7 +31,7 @@ public class Loader {
     public void load(DataBase dataBase, List<Person> people){
         for (Person person : people) {
             if(new PersonValidator().validate(person)) {
-                dataBase.getCollection().add(person); System.out.println("\u001B[32mAdded:\u001B[0m " + person);
+                dataBase.getCollection().add(person); dataBase.SortCollection(); System.out.println("\u001B[32mAdded:\u001B[0m " + person);
             } else if (!token){
                 boolean delete = false; Scanner scanner = new Scanner(System.in);
                 while (!new NameValidator().validate(person.getName()) && !delete && !token) {
@@ -157,9 +157,11 @@ public class Loader {
                         } else { System.out.println("Set new location=" + person.getLocation() + " for Person{id=" + person.getId() + "}"); }
                     }
                 }
-                if (!delete && !token) { dataBase.getCollection().add(person); System.out.println("\n\u001B[32mAdded:\u001B[0m " + person); }
+                if (!delete && !token) {
+                    dataBase.getCollection().add(person); dataBase.SortCollection(); System.out.println("\n\u001B[32mAdded:\u001B[0m " + person);
+                }
             } else { System.out.println("\u001B[31mDeleted: \u001B[0m" + person); }
         }
-        System.out.println("\n\u001B[33m---Validation completed successfully!---\n" + "---Data upload completed successfully!---\u001B[0m\n");
+        System.out.println("\n\u001B[33m---Validation completed successfully!---\n---Data upload completed successfully!---\u001B[0m\n");
     }
 }
