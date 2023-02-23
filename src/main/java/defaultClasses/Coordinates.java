@@ -3,30 +3,29 @@ package defaultClasses;
 import java.util.Objects;
 
 public class Coordinates implements Generated {
-    private int x;
-    private float y;
+    private long x;
+    private int y;
 
-    public Coordinates() {
-    }
+    public Coordinates() {}
 
-    public Coordinates(Integer x, Float y) {
+    public Coordinates(long x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public Integer getX() {
+    public long getX() {
         return x;
     }
 
-    public void setX(Integer x) {
+    public void setX(long x) {
         this.x = x;
     }
 
-    public Float getY() {
+    public int getY() {
         return y;
     }
 
-    public void setY(Float y) {
+    public void setY(int y) {
         this.y = y;
     }
 

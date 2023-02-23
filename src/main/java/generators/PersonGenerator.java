@@ -4,10 +4,10 @@ import defaultClasses.Color;
 import defaultClasses.Coordinates;
 import defaultClasses.Location;
 import defaultClasses.Person;
-import helpFun.StringToLocalDatetimeParser;
+import helpFun.StringToDateParser;
 import validators.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class PersonGenerator implements Generate {
@@ -30,10 +30,10 @@ public class PersonGenerator implements Generate {
         }
         person.setCoordinates(coordinates);
         System.out.print("Enter height (Long) \n$ ");
-        Long height = (long) -10;
+        int height = -10;
         while (!new HeightValidator().validate(height)) {
             try {
-                height = Long.parseLong(scanner.next());
+                height = Integer.parseInt(scanner.next());
                 if (!new HeightValidator().validate(height))
                     System.out.print("Incorrect height. Enter height again \n$ ");
             } catch (Exception e) {
@@ -47,7 +47,7 @@ public class PersonGenerator implements Generate {
         String test = scanner.nextLine(); // он кушает /n в буфере
         test = scanner.nextLine();
         boolean flag = true;
-        LocalDateTime date = null;
+        Date date = null;
         while (flag) {
             try {
                 if (test == "") {
@@ -56,7 +56,7 @@ public class PersonGenerator implements Generate {
                     break;
                 }
                 else {
-                    date = StringToLocalDatetimeParser.stringToLocalDateTime(test);
+                    date = StringToDateParser.stringToDate(test);
                     flag = false;
                 }
             } catch (Exception e){
@@ -92,7 +92,7 @@ public class PersonGenerator implements Generate {
             System.out.println("Incorrect location");
             location = locationGenerator.generate();
         }
-        person.setLocation(locationGenerator.generate());
+        person.setLocation(location);
 
         return person;
     }

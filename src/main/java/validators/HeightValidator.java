@@ -1,9 +1,9 @@
 package validators;
 
-public class HeightValidator implements ValidateAble<Long> {
+public class HeightValidator implements ValidateAble<Integer> {
 
     @Override
-    public boolean validate(Long height) {
-        return !(height == null || height <= 0);
+    public boolean validate(Integer height) {
+        return height > 0;
     }
 }

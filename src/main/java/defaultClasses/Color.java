@@ -3,8 +3,6 @@ package defaultClasses;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import generators.Generate;
-import helpFun.SystemNotification;
 
 import java.util.ArrayList;
 
@@ -14,12 +12,9 @@ import java.util.stream.Collectors;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Color implements Generated {
-    GREEN("green"),
     RED("red"),
     ORANGE("orange"),
-    WHITE("white"),
-    BROWN("brown"),
-    BLACK("black");
+    WHITE("white");
 
     private final String colorName;
 
@@ -43,10 +38,10 @@ public enum Color implements Generated {
             return Arrays.stream(Color.values()).filter(e -> e.name().equalsIgnoreCase(colorName)).findAny().get();
         }
         else {
-            SystemNotification.notification("REASSIGNED VALUE: \"hairColor=" + colorName
-                    + "\" -> \"hairColor=null\" FOR Person{id=" + Person.getIdentifier()
-                    + "}. TO CHANGE THE VALUE, PLEASE, TYPE \"update " + Person.getIdentifier() + " {hairColor}\"" +
-                    " AFTER DATA UPLOADING FINISHES");
+            System.out.println("\u001B[31m" + "Reassigned value:\u001B[0m \"hairColor="
+                    + colorName + "\" -> \"hairColor=null\" for Person{id=" + Person.getIdentifier()
+                    + "}. To change the value, please, type \"update " + Person.getIdentifier() +
+                    " {hairColor}\" after the data is loaded");
         }
         return null;
     }
