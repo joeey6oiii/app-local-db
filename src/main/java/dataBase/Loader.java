@@ -35,6 +35,7 @@ public class Loader {
         for (Person person : people) {
             if(personValidator.validate(person)) {
                 dataBase.getCollection().add(person);
+                dataBase.SortCollection();
             } else if (!token){
                 boolean delete = false;
                 Scanner scanner = new Scanner(System.in);
@@ -177,6 +178,7 @@ public class Loader {
                 }
                 if (!delete && !token) {
                     dataBase.getCollection().add(person); System.out.println("\u001B[32m" + "Added:\u001B[0m " + person);
+                    dataBase.SortCollection();
                 }
             } else {
                 System.out.println("\u001B[31mDeleted: \u001B[0m" + person);

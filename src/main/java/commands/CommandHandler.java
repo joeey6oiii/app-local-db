@@ -28,6 +28,8 @@ public class CommandHandler {
         map.put("sum_of_height", new SumOfHeight());
         map.put("average_of_height", new AverageOfHeight());
         map.put("print_field_descending_birthday", new PrintFieldDescendingBirthday());
+        map.put("remove_greater", new RemoveGreater());
+        map.put("remove_lower", new RemoveLower());
     }
 
     public static void handleCommand(String str) {

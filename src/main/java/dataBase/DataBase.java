@@ -4,6 +4,8 @@ import defaultClasses.Person;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
 public class DataBase {
     private HashSet<Person> dataBase = new HashSet<>();
@@ -11,6 +13,10 @@ public class DataBase {
 
     public DataBase(){
         initializationTime = LocalDateTime.now();
+    }
+
+    public void SortCollection(){
+       dataBase =  dataBase.stream().sorted(Person::compareTo).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public HashSet<Person> getCollection() {
