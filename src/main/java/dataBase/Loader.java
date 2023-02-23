@@ -146,7 +146,10 @@ public class Loader {
                         if (decision.equalsIgnoreCase("Y")) {
                             person.setLocation(null);
                         } else {
-                            System.out.print("Continue creating new location...\n"); person.setLocation(new LocationGenerator().generate());
+                            boolean notNull = false; System.out.print("Continue creating new location...\n");
+                            while (!notNull) {
+                                person.setLocation(new LocationGenerator().generate()); notNull = person.getLocation() != null;
+                            }
                         }
                     }
                     if (!delete && !token) {
