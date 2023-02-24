@@ -9,11 +9,11 @@ public class CoordinatesGenerator implements Generate {
         try {
             Coordinates coordinates = new Coordinates();
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter x (int) \n$ ");
-            int x = scanner.nextInt();
+            System.out.print("Enter x (long) \n$ ");
+            long x = Long.parseLong(scanner.nextLine());
             coordinates.setX(x);
-            System.out.print("Enter y (float) \n$ ");
-            float y = scanner.nextFloat();
+            System.out.print("Enter y (int) \n$ ");
+            int y = Integer.parseInt(scanner.nextLine());
             coordinates.setY(y);
             return coordinates;
         } catch (Exception e){

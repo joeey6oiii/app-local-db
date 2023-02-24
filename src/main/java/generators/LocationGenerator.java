@@ -10,18 +10,15 @@ public class LocationGenerator implements Generate {
         Scanner scanner = new Scanner(System.in);
         Location location = new Location();
         try {
-            System.out.print("Enter x (int) \n$ ");
-            int x = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter x (Float) \n$ ");
+            Float x = Float.parseFloat(scanner.nextLine());
             location.setX(x);
-            System.out.print("Enter y (double) \n$ ");
-            double y = Double.parseDouble(scanner.nextLine());
+            System.out.print("Enter y (Integer) \n$ ");
+            Integer y = Integer.parseInt(scanner.nextLine());
             location.setY(y);
-            System.out.print("Enter z (int) \n$ ");
-            int z = Integer.parseInt(scanner.nextLine());
-            location.setZ(z);
             System.out.print("Enter name \n$ ");
             String name = scanner.nextLine();
-            if (Objects.equals(name, "")) {
+            if (name.equals("")) {
                 location.setName(null);
             } else {
                 location.setName(name);

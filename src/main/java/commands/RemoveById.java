@@ -12,16 +12,17 @@ public class RemoveById extends BaseCommand {
     @Override
     public void execute(DataBase obj) throws IOException {
         try{
-            Long a = Long.parseLong(super.getParameter());
+            Integer a = Integer.parseInt(super.getParameter());
             var array = obj.getCollection();
             Iterator<Person> it = array.iterator();
             while(it.hasNext()){
                 if(it.next().getId().equals(a)){
                     it.remove();
-                    break;
+                    System.out.println("Element with id " + a + " has been successfully removed");
+                    return;
                 }
             }
-            System.out.println("Element with id " + a + " has been successfully removed");
+            System.out.println("Element with id " + a + " not found");
         } catch (Exception e) {
             System.out.println("Incorrect argument, command cannot be executed");
         }

@@ -2,20 +2,24 @@
 - name: "Alexey"
   coordinates:
     x: 1
-    "y": 3.0
-  height: 2
-  birthday: "2018-02-14T20:01:58.2680781"
-  passportID: "78910"
+    "y": 99
+  height: 4
+  birthday: "2004-03-14T20:01:58.2680781"
+  passportID: "dsmflfmdlFM"
   hairColor: null
-  location: null
+  location:
+    x: 5
+    "y": 9
+    z: 111
+    name: "src/main/java"
 - name: "Dmitry"
   coordinates:
     x: 2
     "y": 2.0
-  height: null
+  height: 1
   birthday: "2020-03-14T20:01:58.2680781"
   passportID: "123456"
-  hairColor: "BROWN"
+  hairColor: "red"
   location:
     x: 6
     "y": 3.0
@@ -27,7 +31,7 @@
     "y": 74.3
   height: 4
   birthday: "2023-02-14T20:01:58.8293456"
-  passportID: null
+  passportID: "098765"
   hairColor: true
   location: null
 - name: "Simon"
@@ -37,7 +41,7 @@
   height: 2
   birthday: "2000-04-15T20:04:23.8293456"
   passportID: "si88200123"
-  hairColor: "BLACK"
+  hairColor: "orange"
   location:
     x: 59
     "y": 12
@@ -62,8 +66,8 @@
     "y": 100
   height: 6
   birthday: "1968-06-15T20:12:17.8293456"
-  passportID: "2044"
-  hairColor: "gReEn"
+  passportID: "2044_d"
+  hairColor: "reD"
   location:
     x: 999
     "y": 666
@@ -90,7 +94,7 @@
   height: 3
   birthday: "2001-08-15T20:08:17.8293456"
   passportID: "dripset"
-  hairColor: "Brown"
+  hairColor: "REd"
   location:
     "y": 200
     z: -1000
@@ -100,8 +104,8 @@
   height: 1
   birthday: "1999-05-15T20:06:13.8293456"
   passportID: "linearDrippppp"
-  hairColor: "Brown"
+  hairColor: "orangE"
   location:
-    "y": 135716576916
-    z: -92749871
-    name: "1405"
+    "y": 6916
+    z: -871
+    name: "audi1405"

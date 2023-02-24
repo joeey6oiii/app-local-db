@@ -4,10 +4,11 @@ import defaultClasses.Color;
 import defaultClasses.Coordinates;
 import defaultClasses.Location;
 import defaultClasses.Person;
-import helpFun.StringToLocalDatetimeParser;
+import helpFun.Decision;
+import helpFun.StringToDateParser;
 import validators.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class PersonGenerator implements Generate {
@@ -30,10 +31,10 @@ public class PersonGenerator implements Generate {
         }
         person.setCoordinates(coordinates);
         System.out.print("Enter height (Long) \n$ ");
-        Long height = (long) -10;
+        int height = -10;
         while (!new HeightValidator().validate(height)) {
             try {
-                height = Long.parseLong(scanner.next());
+                height = Integer.parseInt(scanner.next());
                 if (!new HeightValidator().validate(height))
                     System.out.print("Incorrect height. Enter height again \n$ ");
             } catch (Exception e) {
@@ -47,18 +48,11 @@ public class PersonGenerator implements Generate {
         String test = scanner.nextLine(); // он кушает /n в буфере
         test = scanner.nextLine();
         boolean flag = true;
-        LocalDateTime date = null;
+        Date date = null;
         while (flag) {
             try {
-                if (test == "") {
-                    person.setBirthday(null);
-                    System.out.println("Birthday date is null");
-                    break;
-                }
-                else {
-                    date = StringToLocalDatetimeParser.stringToLocalDateTime(test);
+                    date = StringToDateParser.stringToDate(test);
                     flag = false;
-                }
             } catch (Exception e){
                 System.out.print("Incorrect. Enter the date in format yyyy-MM-dd HH:mm:ss : If you don't want to chose birthday press ENTER \n$ ");
                 test = scanner.nextLine();
@@ -68,32 +62,50 @@ public class PersonGenerator implements Generate {
         System.out.print("Enter passportID \n$ ");
         String passportId = scanner.next();
         while(!new PassportIDValidator().validate(passportId)) {
-            System.out.println("Incorrect passportId. PassportId length must be in range [4, 32] \n$ ");
+            System.out.print("Incorrect passportId. PassportId length must be in range [4, 32] \n$ ");
             passportId = scanner.next();
         }
         person.setPassportID(passportId);
         System.out.println("Choose one of the hair colors");
         System.out.println(Color.listValues());
         System.out.println("If you don't want to chose hair color press ENTER");
-        //TODO налепить валидатор
         String str;
         str = scanner.nextLine();
-        Color cl;
-        if (str == "") {
-            cl = null;
-        } else {
-            cl = Color.getColorByName(str.toLowerCase());
+        System.out.print("$ ");
+        str = scanner.nextLine();
+        String decision = "N";
+        Color cl = null;
+        while(decision == "N") {
+            cl = Color.getColorByName(str);
+            if (cl == null){
+                System.out.println("Your HairColor is null. Would you like to create null HairColor? Type [Y/N]");
+                decision = Decision.decision("Y", "N");
+                if (decision == "Y"){
+                    person.setHairColor(cl);
+                    break;
+                }
+            }
+            else{
+                person.setHairColor(cl);
+                break;
+            }
+            System.out.print("$ ");
+            str = scanner.nextLine();
         }
-        person.setHairColor(cl);
         System.out.println("Creating Location:");
         LocationGenerator locationGenerator = new LocationGenerator();
         Location location = locationGenerator.generate();
-        while (!new LocationValidator().validate(location)){
-            System.out.println("Incorrect location");
+        decision = "N";
+        while((!new LocationValidator().validate(location) && decision == "N") || location == null){
+            if (location==null){
+                System.out.println("Your location is null. Would you like to create null location? Type [Y/N]");
+                decision = Decision.decision("Y", "N");
+                if (decision.equals("Y"))
+                    break;
+            }
             location = locationGenerator.generate();
         }
-        person.setLocation(locationGenerator.generate());
-
+        person.setLocation(location);
         return person;
     }
 }

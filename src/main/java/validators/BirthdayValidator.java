@@ -1,11 +1,11 @@
 package validators;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-public class BirthdayValidator implements ValidateAble<LocalDateTime> {
+public class BirthdayValidator implements ValidateAble<Date> {
 
     @Override
-    public boolean validate(LocalDateTime birthday) {
+    public boolean validate(Date birthday) {
         return birthday != null;
     }
 }
