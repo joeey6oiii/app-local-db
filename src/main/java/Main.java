@@ -20,7 +20,7 @@ public class Main {
         try {
             list = yamlReader.readYaml(path, type);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File not found");
         }
         loader.load(GlobalObj.dataBase, list);
         CommandManager commandManager = new CommandManager();
