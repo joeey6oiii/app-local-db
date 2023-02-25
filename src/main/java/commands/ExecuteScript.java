@@ -36,6 +36,6 @@ public class ExecuteScript extends BaseCommand {
     }
 
     public void describe() {
-
+        System.out.println("Reads and executes a script from the specified file");
     }
 }

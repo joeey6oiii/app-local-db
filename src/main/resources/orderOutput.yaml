@@ -3,32 +3,94 @@
   name: "Alexey"
   coordinates:
     x: 1
-    "y": 3.0
-  creationDate: "2023-02-17"
-  height: 2
-  birthday: "2023-02-14T20:01:58.2680781"
-  passportID: "78910"
+    "y": 99
+  creationDate: "2023-02-25T11:32:22.041+00:00"
+  height: 4
+  birthday: "2004-03-14T20:01:58.268+00:00"
+  passportID: "dsmflfmdlFM"
   hairColor: null
-  location: null
+  location:
+    x: 5.0
+    "y": 9
+    name: "src/main/java"
 - id: 2
   name: "Dmitry"
   coordinates:
     x: 2
-    "y": 2.0
-  creationDate: "2023-02-17"
-  height: null
-  birthday: "2023-02-14T20:01:58.2680781"
+    "y": 2
+  creationDate: "2023-02-25T11:32:22.045+00:00"
+  height: 1
+  birthday: "2020-03-14T20:01:58.268+00:00"
   passportID: "123456"
-  hairColor: "BROWN"
-  location: null
+  hairColor: {}
+  location:
+    x: 6.0
+    "y": 3
+    name: null
 - id: 3
   name: "Pavel"
   coordinates:
-    x: 100
-    "y": 90.0
-  creationDate: "2023-02-17"
+    x: 23
+    "y": 74
+  creationDate: "2023-02-25T11:32:22.055+00:00"
   height: 4
-  birthday: "2023-02-14T20:01:58.8293456"
-  passportID: null
-  hairColor: "RED"
+  birthday: "2023-02-14T20:01:58.829+00:00"
+  passportID: "098765"
+  hairColor: null
   location: null
+- id: 4
+  name: "Simon"
+  coordinates:
+    x: 100
+    "y": 90
+  creationDate: "2023-02-25T11:32:22.066+00:00"
+  height: 2
+  birthday: "2000-04-15T20:04:23.829+00:00"
+  passportID: "si88200123"
+  hairColor: {}
+  location:
+    x: 59.0
+    "y": 12
+    name: "ITMO"
+- id: 5
+  name: "Kaneki Ken"
+  coordinates:
+    x: 1
+    "y": 2
+  creationDate: "2023-02-25T11:32:22.068+00:00"
+  height: 4
+  birthday: "2007-12-15T20:04:23.829+00:00"
+  passportID: "imghoul"
+  hairColor: {}
+  location:
+    x: 234.0
+    "y": 599
+    name: "politech"
+- id: 6
+  name: "Spike Spiegel"
+  coordinates:
+    x: 34
+    "y": 100
+  creationDate: "2023-02-25T11:32:22.071+00:00"
+  height: 6
+  birthday: "1968-06-15T20:12:17.829+00:00"
+  passportID: "2044_d"
+  hairColor: {}
+  location:
+    x: 999.0
+    "y": 666
+    name: "Mars"
+- id: 7
+  name: "Sigma male"
+  coordinates:
+    x: 69
+    "y": 69
+  creationDate: "2023-02-25T11:32:22.072+00:00"
+  height: 7
+  birthday: "1969-07-15T20:06:15.829+00:00"
+  passportID: "00000000"
+  hairColor: null
+  location:
+    x: 69420.0
+    "y": 69420
+    name: "Heaven"
