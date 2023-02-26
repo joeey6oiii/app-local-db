@@ -50,6 +50,6 @@ public class ExecuteScript extends BaseCommand {
      * Method that displays the description of the command
      */
     public void describe() {
-        System.out.println("Execute script");
+        System.out.println("Reads and executes a script from the specified file");
     }
 }

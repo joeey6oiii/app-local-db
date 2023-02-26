@@ -35,15 +35,13 @@ public class YamlReader {
             System.out.print("Invalid path or the file is damaged: \u001B[31m" + e.getMessage() + "\u001B[0m\n");
             do {
                 try {
-                    System.out.print("Enter path to continue program execution or \"exit\" to terminate the program\n$ ");
+                    System.out.print("\nEnter path to continue program execution or \"exit\" to terminate the program\n$ ");
                     yaml = scanner.nextLine();
                     if (yaml.equalsIgnoreCase("EXIT")) {
-                        new Exit().execute(null);
-                    }
-                    else {
-                        InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(yaml));
-                        objects = objectMapper.readValue(inputStreamReader, arrayClass);
-                        inputStreamReader.close(); isPath = true;
+                        System.out.print("\n"); new Exit().execute(null);
+                    } else {
+                        System.out.print("\n"); InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(yaml));
+                        objects = objectMapper.readValue(inputStreamReader, arrayClass); inputStreamReader.close(); isPath = true;
                     }
                 } catch (Exception exception) {
                     System.out.print("Invalid path or the file is damaged: \u001B[31m" + exception.getMessage() + "\u001B[0m\n");
