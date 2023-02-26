@@ -4,7 +4,17 @@ import defaultClasses.Coordinates;
 
 import java.util.Scanner;
 
+/**
+ * A class that allows the user to create an object of class Coordinates
+ *
+ * @autor Dmitrii Chebanenko
+ */
 public class CoordinatesGenerator implements Generate {
+    /**
+     * Method that creates an object of class Coordinates
+     *
+     * @return coordinates
+     */
     public Coordinates generate() {
         try {
             Coordinates coordinates = new Coordinates();
@@ -16,7 +26,7 @@ public class CoordinatesGenerator implements Generate {
             int y = Integer.parseInt(scanner.nextLine());
             coordinates.setY(y);
             return coordinates;
-        } catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
