@@ -5,7 +5,17 @@ import yamlsTools.YamlWriter;
 
 import java.io.IOException;
 
+/**
+ * The class that implements the save command - saves the collection to a file along the path "src/main/resources/orderOutput.yaml"
+ *
+ * @autor Dmitrii Chebanenko
+ */
 public class Save extends BaseCommand {
+    /**
+     * Method that saves Person elements from the DataBase to a file along the path "src/main/resources/orderOutput.yaml"
+     *
+     * @param obj - link to the database containing the collection
+     */
     public void execute(DataBase obj) {
         YamlWriter yamlWriter = new YamlWriter();
         try {
@@ -16,6 +26,9 @@ public class Save extends BaseCommand {
         System.out.println("The collection has been saved. The path to the file is: \"src/main/resources/orderOutput.yaml\"");
     }
 
+    /**
+     * Method that displays the description of the command
+     */
     public void describe() {
         System.out.println("Saves the collection to a file");
     }

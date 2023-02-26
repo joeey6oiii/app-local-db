@@ -7,30 +7,62 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
+/**
+ * DataBase class - a database containing objects of the Person class
+ *
+ * @author Dmitrii Chebanenko
+ */
 public class DataBase {
+    /**
+     * Field dataBase {@link DataBase#dataBase} - contains objects of class Person
+     */
     private HashSet<Person> dataBase = new HashSet<>();
+    /**
+     * Field initializationTime {@link DataBase#initializationTime} - stores the collection initialization time
+     */
     private LocalDateTime initializationTime;
 
-    public DataBase(){
+    /**
+     * Base constructor - initializes the field {@link DataBase#initializationTime}
+     */
+    public DataBase() {
         initializationTime = LocalDateTime.now();
     }
 
-    public void SortCollection(){
-       dataBase =  dataBase.stream().sorted(Person::compareTo).collect(Collectors.toCollection(LinkedHashSet::new));
+    /**
+     * Sorts the collection using the Person class comparator
+     */
+    public void SortCollection() {
+        dataBase = dataBase.stream().sorted(Person::compareTo).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
+    /**
+     * return dataBase
+     *
+     * @return dataBase
+     */
     public HashSet<Person> getCollection() {
         return dataBase;
     }
 
-    public long getSizeOfTheCollection(){
+    /**
+     * @return dataBase size
+     */
+    public long getSizeOfTheCollection() {
         return dataBase.size();
     }
 
-    public LocalDateTime getInitializationTime (){
+    /**
+     * @return InitializationTime
+     */
+
+    public LocalDateTime getInitializationTime() {
         return initializationTime;
     }
 
+    /**
+     * @return Type
+     */
     public Class getTypeOfTheCollection() {
         return dataBase.getClass();
     }

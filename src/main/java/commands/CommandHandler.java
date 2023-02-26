@@ -6,15 +6,28 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Command processing class
+ *
+ * @authors Dmitrii Chebanenko and Alexey
+ */
 public class CommandHandler {
-
+    /**
+     * Field to store all commands
+     */
     private static Map<String, BaseCommand> map;
+    /**
+     * Field for storing executed commands
+     */
     private static ArrayList<String> history;
 
+    /**
+     *
+     The map initialization block, if you add a command, you must add it to the map
+     */
     static {
         map = new LinkedHashMap<>();
         history = new ArrayList<>();
-
         map.put("add", new AddToCollection());
         map.put("info", new Info());
         map.put("show", new Show());
@@ -32,6 +45,12 @@ public class CommandHandler {
         map.put("remove_lower", new RemoveLower());
     }
 
+    /**
+     * Method for processing commands with CommandHandler or with ExecuteScript
+     *
+     * @param str - command from CommandHandler or from ExecuteScript
+     */
+
     public static void handleCommand(String str) {
         var a = str.split(" ");
         try {
@@ -45,15 +64,25 @@ public class CommandHandler {
         }
     }
 
-    public static Map<String, BaseCommand> getMap(){
+    /**
+     * Method for getting a list containing available commands
+     *
+     * @return returns a list of commands
+     */
+    public static Map<String, BaseCommand> getMap() {
         return map;
     }
 
+    /**
+     * Method for getting command execution history
+     *
+     * @return returns history of used commands
+     */
     public static ArrayList<String> getHistory() {
         return history;
     }
 
-    private static  <K, V> K getKey(Map<K, V> map, V value) {
+    private static <K, V> K getKey(Map<K, V> map, V value) {
         for (Map.Entry<K, V> entry : map.entrySet()) {
             if (entry.getValue().equals(value)) {
                 return entry.getKey();

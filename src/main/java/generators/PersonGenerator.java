@@ -11,7 +11,18 @@ import validators.*;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * A class that allows the user to create an object of class Person
+ *
+ * @autor Dmitrii Chebanenko
+ */
+
 public class PersonGenerator implements Generate {
+    /**
+     * Method that creates an object of class Person
+     *
+     * @return Person
+     */
     public Person generate() {
         Scanner scanner = new Scanner(System.in);
         Person person = new Person();
@@ -76,7 +87,7 @@ public class PersonGenerator implements Generate {
         String decision = "N";
         Color cl = null;
         while(decision == "N") {
-            cl = Color.getColorByName(str);
+            cl = Color.getColorByName(str.toLowerCase());
             if (cl == null){
                 System.out.println("Your HairColor is null. Would you like to create null HairColor? Type [Y/N]");
                 decision = Decision.decision("Y", "N");
