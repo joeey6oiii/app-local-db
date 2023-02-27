@@ -9,24 +9,55 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * A class that allows to load objects to a database collection after a successful validation.
+ */
+
 public class Loader {
     private boolean token = false;
 
+    /**
+     * Creates a new Loader with initial token value {@code false}.
+     */
+
     public Loader(){}
+
+    /**
+     * @return value of the token field
+     */
 
     public boolean getToken(){
         return this.token;
     }
 
+    /**
+     * @param token sets the value of the token field
+     */
+
     public void setToken(boolean token){
         this.token = token;
     }
+
+    /**
+     * Asks the user if they want to remove all objects with invalid parameters or change all the invalid values to
+     * correct to add object to the collection.
+     */
 
     public void assertToken() {
         System.out.println("\nWould you like to delete all objects with invalid parameters? Type [Y/N]");
         String decision = Decision.decision("Y", "N");
         if (decision.equalsIgnoreCase("Y")) { this.token = true; } System.out.print("\n");
     }
+
+    /**
+     * A method for loading objects after successful validation.
+     * <p>
+     * Each time asks the user if they want to change the invalid value, to delete object or to delete all objects with
+     * invalid parameters (Last one sets the token field value to {@code true})
+     *
+     * @param dataBase link to the database which contains the collection
+     * @param people a list of {@link Person} objects
+     */
 
     public void load(DataBase dataBase, List<Person> people){
         for (Person person : people) {
@@ -102,7 +133,7 @@ public class Loader {
                             do {
                                 try {
                                     strBirthday = scanner.nextLine();
-                                    dateBirthday = StringToDateParser.stringToDate(strBirthday); checked = true;
+                                    dateBirthday = StringToDateParser.parse(strBirthday); checked = true;
                                 } catch (Exception e) {
                                     System.out.print("Input birthday: Date (not null). Format: yyyy-MM-dd HH:mm:ss\n$ ");
                                 }

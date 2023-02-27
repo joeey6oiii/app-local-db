@@ -7,6 +7,12 @@ import validators.*;
 
 import java.util.*;
 
+/**
+ * A class that implements the {@link UpdateAble} interface. Used to update fields of the {@link Person} object.
+ * <p>
+ * Uses <code>Map</code> and <code>List</code> to store field names.
+ */
+
 public class PersonUpdater implements UpdateAble<Person> {
     private static final Map<String, Generate> map;
     private static final List<String> list;
@@ -23,6 +29,12 @@ public class PersonUpdater implements UpdateAble<Person> {
         list.add("birthday");
         list.add("height");
     }
+
+    /**
+     * Used to update the field values of the {@link Person} object in the collection.
+     *
+     * @param person person whose fields to update
+     */
 
     @Override
     public void update(Person person) {
@@ -44,7 +56,9 @@ public class PersonUpdater implements UpdateAble<Person> {
                 }
                 var previous_value = Reflection.getValue(person, field); Reflection.setValue(person, field, fieldClass, parameter);
                 if (new PersonValidator().validate(person)) {
-                    System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}"); type();
+                    System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}");
+                    System.out.print("Type [Field name] to update anything else or" +
+                            " \"exit\" to exit the Person Updater. \u001B[33mNota bene:\u001B[0m field name is case sensitive\n$ ");
                 } else {
                     Reflection.setValue(person, field, fieldClass, previous_value);
                     System.out.print("\u001B[31mValidation failed\u001B[0m" + ", please, try again\n$ ");
@@ -59,13 +73,13 @@ public class PersonUpdater implements UpdateAble<Person> {
                     do {
                         try {
                             strBirthday = scanner.nextLine();
-                            birthday = StringToDateParser.stringToDate(strBirthday); checked = true;
+                            birthday = StringToDateParser.parse(strBirthday); checked = true;
                         } catch (Exception e) {
                             System.out.print("Input " + field + " (not null). Format: yyyy-MM-dd HH:mm:ss\n$ ");
                         }
                     } while (!checked);
                     Reflection.setValue(person, field, Date.class, birthday);
-                } else if (boolHeight){
+                } else if (boolHeight) {
                     System.out.print("Input " + field + "\n$ "); boolean checked = false; int height = 0;
                     do {
                         try {
@@ -81,7 +95,8 @@ public class PersonUpdater implements UpdateAble<Person> {
                 }
                 if (new PersonValidator().validate(person)) {
                     System.out.println("Updated " + field + " for Person{id=" + person.getId() + "}");
-                    type();
+                    System.out.print("Type [Field name] to update anything else or" +
+                            " \"exit\" to exit the Person Updater. \u001B[33mNota bene:\u001B[0m field name is case sensitive\n$ ");
                 } else {
                     if (boolBirthday) {
                         Reflection.setValue(person, field, Date.class, previous_value);
@@ -97,10 +112,5 @@ public class PersonUpdater implements UpdateAble<Person> {
             }
         }
         System.out.println("\u001B[33mExit Person Updater\u001B[0m");
-    }
-
-    private static void type() {
-        System.out.print("Type [Field name] to update anything else or" +
-                " \"exit\" to exit the Person Updater. \u001B[33mNota bene:\u001B[0m field name is case sensitive\n$ ");
     }
 }

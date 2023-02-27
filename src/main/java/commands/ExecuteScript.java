@@ -11,7 +11,7 @@ import java.util.LinkedList;
 /**
  * A class that implements the execute_script command, which allows you to execute a script
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class ExecuteScript extends BaseCommand {
     /**
