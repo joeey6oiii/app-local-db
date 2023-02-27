@@ -6,7 +6,20 @@ import updaters.PersonUpdater;
 
 import java.io.IOException;
 
+/**
+ * A class that implements the update_by_id command.
+ */
+
 public class UpdateById extends BaseCommand {
+
+    /**
+     * When called, iterates through the collection to find the {@link Person} object with the specified id. If not found,
+     * outputs <code>String</code>, otherwise calls the {@link PersonUpdater#update(Person)} method on the found person.
+     * @see PersonUpdater
+     *
+     * @param obj link to the database which contains the collection
+     * @throws IOException
+     */
 
     @Override
     public void execute(DataBase obj) throws IOException {
@@ -21,6 +34,10 @@ public class UpdateById extends BaseCommand {
             System.out.println("No person matches id=" + super.getParameter());
         }
     }
+
+    /**
+     * A method that outputs the description of the command.
+     */
 
     @Override
     public void describe() {

@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * A class that allows the user to create an object of class Person
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 
 public class PersonGenerator implements Generate {
@@ -62,7 +62,7 @@ public class PersonGenerator implements Generate {
         Date date = null;
         while (flag) {
             try {
-                    date = StringToDateParser.stringToDate(test);
+                    date = StringToDateParser.parse(test);
                     flag = false;
             } catch (Exception e){
                 System.out.print("Incorrect. Enter the date in format yyyy-MM-dd HH:mm:ss : If you don't want to chose birthday press ENTER \n$ ");

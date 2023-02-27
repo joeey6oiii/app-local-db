@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * A class that allows the user to create an object of class Coordinates
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class CoordinatesGenerator implements Generate {
     /**

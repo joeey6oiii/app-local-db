@@ -5,7 +5,20 @@ import dataBase.DataBase;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * A class that implements the help command.
+ */
+
 public class Help extends BaseCommand {
+
+    /**
+     * When called, iterates through the collection of commands: builds and prints an empty string with the length of
+     * the difference between the longest command name and current command name plus four, then calls
+     * {@link BaseCommand#describe()} method of the current command in the collection.
+     *
+     * @param obj link to the database which contains the collection
+     * @throws IOException
+     */
 
     @Override
     public void execute(DataBase obj) throws IOException {
@@ -21,6 +34,10 @@ public class Help extends BaseCommand {
             entry.getValue().describe();
         }
     }
+
+    /**
+     * A method that outputs the description of the command.
+     */
 
     @Override
     public void describe() {

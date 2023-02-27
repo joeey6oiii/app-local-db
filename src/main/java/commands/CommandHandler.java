@@ -83,6 +83,16 @@ public class CommandHandler {
         return history;
     }
 
+    /**
+     * A method that is used to get the command name (key) by a value from the collection.
+     *
+     * @param map the collection where all the commands are stored
+     * @param value a value of an object in the collection
+     * @return null if collection contains no key for the specified value, returns key otherwise
+     * @param <K> arbitrary non-primitive data type
+     * @param <V> arbitrary non-primitive data type
+     */
+
     private static <K, V> K getKey(Map<K, V> map, V value) {
         for (Map.Entry<K, V> entry : map.entrySet()) {
             if (entry.getValue().equals(value)) {
@@ -91,6 +101,12 @@ public class CommandHandler {
         }
         return null;
     }
+
+    /**
+     * A method that counts the length of each command name and returns name of the longest one. Used for the {@link Help} command.
+     *
+     * @return name of the longest command in the collection
+     */
 
     public static String getLongestCommandName() {
         String command = "";
