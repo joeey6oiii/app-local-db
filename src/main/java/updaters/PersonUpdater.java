@@ -39,7 +39,7 @@ public class PersonUpdater implements UpdateAble<Person> {
     @Override
     public void update(Person person) {
         System.out.print("\u001B[33mPersonUpdater started\u001B[0m\n" +
-                "Currently updating " + person + "?\nEnter [Field name]" +
+                "Currently updating " + person + "\nEnter [Field name]" +
                 " or \"exit\" to leave the Person Updater\n$ "); String field = ""; Scanner scanner = new Scanner(System.in);
         while (!field.equalsIgnoreCase("EXIT")) {
             field = scanner.nextLine();
