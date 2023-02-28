@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * The class that implements the save command - saves the collection to a file along the path "src/main/resources/orderOutput.yaml"
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class Save extends BaseCommand {
     /**

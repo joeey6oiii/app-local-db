@@ -23,8 +23,12 @@ public class YamlWriter {
     ObjectMapper mapper = new ObjectMapper(new YAMLFactory()).findAndRegisterModules();
     public void writeYaml(Object object) throws IOException {
         File file = new File("src/main/resources/orderOutput.yaml");
-        file.createNewFile();
-//        this.mapper.registerModule(new JavaTimeModule());
+        if(file.createNewFile()){
+            System.out.println("File created");
+        }
+        else{
+            System.out.println("File already exists");
+        }
         this.mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         this.mapper.writeValue(file, object);
     }

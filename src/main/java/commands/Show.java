@@ -5,7 +5,7 @@ import dataBase.DataBase;
 /**
  * The class that implements the show command - displays all elements from the DataBase
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class Show extends BaseCommand {
     /**
