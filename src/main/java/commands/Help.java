@@ -12,9 +12,9 @@ import java.util.Map;
 public class Help extends BaseCommand {
 
     /**
-     * When called, iterates through the collection of commands: builds and prints an empty string with the length of
-     * the difference between the longest command name and current command name plus four, then calls
-     * {@link BaseCommand#describe()} method of the current command in the collection.
+     * When called, counts the length of each command name to find the longest one, then iterates through the collection of commands:
+     * builds and prints an empty string with the length of the difference between the longest command name and current
+     * command name plus four, then calls {@link BaseCommand#describe()} method of the current command in the collection.
      *
      * @param obj link to the database which contains the collection
      * @throws IOException
@@ -22,13 +22,19 @@ public class Help extends BaseCommand {
 
     @Override
     public void execute(DataBase obj) throws IOException {
-        int l;
+        String command = "";
+        for (Map.Entry<String, BaseCommand> entry : CommandHandler.getMap().entrySet()) {
+            if (entry.getKey().length() > command.length()) {
+                command = entry.getKey();
+            }
+        }
+        int emptyStringLength;
         for (Map.Entry<String, BaseCommand> entry : CommandHandler.getMap().entrySet()) {
             StringBuilder stringBuilder = new StringBuilder();
-            l = CommandHandler.getLongestCommandName().length() + 4 - entry.getKey().length();
-            while (l != 0) {
+            emptyStringLength = command.length() + 4 - entry.getKey().length();
+            while (emptyStringLength != 0) {
                 stringBuilder.append(" ");
-                l -= 1;
+                emptyStringLength -= 1;
             }
             System.out.print(entry.getKey() + stringBuilder);
             entry.getValue().describe();

@@ -19,7 +19,7 @@ public class CommandHandler {
     /**
      * Field for storing executed commands
      */
-    private static ArrayList<String> history;
+    private static ArrayList<BaseCommand> history;
 
     /**
      *
@@ -59,7 +59,7 @@ public class CommandHandler {
                 map.get(a[0]).setParameter(a[1]);
             }
             map.get(a[0]).execute(GlobalObj.dataBase);
-            history.add(CommandHandler.getKey(map, map.get(a[0])));
+            history.add(map.get(a[0]));
         } catch (Exception e) {
             System.out.println("Invalid command. Please, type \"help\" to see a list of available commands and their description");
         }
@@ -79,42 +79,7 @@ public class CommandHandler {
      *
      * @return returns history of used commands
      */
-    public static ArrayList<String> getHistory() {
+    public static ArrayList<BaseCommand> getHistory() {
         return history;
-    }
-
-    /**
-     * A method that is used to get the command name (key) by a value from the collection.
-     *
-     * @param map the collection where all the commands are stored
-     * @param value a value of an object in the collection
-     * @return null if collection contains no key for the specified value, returns key otherwise
-     * @param <K> arbitrary non-primitive data type
-     * @param <V> arbitrary non-primitive data type
-     */
-
-    private static <K, V> K getKey(Map<K, V> map, V value) {
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-            if (entry.getValue().equals(value)) {
-                return entry.getKey();
-            }
-        }
-        return null;
-    }
-
-    /**
-     * A method that counts the length of each command name and returns name of the longest one. Used for the {@link Help} command.
-     *
-     * @return name of the longest command in the collection
-     */
-
-    public static String getLongestCommandName() {
-        String command = "";
-        for (Map.Entry<String, BaseCommand> entry : map.entrySet()) {
-            if (entry.getKey().length() > command.length()) {
-                command = entry.getKey();
-            }
-        }
-        return command;
     }
 }
