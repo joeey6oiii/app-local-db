@@ -51,7 +51,7 @@ public class Loader {
             System.out.println("\u001B[33mCompleted data upload\n\nMessage:" +
                     "\u001B[0m Some data is invalid, check the \"InvalidObjects.yaml\"" +
                     " file\nin the path \"" + GlobalPath.getPath() + "InvalidObjects.yaml\"" +
-                    " to see which\nobjects were not added to the collection\n");
+                    " to see which\nobjects were not added to the collection in the database\n");
         } else {
             System.out.println("\n\u001B[33mCompleted data upload\u001B[0m\n");
         }

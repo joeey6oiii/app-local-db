@@ -25,17 +25,15 @@ public class Main {
         System.out.println("\u001B[33m---Welcome to the Person" +
                 " database console application---\u001B[0m");
 
-        System.out.print("\nInput path to the file\n$ ");
+        System.out.print("\nEnter path to the file\n$ ");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
         GlobalPath.setPath(path);
 
-        Loader loader = new Loader();
-
         Class<Person> type = Person.class;
         YAMLReader yamlReader = new YAMLReader();
         List<Person> list = yamlReader.read(path, type);
-        loader.load(GlobalObj.dataBase, list);
+        new Loader().load(GlobalObj.dataBase, list);
 
         CommandManager commandManager = new CommandManager();
         commandManager.startWorking();
