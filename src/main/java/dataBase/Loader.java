@@ -2,8 +2,7 @@ package dataBase;
 
 import defaultClasses.*;
 import validators.*;
-import yamlsTools.GlobalPath;
-import yamlsTools.YamlWriter;
+import yamlsTools.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
