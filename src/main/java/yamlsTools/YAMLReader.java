@@ -47,11 +47,9 @@ public class YAMLReader {
         Class<T[]> arrayClass = null; T[] objects = null;
         try {
             arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
-        } catch (ClassNotFoundException e) {
-            System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m"); System.exit(0);
-        }
+        } catch (ClassNotFoundException ignored) {}
         try {
-            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
+            System.out.print("\n"); InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
             objects = objectMapper.readValue(inputStreamReader, arrayClass); inputStreamReader.close();
         } catch (Exception e) {
             boolean isPath = false; Scanner scanner = new Scanner(System.in);
@@ -63,6 +61,7 @@ public class YAMLReader {
                     if (path.equalsIgnoreCase("EXIT")) {
                         System.out.print("\n"); new Exit().execute(null);
                     } else {
+                        GlobalPath.setPath(path);
                         System.out.print("\n"); InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
                         objects = objectMapper.readValue(inputStreamReader, arrayClass); inputStreamReader.close(); isPath = true;
                     }

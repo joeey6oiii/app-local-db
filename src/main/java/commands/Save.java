@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * The class that implements the save command - saves the collection to a file along the path "src/main/resources/orderOutput.yaml"
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class Save extends BaseCommand {
     /**
@@ -19,7 +19,7 @@ public class Save extends BaseCommand {
     public void execute(DataBase obj) {
         YamlWriter yamlWriter = new YamlWriter();
         try {
-            yamlWriter.writeYaml(obj.getCollection());
+            yamlWriter.writeYaml(obj.getCollection(), "orderOutput.yaml");
         } catch (IOException e) {
             System.out.println("Something went wrong, the file was not created, please, try again");
         }

@@ -28,9 +28,9 @@ public class Main {
         System.out.print("\nInput path to the file\n$ ");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
+        GlobalPath.setPath(path);
 
         Loader loader = new Loader();
-        loader.assertToken();
 
         Class<Person> type = Person.class;
         YAMLReader yamlReader = new YAMLReader();

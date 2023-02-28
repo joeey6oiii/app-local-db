@@ -1,0 +1,27 @@
+---
+- id: 0
+  name: "Deadushka"
+  coordinates:
+    x: 99
+    "y": -99
+  creationDate: "2023-02-28T12:59:53.222+00:00"
+  height: 3
+  birthday: "2001-08-15T20:08:17.829+00:00"
+  passportID: "dripset"
+  hairColor: {}
+  location:
+    x: null
+    "y": 200
+    name: ""
+- id: 0
+  name: "Svintsoff"
+  coordinates: null
+  creationDate: "2023-02-28T12:59:53.223+00:00"
+  height: 1
+  birthday: "1999-05-15T20:06:13.829+00:00"
+  passportID: "linearDrippppp"
+  hairColor: {}
+  location:
+    x: null
+    "y": 6916
+    name: "audi1405"
