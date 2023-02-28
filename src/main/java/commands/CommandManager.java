@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Class for entering commands from the terminal
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class CommandManager {
     /**
