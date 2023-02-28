@@ -61,7 +61,7 @@ public class CommandHandler {
             map.get(a[0]).execute(GlobalObj.dataBase);
             history.add(map.get(a[0]));
         } catch (Exception e) {
-            System.out.println("Invalid command. Please, type \"help\" to see a list of available commands and their description");
+            System.out.println("Invalid command. Type \"help\" to see a list of available commands and their description");
         }
     }
 
