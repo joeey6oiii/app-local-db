@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * A class that allows to interact with object fields using <code>java.lang.reflect</code>.
+ *
+ * @see Caster
  */
 
 public class Reflection {

@@ -24,8 +24,7 @@ public class AddToCollection extends BaseCommand {
         Person person = personGenerator.generate();
         List<Person> list = new ArrayList<>();
         list.add(person);
-        Loader loader = new Loader();
-        loader.load(GlobalObj.dataBase, list);
+        new Loader().load(GlobalObj.dataBase, list);
     }
 
     /**

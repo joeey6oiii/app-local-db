@@ -2,6 +2,8 @@ package helpFun;
 
 /**
  * A class with help caster methods.
+ *
+ * @see Reflection
  */
 
 public class Caster {

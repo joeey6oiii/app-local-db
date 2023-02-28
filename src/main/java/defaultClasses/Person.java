@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Person implements Generated, IsUpdateable, Comparable<Person> {
     private static Integer identifier = 0;
-    private final Integer id;
+    private Integer id;
     private String name;
     private Coordinates coordinates;
     private final java.util.Date creationDate;
@@ -33,7 +33,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     }
 
     /**
-     * Creates a new Person with the specified parameters. Parameter id and creationDate assigns automatically, no setters.
+     * Creates a new Person with the specified parameters. Parameters id and creationDate are generated automatically.
      *
      * @param name the field name of the person (field can not be null, string can not be empty)
      * @param coordinates the field coordinates of the person (field can not be null)
@@ -59,7 +59,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     }
 
     /**
-     * @return abstract identifier that is used to create a new {@link Person} objects with a unique id field
+     * @return abstract identifier that is used to assign a unique value to the field id to a created {@link Person} object
      */
 
     public static Integer getIdentifier() {
@@ -68,13 +68,26 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
 
     /**
      * Restrictions: field can not be null, value of the field must be greater than zero, value of the field must be unique,
-     * value of the field must generate automatically.
+     * value of the field must be generated automatically.
      *
      * @return the id of the person on which the method is called
      */
 
     public Integer getId() {
         return id;
+    }
+
+    /**
+     * Sets the specified value to the field id. Used to recalculate the id when adding objects to a database collection.
+     * <p>
+     * Restrictions: field can not be null, value of the field must be greater than zero, value of the field must be unique,
+     * value of the field must be generated automatically.
+     *
+     * @param id the new value of the field id
+     */
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
