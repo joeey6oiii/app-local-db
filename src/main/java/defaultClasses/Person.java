@@ -78,7 +78,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     }
 
     /**
-     * Sets the specified value to the field id. Used to recalculate the id when adding objects to a database collection.
+     * Sets the specified value to the field id.
      * <p>
      * Restrictions: field can not be null, value of the field must be greater than zero, value of the field must be unique,
      * value of the field must be generated automatically.

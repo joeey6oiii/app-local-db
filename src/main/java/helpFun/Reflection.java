@@ -22,9 +22,7 @@ public class Reflection {
         field = Caster.castToGetter(field); Object value = null;
         try {
             value = object.getClass().getMethod(field).invoke(object);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {}
         return value;
     }
 
@@ -41,8 +39,6 @@ public class Reflection {
         field = Caster.castToSetter(field);
         try {
             object.getClass().getMethod(field, fieldClass).invoke(object, parameter);
-        } catch (SecurityException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        } catch (SecurityException | NoSuchMethodException | InvocationTargetException | IllegalAccessException ignored) {}
     }
 }
