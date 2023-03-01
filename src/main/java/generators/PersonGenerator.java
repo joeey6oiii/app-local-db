@@ -73,7 +73,7 @@ public class PersonGenerator implements Generate {
         System.out.print("Enter passportID \n$ ");
         String passportId = scanner.next();
         while(!new PassportIDValidator().validate(passportId)) {
-            System.out.print("Incorrect passportId. PassportId length must be in range [4, 32] \n$ ");
+            System.out.print("Incorrect passportId. PassportId length must be more than 5 \n$ ");
             passportId = scanner.next();
         }
         person.setPassportID(passportId);
