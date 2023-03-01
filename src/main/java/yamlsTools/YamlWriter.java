@@ -21,11 +21,10 @@ public class YamlWriter {
      * @throws IOException - the method throws an exception if the input of the object parameter fails
      */
     ObjectMapper mapper = new ObjectMapper(new YAMLFactory()).findAndRegisterModules();
-    public void writeYaml(Object object) throws IOException {
-        File file = new File("src/main/resources/orderOutput.yaml");
-        file.createNewFile();
-//        this.mapper.registerModule(new JavaTimeModule());
+    public void writeYaml(Object object, String file) throws IOException {
+        File newFile = new File(GlobalPath.getPath() + file);
+        newFile.createNewFile();
         this.mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        this.mapper.writeValue(file, object);
+        this.mapper.writeValue(newFile, object);
     }
 }
