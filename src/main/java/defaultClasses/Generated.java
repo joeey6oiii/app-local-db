@@ -1,5 +1,8 @@
 package defaultClasses;
 
-public interface Generated {
 
-}
+/**
+ * Interface that allows objects to be created
+ * @author Dmitrii Chebanenko
+ */
+public interface Generated {}

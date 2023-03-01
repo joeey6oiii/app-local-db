@@ -9,6 +9,7 @@ import helpFun.StringToDateParser;
 import validators.*;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -54,8 +55,7 @@ public class PersonGenerator implements Generate {
 
         }
         person.setHeight(height);
-        System.out.print("Enter birthday in format yyyy-MM-dd HH:mm:ss ");
-        System.out.print("If you don't want to chose birthday press ENTER \n$ ");
+        System.out.print("Enter birthday in format yyyy-MM-dd HH:mm:ss \n$ ");
         String test = scanner.nextLine(); // он кушает /n в буфере
         test = scanner.nextLine();
         boolean flag = true;
@@ -65,7 +65,7 @@ public class PersonGenerator implements Generate {
                     date = StringToDateParser.parse(test);
                     flag = false;
             } catch (Exception e){
-                System.out.print("Incorrect. Enter the date in format yyyy-MM-dd HH:mm:ss : If you don't want to chose birthday press ENTER \n$ ");
+                System.out.print("Incorrect. Enter the date in format yyyy-MM-dd HH:mm:ss\n$ ");
                 test = scanner.nextLine();
             }
         }
@@ -82,15 +82,15 @@ public class PersonGenerator implements Generate {
         System.out.println("If you don't want to chose hair color press ENTER");
         String str;
         str = scanner.nextLine();
-        System.out.print("$ ");
-        str = scanner.nextLine();
         String decision = "N";
         Color cl = null;
         while(decision == "N") {
+            System.out.print("$ ");
+            str = scanner.nextLine();
             cl = Color.getColorByName(str.toLowerCase());
             if (cl == null){
                 System.out.println("Your HairColor is null. Would you like to create null HairColor? Type [Y/N]");
-                decision = Decision.decision("Y", "N");
+                decision = Decision.decision("Y", "N").toUpperCase();
                 if (decision == "Y"){
                     person.setHairColor(cl);
                     break;
@@ -100,8 +100,6 @@ public class PersonGenerator implements Generate {
                 person.setHairColor(cl);
                 break;
             }
-            System.out.print("$ ");
-            str = scanner.nextLine();
         }
         System.out.println("Creating Location:");
         LocationGenerator locationGenerator = new LocationGenerator();
@@ -110,7 +108,7 @@ public class PersonGenerator implements Generate {
         while((!new LocationValidator().validate(location) && decision == "N") || location == null){
             if (location==null){
                 System.out.println("Your location is null. Would you like to create null location? Type [Y/N]");
-                decision = Decision.decision("Y", "N");
+                decision = Decision.decision("Y", "N").toUpperCase();
                 if (decision.equals("Y"))
                     break;
             }

@@ -11,7 +11,7 @@ import java.util.Iterator;
 /**
  * The class that implements the remove_lower command - removes Person elements from the DataBase whose height field is less than the height field of the created object
  *
- * @autor Dmitrii Chebanenko
+ * @author Dmitrii Chebanenko
  */
 public class RemoveLower extends BaseCommand {
     /**
