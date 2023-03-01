@@ -1,6 +1,7 @@
 package commands;
 
 import dataBase.DataBase;
+import yamlsTools.GlobalPath;
 import yamlsTools.YamlWriter;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class Save extends BaseCommand {
         } catch (IOException e) {
             System.out.println("Something went wrong, the file was not created, please, try again");
         }
-        System.out.println("The collection has been saved. The path to the file is: \"src/main/resources/orderOutput.yaml\"");
+        System.out.println("The collection has been saved. The path to the file is: \"" + GlobalPath.getPath() + "orderOutput.yaml\"");
     }
 
     /**
