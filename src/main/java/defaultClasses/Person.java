@@ -2,6 +2,7 @@ package defaultClasses;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * The class on which the collection in the program is based. Contains getters and setters for each class field.
@@ -12,7 +13,6 @@ import java.util.Objects;
  */
 
 public class Person implements Generated, IsUpdateable, Comparable<Person> {
-    private static Integer identifier = 0;
     private Integer id;
     private String name;
     private Coordinates coordinates;
@@ -28,7 +28,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
      */
 
     public Person() {
-        this.id = ++identifier;
+        this.id = new Random().nextInt(1, Integer.MAX_VALUE);
         this.creationDate = new Date();
     }
 
@@ -47,7 +47,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     public Person(String name, Coordinates coordinates, int height,
                   java.util.Date birthday, String passportID,
                   Color hairColor, Location location) {
-        this.id = ++identifier;
+        this.id = new Random().nextInt(1, Integer.MAX_VALUE);
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = new Date();
@@ -56,14 +56,6 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
         this.passportID = passportID;
         this.hairColor = hairColor;
         this.location = location;
-    }
-
-    /**
-     * @return abstract identifier that is used to assign a unique value to the field id to a created {@link Person} object
-     */
-
-    public static Integer getIdentifier() {
-        return identifier;
     }
 
     /**
