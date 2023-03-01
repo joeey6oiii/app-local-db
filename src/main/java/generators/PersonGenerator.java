@@ -73,7 +73,7 @@ public class PersonGenerator implements Generate {
         System.out.print("Enter passportID \n$ ");
         String passportId = scanner.next();
         while(!new PassportIDValidator().validate(passportId)) {
-            System.out.print("Incorrect passportId. PassportId length must be in range [4, 32] \n$ ");
+            System.out.print("Incorrect passportId. PassportId length must be in range [5, +inf] \n$ ");
             passportId = scanner.next();
         }
         person.setPassportID(passportId);
@@ -90,8 +90,8 @@ public class PersonGenerator implements Generate {
             cl = Color.getColorByName(str.toLowerCase());
             if (cl == null){
                 System.out.println("Your HairColor is null. Would you like to create null HairColor? Type [Y/N]");
-                decision = Decision.decision("Y", "N").toUpperCase();
-                if (decision == "Y"){
+                decision = Decision.decision("Y", "N");
+                if (decision.equalsIgnoreCase("Y")){
                     person.setHairColor(cl);
                     break;
                 }
@@ -108,8 +108,8 @@ public class PersonGenerator implements Generate {
         while((!new LocationValidator().validate(location) && decision == "N") || location == null){
             if (location==null){
                 System.out.println("Your location is null. Would you like to create null location? Type [Y/N]");
-                decision = Decision.decision("Y", "N").toUpperCase();
-                if (decision.equals("Y"))
+                decision = Decision.decision("Y", "N");
+                if (decision.equalsIgnoreCase("Y"))
                     break;
             }
             location = locationGenerator.generate();
