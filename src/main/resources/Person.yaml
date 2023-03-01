@@ -109,3 +109,16 @@
     "y": 6916
     z: -871
     name: "audi1405"
+- name: "Maxim"
+  coordinates:
+    x: 99742
+    "y": -12312
+  height: 3
+  birthday: "1998-05-15T10:04:59.3791892"
+  passportID: "3019018476"
+  hairColor: "Red"
+  location:
+    x: 2342
+    "y": -1209
+    z: 1
+    name: "sun"
