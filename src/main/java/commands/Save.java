@@ -19,7 +19,7 @@ public class Save extends BaseCommand {
     public void execute(DataBase obj) {
         YamlWriter yamlWriter = new YamlWriter();
         try {
-            yamlWriter.writeYaml(obj.getCollection());
+            yamlWriter.writeYaml(obj.getCollection(), "orderOutput.yaml");
         } catch (IOException e) {
             System.out.println("Something went wrong, the file was not created, please, try again");
         }

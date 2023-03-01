@@ -19,7 +19,7 @@ public class CommandHandler {
     /**
      * Field for storing executed commands
      */
-    private static ArrayList<String> history;
+    private static ArrayList<BaseCommand> history;
 
     /**
      *
@@ -59,9 +59,9 @@ public class CommandHandler {
                 map.get(a[0]).setParameter(a[1]);
             }
             map.get(a[0]).execute(GlobalObj.dataBase);
-            history.add(CommandHandler.getKey(map, map.get(a[0])));
+            history.add(map.get(a[0]));
         } catch (Exception e) {
-            System.out.println("Invalid command. Please, type \"help\" to see a list of available commands and their description");
+            System.out.println("Invalid command. Type \"help\" to see a list of available commands and their description");
         }
     }
 
@@ -79,26 +79,7 @@ public class CommandHandler {
      *
      * @return returns history of used commands
      */
-    public static ArrayList<String> getHistory() {
+    public static ArrayList<BaseCommand> getHistory() {
         return history;
-    }
-
-    private static <K, V> K getKey(Map<K, V> map, V value) {
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-            if (entry.getValue().equals(value)) {
-                return entry.getKey();
-            }
-        }
-        return null;
-    }
-
-    public static String getLongestCommandName() {
-        String command = "";
-        for (Map.Entry<String, BaseCommand> entry : map.entrySet()) {
-            if (entry.getKey().length() > command.length()) {
-                command = entry.getKey();
-            }
-        }
-        return command;
     }
 }

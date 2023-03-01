@@ -1,13 +1,21 @@
 package helpFun;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
+/**
+ * A class with help parse method.
+ */
 
 public class StringToDateParser {
-    public static java.util.Date stringToDate(String str) throws ParseException {
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    /**
+     * A method that pareses {@link String} to a {@link java.util.Date}
+     *
+     * @param str <code>String</code> representation of a date
+     * @return {@link java.util.Date} parsed from {@link String}
+     * @throws java.text.ParseException if the format of the specified <code>String</code> date is incorrect
+     */
+
+    public static java.util.Date parse(String str) throws java.text.ParseException {
+        java.text.DateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return formatter.parse(str);
     }
 }
