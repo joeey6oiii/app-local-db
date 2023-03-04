@@ -28,10 +28,10 @@ public class Help extends BaseCommand {
                 command = entry.getKey();
             }
         }
-        int emptyStringLength;
+        int commandLength = command.length(); int emptyStringLength;
         for (Map.Entry<String, BaseCommand> entry : CommandHandler.getMap().entrySet()) {
             StringBuilder stringBuilder = new StringBuilder();
-            emptyStringLength = command.length() + 4 - entry.getKey().length();
+            emptyStringLength = commandLength + 4 - entry.getKey().length();
             while (emptyStringLength != 0) {
                 stringBuilder.append(" ");
                 emptyStringLength -= 1;
