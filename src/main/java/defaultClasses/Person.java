@@ -2,7 +2,6 @@ package defaultClasses;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * The class on which the collection in the program is based. Contains getters and setters for each class field.
@@ -13,7 +12,8 @@ import java.util.Random;
  */
 
 public class Person implements Generated, IsUpdateable, Comparable<Person> {
-    private Integer id;
+    private static Integer identifier = 0;
+    private final Integer id;
     private String name;
     private Coordinates coordinates;
     private final java.util.Date creationDate;
@@ -28,7 +28,8 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
      */
 
     public Person() {
-        this.id = new Random().nextInt(1, Integer.MAX_VALUE);
+//        this.id = -1;
+        this.id = ++identifier;
         this.creationDate = new Date();
     }
 
@@ -47,7 +48,8 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     public Person(String name, Coordinates coordinates, int height,
                   java.util.Date birthday, String passportID,
                   Color hairColor, Location location) {
-        this.id = new Random().nextInt(1, Integer.MAX_VALUE);
+//        this.id = -1;
+        this.id = ++identifier;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = new Date();
@@ -78,9 +80,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
      * @param id the new value of the field id
      */
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public void setId(Integer id) { this.id = id; }
 
     /**
      * Restrictions: field can not be null, string can not be empty
@@ -236,6 +236,15 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
         return creationDate;
     }
 
+    /**
+     * @param anotherPerson the object to be compared.
+     * @return
+     */
+
+    public int compareTo (Person anotherPerson){
+        return this.id-anotherPerson.id;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -270,9 +279,5 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, coordinates, creationDate, height, birthday, passportID, hairColor, location);
-    }
-
-    public int compareTo (Person anotherPerson){
-        return this.id-anotherPerson.id;
     }
 }
