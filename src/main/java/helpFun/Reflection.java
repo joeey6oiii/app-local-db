@@ -35,7 +35,8 @@ public class Reflection {
      */
 
     public static Object getValue(Object object, String field) {
-        field = castToGetter(field); Object value = null;
+        field = castToGetter(field);
+        Object value = null;
         try {
             value = object.getClass().getMethod(field).invoke(object);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {}
