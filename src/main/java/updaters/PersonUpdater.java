@@ -96,7 +96,9 @@ public class PersonUpdater implements UpdateAble<Person> {
                     } while (!checked);
                     Reflection.setValue(person, field, Date.class, birthday);
                 } else if (boolHeight) {
-                    System.out.print("Enter " + field + "\n$ "); boolean checked = false; int height = 0;
+                    System.out.print("Enter " + field + "\n$ ");
+                    boolean checked = false;
+                    int height = 0;
                     do {
                         try {
                             height = Integer.parseInt(scanner.nextLine());
