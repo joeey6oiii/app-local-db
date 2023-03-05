@@ -40,7 +40,9 @@ public class PersonUpdater implements UpdateAble<Person> {
     public void update(Person person) {
         System.out.print("\u001B[33mPersonUpdater started\u001B[0m\n" +
                 "Currently updating " + person + "\nEnter [Field name]" +
-                " or \"exit\" to leave the PersonUpdater\n$ "); String field = ""; Scanner scanner = new Scanner(System.in);
+                " or \"exit\" to leave the PersonUpdater\n$ ");
+        String field = "";
+        Scanner scanner = new Scanner(System.in);
         while (!field.equalsIgnoreCase("EXIT")) {
             field = scanner.nextLine();
             if (field.equalsIgnoreCase("EXIT")) {
@@ -50,7 +52,8 @@ public class PersonUpdater implements UpdateAble<Person> {
                 Map.Entry<String, Generate>[] entryArray = entrySet.toArray(new Map.Entry[entrySet.size()]);
                 for (Map.Entry<String, Generate> stringGenerateEntry : entryArray) {
                     if (stringGenerateEntry.getKey().equalsIgnoreCase(field)) {
-                        field = stringGenerateEntry.getKey(); break;
+                        field = stringGenerateEntry.getKey();
+                        break;
                     }
                 }
                 Class<?> fieldClass = null;
@@ -70,7 +73,8 @@ public class PersonUpdater implements UpdateAble<Person> {
             } else if (list.stream().anyMatch(field::equalsIgnoreCase)) {
                 for (String str : list) {
                     if (str.equalsIgnoreCase(field)) {
-                        field = str; break;
+                        field = str;
+                        break;
                     }
                 }
                 var previous_value = Reflection.getValue(person, field);
@@ -78,11 +82,14 @@ public class PersonUpdater implements UpdateAble<Person> {
                 boolean boolHeight = field.equalsIgnoreCase("HEIGHT");
                 if (boolBirthday) {
                     System.out.print("Enter " + field + ". Format: yyyy-MM-dd HH:mm:ss\n$ ");
-                    boolean checked = false; String strBirthday; Date birthday = null;
+                    boolean checked = false;
+                    String strBirthday;
+                    Date birthday = null;
                     do {
                         try {
                             strBirthday = scanner.nextLine();
-                            birthday = StringToDateParser.parse(strBirthday); checked = true;
+                            birthday = StringToDateParser.parse(strBirthday);
+                            checked = true;
                         } catch (Exception e) {
                             System.out.print("Enter " + field + ". Format: yyyy-MM-dd HH:mm:ss\n$ ");
                         }
@@ -92,7 +99,8 @@ public class PersonUpdater implements UpdateAble<Person> {
                     System.out.print("Enter " + field + "\n$ "); boolean checked = false; int height = 0;
                     do {
                         try {
-                            height = Integer.parseInt(scanner.nextLine()); checked = true;
+                            height = Integer.parseInt(scanner.nextLine());
+                            checked = true;
                         } catch (Exception e) {
                             System.out.print("Enter " + field + "\n$ ");
                         }

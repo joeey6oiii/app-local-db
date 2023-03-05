@@ -44,26 +44,34 @@ public class YAMLReader {
      */
 
     public <T> List<T> read(String path, Class<T> type) {
-        Class<T[]> arrayClass = null; T[] objects = null;
+        Class<T[]> arrayClass = null;
+        T[] objects = null;
         try {
             arrayClass = (Class<T[]>) Class.forName("[L" + type.getName() + ";");
         } catch (ClassNotFoundException ignored) {}
         try {
-            System.out.print("\n"); InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
-            objects = objectMapper.readValue(inputStreamReader, arrayClass); inputStreamReader.close();
+            System.out.print("\n");
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
+            objects = objectMapper.readValue(inputStreamReader, arrayClass);
+            inputStreamReader.close();
         } catch (Exception e) {
-            boolean isPath = false; Scanner scanner = new Scanner(System.in);
+            boolean isPath = false;
+            Scanner scanner = new Scanner(System.in);
             System.out.print("Invalid path or the file is damaged: \u001B[31m" + e.getMessage() + "\u001B[0m\n");
             do {
                 try {
                     System.out.print("\nEnter path to continue program execution or \"exit\" to terminate the program\n$ ");
                     path = scanner.nextLine();
                     if (path.equalsIgnoreCase("EXIT")) {
-                        System.out.print("\n"); new Exit().execute(null);
+                        System.out.print("\n");
+                        new Exit().execute(null);
                     } else {
+                        System.out.print("\n");
                         GlobalPath.setPath(path);
-                        System.out.print("\n"); InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
-                        objects = objectMapper.readValue(inputStreamReader, arrayClass); inputStreamReader.close(); isPath = true;
+                        InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path));
+                        objects = objectMapper.readValue(inputStreamReader, arrayClass);
+                        inputStreamReader.close();
+                        isPath = true;
                     }
                 } catch (Exception exception) {
                     System.out.print("Invalid path or the file is damaged: \u001B[31m" + exception.getMessage() + "\u001B[0m\n");
