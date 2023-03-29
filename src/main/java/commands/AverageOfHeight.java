@@ -1,6 +1,7 @@
 package commands;
 
 import dataBase.DataBase;
+import dataBase.GlobalObj;
 import defaultClasses.Person;
 
 import java.io.IOException;
@@ -21,8 +22,8 @@ public class AverageOfHeight extends BaseCommand {
      */
 
     @Override
-    public void execute(DataBase obj) throws IOException {
-        Iterator<Person> it = obj.getCollection().iterator();
+    public void execute() throws IOException {
+        Iterator<Person> it = GlobalObj.dataBase.getCollection().iterator();
         int sum = 0;
         int count = 0;
         while (it.hasNext()){
