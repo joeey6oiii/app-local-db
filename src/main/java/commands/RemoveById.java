@@ -17,7 +17,6 @@ public class RemoveById extends BaseCommand {
     /**
      * Method that removes an element from the DataBase by id
      *
-     * @param obj - link to the database containing the collection
      * @throws IOException
      */
     public void execute() throws IOException {
