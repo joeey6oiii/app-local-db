@@ -17,7 +17,7 @@ public abstract class BaseCommand {
      * @param obj - link to the database containing the collection
      * @throws IOException
      */
-    public abstract void execute(DataBase obj) throws IOException;
+    public abstract void execute() throws IOException;
 
     /**
      * Parameter holding the command argument (if any)

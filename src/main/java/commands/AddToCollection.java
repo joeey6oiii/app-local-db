@@ -17,9 +17,8 @@ public class AddToCollection extends BaseCommand {
      * The base method for the BaseCommand class {@see BaseCommand#execute()}, when called, allows
      *  the user to create an object of the Person class and add it to the collection via loader
      *
-     * @param obj - link to the database containing the collection
      */
-    public void execute(DataBase obj) {
+    public void execute() {
         PersonGenerator personGenerator = new PersonGenerator();
         Person person = personGenerator.generate();
         List<Person> list = new ArrayList<>();

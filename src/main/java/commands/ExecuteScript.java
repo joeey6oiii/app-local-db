@@ -22,10 +22,9 @@ public class ExecuteScript extends BaseCommand {
     /**
      * Executes the script path to which is specified in the parameter field of the BaseCommand class
      *
-     * @param obj - link to the database containing the collection
      * @throws IOException
      */
-    public void execute(DataBase obj) throws IOException {
+    public void execute() throws IOException {
         if (historyOfDangerScript.contains(super.getParameter())) {
             System.out.println("Loop in script");
             return;

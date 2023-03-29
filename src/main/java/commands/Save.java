@@ -1,6 +1,7 @@
 package commands;
 
 import dataBase.DataBase;
+import dataBase.GlobalObj;
 import yamlsTools.GlobalPath;
 import yamlsTools.YamlWriter;
 
@@ -14,13 +15,11 @@ import java.io.IOException;
 public class Save extends BaseCommand {
     /**
      * Method that saves Person elements from the DataBase to a file along the path "src/main/resources/orderOutput.yaml"
-     *
-     * @param obj - link to the database containing the collection
      */
-    public void execute(DataBase obj) {
+    public void execute() {
         YamlWriter yamlWriter = new YamlWriter();
         try {
-            yamlWriter.writeYaml(obj.getCollection(), "orderOutput.yaml");
+            yamlWriter.writeYaml(GlobalObj.dataBase.getCollection(), "orderOutput.yaml");
         } catch (IOException e) {
             System.out.println("Something went wrong, the file was not created, please, try again");
         }
