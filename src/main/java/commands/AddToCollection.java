@@ -8,15 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class for implementing the add command (adds an element to the collection)
+ * Class for implementing the add command (adds an element to the collection).
  *
  * @author Dmitrii Chebanenko
  */
 public class AddToCollection extends BaseCommand {
     /**
      * The base method for the BaseCommand class {@see BaseCommand#execute()}, when called, allows
-     *  the user to create an object of the Person class and add it to the collection via loader
-     *
+     *  the user to create an object of the Person class and add it to the collection via loader.
      */
     public void execute() {
         PersonGenerator personGenerator = new PersonGenerator();
@@ -27,9 +26,9 @@ public class AddToCollection extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command.
      */
-    public void describe() {
-        System.out.println("Creates and adds an element to the collection");
+    public String describe() {
+        return "Creates and adds an element to the collection";
     }
 }

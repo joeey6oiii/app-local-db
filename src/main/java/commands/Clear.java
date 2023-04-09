@@ -1,12 +1,11 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 
 import java.util.Iterator;
 
 /**
- * Class for implementing the Clear command - removes all objects from the database
+ * Class for implementing the Clear command - removes all objects from the database.
  *
  * @author Dmitrii Chebanenko
  */
@@ -25,9 +24,9 @@ public class Clear extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command.
      */
-    public void describe() {
-        System.out.println("Clears the collection");
+    public String describe() {
+        return "Clears the collection";
     }
 }

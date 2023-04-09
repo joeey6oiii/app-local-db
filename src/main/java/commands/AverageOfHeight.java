@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 import defaultClasses.Person;
 
@@ -34,11 +33,11 @@ public class AverageOfHeight extends BaseCommand {
     }
 
     /**
-     * A method that outputs the description of the command.
+     * A method that returns the description of the command.
      */
 
     @Override
-    public void describe() {
-        System.out.println("Outputs the average value of the \"height\" field of all elements in the database");
+    public String describe() {
+        return "Outputs the average value of the \"height\" field of all elements in the database";
     }
 }

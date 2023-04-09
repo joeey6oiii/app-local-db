@@ -1,30 +1,24 @@
 package commands;
 
-import dataBase.GlobalObj;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Command processing class
+ * Command processing class.
  *
  * @authors Dmitrii Chebanenko and Alexey
  */
 public class CommandHandler {
     /**
-     * Field to store all commands
+     * Field to store all commands.
      */
     private static Map<String, BaseCommand> map;
     /**
-     * Field for storing executed commands
+     * Field for storing executed commands.
      */
     private static ArrayList<BaseCommand> history;
 
-    /**
-     *
-     The map initialization block, if you add a command, you must add it to the map
-     */
     static {
         map = new LinkedHashMap<>();
         history = new ArrayList<>();
@@ -47,7 +41,7 @@ public class CommandHandler {
     }
 
     /**
-     * Method for processing commands with CommandHandler or with ExecuteScript
+     * Method for processing commands with CommandHandler or with ExecuteScript.
      *
      * @param str - command from CommandHandler or from ExecuteScript
      */
@@ -66,7 +60,7 @@ public class CommandHandler {
     }
 
     /**
-     * Method for getting a list containing available commands
+     * Method for getting a list containing available commands.
      *
      * @return returns a list of commands
      */
@@ -75,9 +69,9 @@ public class CommandHandler {
     }
 
     /**
-     * Method for getting command execution history
+     * Method for getting command execution history.
      *
-     * @return returns history of used commands
+     * @return history of used commands
      */
     public static ArrayList<BaseCommand> getHistory() {
         return history;

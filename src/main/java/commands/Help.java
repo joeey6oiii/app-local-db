@@ -1,7 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
-
 import java.io.IOException;
 import java.util.Map;
 
@@ -36,17 +34,16 @@ public class Help extends BaseCommand {
                 stringBuilder.append(" ");
                 emptyStringLength -= 1;
             }
-            System.out.print(entry.getKey() + stringBuilder);
-            entry.getValue().describe();
+            System.out.println(entry.getKey() + stringBuilder + entry.getValue().describe());
         }
     }
 
     /**
-     * A method that outputs the description of the command.
+     * A method that returns the description of the command.
      */
 
     @Override
-    public void describe() {
-        System.out.println("Displays information about console application commands");
+    public String describe() {
+        return "Displays information about console application commands";
     }
 }

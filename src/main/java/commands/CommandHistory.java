@@ -1,7 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -44,11 +42,11 @@ public class CommandHistory extends BaseCommand {
     }
 
     /**
-     * A method that outputs the description of the command.
+     * A method that returns the description of the command.
      */
 
     @Override
-    public void describe() {
-        System.out.println("Outputs last input 9 commands (without arguments)");
+    public String describe() {
+        return "Outputs last input 9 commands (without arguments)";
     }
 }
