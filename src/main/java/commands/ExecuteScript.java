@@ -2,8 +2,6 @@ package commands;
 
 import org.apache.commons.io.IOUtils;
 
-import dataBase.DataBase;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
@@ -46,9 +44,9 @@ public class ExecuteScript extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command.
      */
-    public void describe() {
-        System.out.println("Reads and executes a script from the specified file");
+    public String describe() {
+        return "Reads and executes a script from the specified file";
     }
 }

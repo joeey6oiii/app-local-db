@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 import dataBase.HeightComparator;
 import defaultClasses.Person;
@@ -32,9 +31,9 @@ public class RemoveGreater extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command.
      */
-    public void describe() {
-        System.out.println("Removes from the collection all elements greater than the specified");
+    public String describe() {
+        return "Removes from the collection all elements greater than the specified";
     }
 }

@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 
 /**
@@ -22,9 +21,9 @@ public class Show extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command.
      */
-    public void describe() {
-        System.out.println("Prints to standard output all elements of the collection in string representation");
+    public String describe() {
+        return "Prints to standard output all elements of the collection in string representation";
     }
 }

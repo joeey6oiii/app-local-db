@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 import defaultClasses.Person;
 
@@ -36,11 +35,11 @@ public class PrintFieldDescendingBirthday extends BaseCommand {
     }
 
     /**
-     * A method that outputs the description of the command.
+     * A method that returns the description of the command.
      */
 
     @Override
-    public void describe() {
-        System.out.println("Outputs the \"birthday\" values of all elements in the database in descending order");
+    public String describe() {
+        return "Outputs the \"birthday\" values of all elements in the database in descending order";
     }
 }

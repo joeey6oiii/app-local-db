@@ -1,7 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
-
 import java.util.Scanner;
 
 /**
@@ -35,9 +33,9 @@ public class Exit extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command
      */
-    public void describe() {
-        System.out.println("Closes the program without saving");
+    public String describe() {
+        return "Closes the program without saving";
     }
 }

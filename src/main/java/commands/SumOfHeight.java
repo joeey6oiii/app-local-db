@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 import defaultClasses.Person;
 
@@ -31,11 +30,11 @@ public class SumOfHeight extends BaseCommand {
     }
 
     /**
-     * A method that outputs the description of the command.
+     * A method that returns the description of the command.
      */
 
     @Override
-    public void describe() {
-        System.out.println("Outputs the sum of the \"height\" values of all elements in the database");
+    public String describe() {
+        return "Outputs the sum of the \"height\" values of all elements in the database";
     }
 }

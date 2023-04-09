@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 import defaultClasses.Person;
 import updaters.PersonUpdater;
@@ -36,11 +35,11 @@ public class UpdateById extends BaseCommand {
     }
 
     /**
-     * A method that outputs the description of the command.
+     * A method that returns the description of the command.
      */
 
     @Override
-    public void describe() {
-        System.out.println("Allows to reassign values to objects in the database");
+    public String describe() {
+        return "Allows to reassign values to objects in the database";
     }
 }

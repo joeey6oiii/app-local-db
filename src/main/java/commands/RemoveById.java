@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 import defaultClasses.Person;
 
@@ -39,10 +38,10 @@ public class RemoveById extends BaseCommand {
     }
 
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command.
      */
     @Override
-    public void describe() {
-        System.out.println("Removes an element from the database by id");
+    public String describe() {
+        return "Removes an element from the database by id";
     }
 }

@@ -1,6 +1,5 @@
 package commands;
 
-import dataBase.DataBase;
 import dataBase.GlobalObj;
 
 /**
@@ -17,10 +16,10 @@ public class Info extends BaseCommand {
         System.out.println("Initialization Time: " + GlobalObj.dataBase.getInitializationTime());
     }
     /**
-     * Method that displays the description of the command
+     * Method that returns the description of the command
      */
-    public void describe() {
-        System.out.println("Prints information about the collection to the standard" +
-                " output stream (type, initialization date, number of elements, etc.)");
+    public String describe() {
+        return "Prints information about the collection to the standard" +
+                " output stream (type, initialization date, number of elements, etc.)";
     }
 }
