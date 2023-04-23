@@ -11,7 +11,7 @@ import java.util.Objects;
  * @see dataBase.DataBase
  */
 
-public class Person implements Generated, IsUpdateable, Comparable<Person> {
+public class Person implements Generated, Comparable<Person> {
     private static Integer identifier = 0;
     private Integer id;
     private String name;
