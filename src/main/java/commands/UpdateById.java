@@ -1,10 +1,12 @@
 package commands;
 
 import dataBase.GlobalObj;
+import dataBase.Loader;
 import defaultClasses.Person;
-import updaters.PersonUpdater;
+import generators.PersonGenerator;
 
 import java.io.IOException;
+import java.util.Collections;
 
 /**
  * A class that implements the update_by_id command.
@@ -14,8 +16,8 @@ public class UpdateById extends BaseCommand {
 
     /**
      * When called, iterates through the collection to find the {@link Person} object with the specified id. If not found,
-     * outputs <code>String</code>, otherwise calls the {@link PersonUpdater#update(Person)} method on the found person.
-     * @see PersonUpdater
+     * outputs <code>String</code>, otherwise calls the {@link PersonGenerator#generate()} method on the found person.
+     * @see PersonGenerator
      *
      * @throws IOException
      */
@@ -23,10 +25,14 @@ public class UpdateById extends BaseCommand {
     @Override
     public void execute() throws IOException {
         boolean found = false;
-        for (Person person : GlobalObj.dataBase.getCollection()) {
-            if (person.getId() == Long.parseLong(super.getParameter())) {
+        for (Person p : GlobalObj.dataBase.getCollection()) {
+            if (p.getId() == Long.parseLong(super.getParameter())) {
                 found = true;
-                new PersonUpdater().update(person);
+                int id = p.getId();
+                GlobalObj.dataBase.getCollection().remove(p);
+                Person person = new PersonGenerator().generate();
+                person.setId(id);
+                new Loader().load(GlobalObj.dataBase, Collections.singletonList(person));
             }
         }
         if (!found) {

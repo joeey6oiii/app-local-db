@@ -34,35 +34,11 @@ public class Loader {
 
     public void load(DataBase dataBase, List<Person> people) {
         ArrayList<Person> invalidObjList = new ArrayList<>();
-        // recalculates the object id
-//        Person[] people1 = dataBase.getCollection().toArray(new Person[0]);
-//        int lastId = 0; boolean missingId = false;
-//        for (int i = 1; i < people1.length; i++) {
-//            if (people1[0].getId() != 1) {
-//                missingId = true; break;
-//            }
-//            if (people1[i - 1].getId() != people1[i].getId() - 1) {
-//                lastId = people1[i - 1].getId();
-//                missingId = true; break;
-//            }
-//        }
         for (Person person : people) {
-//            if (!missingId) {
-//                ArrayList<Person> temp = dataBase.getCollection().stream()
-//                        .sorted(Person::compareTo).collect(Collectors.toCollection(ArrayList::new));
-//                Collections.reverse(temp);
-//                if (temp.size() == 0) {
-//                    lastId = 0;
-//                } else {
-//                    lastId = temp.get(0).getId();
-//                }
-//            }
             if (new PersonValidator().validate(person)) {
-//                person.setId(lastId + 1);
                 dataBase.getCollection().add(person);
                 dataBase.SortCollection();
             } else {
-//                person.setId(null);
                 invalidObjList.add(person);
             }
         }

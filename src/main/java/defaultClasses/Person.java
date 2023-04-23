@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Person implements Generated, IsUpdateable, Comparable<Person> {
     private static Integer identifier = 0;
-    private final Integer id;
+    private Integer id;
     private String name;
     private Coordinates coordinates;
     private final java.util.Date creationDate;
@@ -28,7 +28,6 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
      */
 
     public Person() {
-//        this.id = -1;
         this.id = ++identifier;
         this.creationDate = new Date();
     }
@@ -48,7 +47,6 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
     public Person(String name, Coordinates coordinates, int height,
                   java.util.Date birthday, String passportID,
                   Color hairColor, Location location) {
-//        this.id = -1;
         this.id = ++identifier;
         this.name = name;
         this.coordinates = coordinates;
@@ -80,7 +78,7 @@ public class Person implements Generated, IsUpdateable, Comparable<Person> {
      * @param id the new value of the field id
      */
 
-//    public void setId(Integer id) { this.id = id; }
+    public void setId(Integer id) { this.id = id; }
 
     /**
      * Restrictions: field can not be null, string can not be empty
